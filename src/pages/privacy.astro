@@ -1,36 +1,108 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CrisisModal from '../components/CrisisModal.jsx';
 ---
 
 <Layout title="Privacy & Data Sovereignty | Mana Ako x Project Rise">
-  <section class="py-20 px-6 max-w-3xl mx-auto bg-white/80 rounded-lg shadow-sm mt-10">
-    <h1 class="text-4xl font-serif text-whenua mb-8">Privacy & Data Sovereignty</h1>
-    
-    <div class="prose prose-lg text-whenua/80">
-      <p class="lead font-bold">We are researching data sovereignty while using platforms we do not control. This page explains exactly how we manage that tension.</p>
+  <section class="py-20 px-6 max-w-3xl mx-auto">
+    <h1 class="text-4xl font-bold text-whenua mb-8">Privacy & Data Sovereignty</h1>
 
-      <h3>1. Two Layers of Control</h3>
-      <p><strong>Layer A: The Research (Us)</strong><br>
-      Lian and Lee control the research data. This includes your registration details and the transcripts we download for analysis. This data is stored in Supabase (hosted in Sydney, Australia) with Row-Level Security. We delete this data 3 years after project completion.</p>
+    <div class="space-y-10 text-lg text-whenua/80 leading-relaxed">
 
-      <p><strong>Layer B: The Technology (Them)</strong><br>
-      ElevenLabs (USA) processes the voice conversation. By using the AI agent, your data is subject to their Terms of Service. We have opted out of "AI Training," but they retain a license to process the data to provide the service. We cannot revoke this license retrospectively.</p>
+      <div>
+        <p class="text-xl font-bold text-whenua mb-4">We are researching data sovereignty while using platforms we do not control. This page explains exactly how we manage that tension.</p>
+      </div>
 
-      <h3>2. Where your data goes</h3>
-      <ul>
-        <li><strong>Registration:</strong> Supabase (Australia).</li>
-        <li><strong>Voice Audio:</strong> ElevenLabs (USA).</li>
-        <li><strong>Live Wānanga:</strong> Zoom (US Servers).</li>
-      </ul>
+      <!-- Two Layers of Control -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Two Layers of Data Control</h2>
+        <p class="mb-4">There are two separate systems handling your data, each with different controls.</p>
 
-      <h3>3. Your Rights</h3>
-      <p>You have the right to withdraw your data from our research analysis up to two weeks after the wānanga. Email <a href="mailto:lianpassmore@gmail.com" class="text-ako underline">lianpassmore@gmail.com</a> to request this.</p>
-      
-      <p><em>Note: We can delete our copy of your transcript, but we cannot force ElevenLabs to delete their processing logs immediately.</em></p>
+        <div class="bg-white/60 p-6 rounded-lg border border-kakahu/20 mb-4">
+          <h3 class="font-bold text-whenua text-lg mb-2">Layer A: The Research (Lian and Lee)</h3>
+          <p>We control how your conversation content is used for research purposes — what gets analysed, how it is stored in Supabase, and how findings are shared. Your registration details and the transcripts we download for analysis are stored in Supabase (hosted in Sydney, Australia, AWS ap-southeast-2) with Row-Level Security ensuring your data is isolated and protected. You can ask us to delete your research data at any time.</p>
+        </div>
 
-      <div class="mt-10 pt-10 border-t border-kakahu/30">
+        <div class="bg-white/60 p-6 rounded-lg border border-kakahu/20">
+          <h3 class="font-bold text-whenua text-lg mb-2">Layer B: The Technology (ElevenLabs)</h3>
+          <p>ElevenLabs (USA) processes the voice conversation. When you speak to the AI agent, your voice and words are sent to their servers in the United States. By using the AI agent, your data is subject to their <a href="https://elevenlabs.io/terms-of-use" target="_blank" rel="noopener" class="text-ako underline">Terms of Service</a>, which grants them a broad, perpetual license to use conversation data to provide and improve their services.</p>
+          <p class="mt-3">We have opted out of ElevenLabs using your data for AI model training. However, we cannot revoke their standard processing license. ElevenLabs also reserves the right to moderate conversations for safety purposes, which means their staff or contractors may access your conversation content.</p>
+        </div>
+      </div>
+
+      <!-- Where your data goes -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Where your data goes</h2>
+        <div class="bg-white/60 p-6 rounded-lg border border-kakahu/20">
+          <ul class="space-y-3">
+            <li><strong>Registration data:</strong> Supabase (Sydney, Australia)</li>
+            <li><strong>Voice audio & transcripts:</strong> ElevenLabs (United States)</li>
+            <li><strong>Research transcripts:</strong> Supabase (Sydney, Australia) — our separate copy</li>
+            <li><strong>Live wānanga:</strong> Zoom (US servers)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Data Retention -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Data Retention</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request.</li>
+          <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform.</li>
+        </ul>
+      </div>
+
+      <!-- Your Rights -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Your Rights</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Participation is completely voluntary — and consent is ongoing, not a one-time decision.</li>
+          <li>You can stop the conversation at any time — just close the browser.</li>
+          <li>You can switch from the AI to a person, or from a person to the AI, at any point.</li>
+          <li>You can withdraw your data from our research database up to two weeks after the wānanga by emailing us.</li>
+          <li>You can participate in the AI conversation without attending the wānanga, or vice versa.</li>
+          <li>You must be 18 or older to use the AI agent.</li>
+          <li>If you are under 18 or prefer not to use AI, you can <a href="/human" class="text-ako underline">book a conversation with us directly</a>.</li>
+          <li>Choosing not to participate has no consequences whatsoever.</li>
+        </ul>
+        <p class="mt-4">
+          <em>Note: We can delete our copy of your transcript, but we cannot force ElevenLabs to delete their processing logs. You have separate rights under their Terms of Service.</em>
+        </p>
+      </div>
+
+      <!-- Who sees your data -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Who will see your responses</h2>
+        <p>
+          Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and Paula Gair). Cultural advisors may review de-identified themes. Your name will not appear in any published work unless you specifically request attribution.
+        </p>
+      </div>
+
+      <!-- Why we are being this direct -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Why we are being this direct</h2>
+        <p>
+          We are researching data sovereignty while using a platform we do not control, hosted in a country with different privacy laws than Aotearoa. The terms of that platform do not align with the Indigenous data sovereignty principles our research is built on. We chose it because building our own voice AI was beyond our capacity, and we believe this research needs to happen now rather than waiting for perfect infrastructure.
+        </p>
+        <p class="mt-3">
+          You deserve to know exactly what you are agreeing to. This contradiction is real, and it is one of the things we are exploring in this research. What we lack in resources, we are making up for in honesty.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h2 class="text-2xl font-bold text-whenua mb-4">Contact</h2>
+        <p>
+          Questions about your data? Email <a href="mailto:lianpassmore@gmail.com" class="text-ako underline">lianpassmore@gmail.com</a> or <a href="mailto:leepalamo275@gmail.com" class="text-ako underline">leepalamo275@gmail.com</a>
+        </p>
+      </div>
+
+      <!-- Back -->
+      <div class="pt-8 border-t border-kakahu/30">
         <a href="/" class="text-ako font-bold">← Return Home</a>
       </div>
     </div>
   </section>
+
+  <CrisisModal client:load />
 </Layout>

@@ -1,5 +1,4 @@
-@import "@fontsource/playfair-display";
-@import "@fontsource/lexend-deca";
+@import "@fontsource-variable/inter";
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +9,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-serif font-bold;
+  @apply font-bold;
 }
 
 /* Custom Accordion Animation */

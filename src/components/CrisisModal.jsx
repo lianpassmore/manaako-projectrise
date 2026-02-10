@@ -26,7 +26,7 @@ export default function CrisisModal() {
               ✕ Close
             </button>
 
-            <h2 className="font-serif text-2xl font-bold text-crisis mb-4">Support Resources</h2>
+            <h2 className="text-2xl font-bold text-crisis mb-4">Support Resources</h2>
             
             <div className="space-y-6 text-whenua font-sans">
               <p>

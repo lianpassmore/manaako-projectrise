@@ -4,31 +4,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Project Rise Palette
-        whenua: '#584738',    // Dark Brown (Text)
-        kakahu: '#b59e7d',    // Tan (Accents)
-        rauhuia: '#f1eada',   // Cream (Background)
-        marama: '#aaa396',    // Sage (Secondary)
-        papa: '#3a2f26',      // Dark contrast
-        
-        // Mana Ako Palette
-        ako: '#00897B',       // Teal (Primary Action)
-        
-        // Functional
-        forest: '#059669',
-        amber: '#f59e0b',
-        crisis: '#dc2626',    // Red for exit/crisis
+        whenua: '#584738',    // Deep Earth Brown
+        kakahu: '#b59e7d',    // Tan/Flax
+        rauhuia: '#f9f9f7',   // Lighter Cream (Paper-like)
+        marama: '#aaa396',    // Sage/Stone
+        papa: '#3a2f26',      // Darkest Brown
+        ako: '#00897B',       // Teal
+        crisis: '#D84315',    // Terracotta
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['"Lexend Deca"', 'sans-serif'],
+        sans: ['"Inter Variable"', 'sans-serif'], // Ensure you have @fontsource-variable/inter installed
+      },
+      backgroundImage: {
+        // A subtle repeating triangle pattern (Niho Taniwha)
+        'niho-pattern': `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20L40 0H0L20 20ZM20 20L40 40H0L20 20Z' fill='%23584738' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E")`,
       },
       animation: {
-        'fade-in': 'fadeIn 0.4s ease-out',
+        'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1)', // Slower, smoother ease
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },

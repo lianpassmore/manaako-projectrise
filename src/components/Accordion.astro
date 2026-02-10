@@ -5,14 +5,18 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<details class="group border-b border-kakahu/30">
-  <summary class="flex justify-between items-center font-medium cursor-pointer list-none py-4 text-lg hover:text-ako transition-colors">
-    <span class="font-serif text-whenua group-hover:text-ako">{ title }</span>
-    <span class="transition group-open:rotate-180">
-      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+<details class="group border-b border-whenua/20">
+  <summary class="flex justify-between items-center cursor-pointer list-none py-6 transition-all duration-300 hover:pl-2">
+    <span class="text-xl font-medium text-whenua">{ title }</span>
+    <span class="transform transition-transform duration-300 group-open:rotate-180 text-ako">
+      <!-- Simple Plus/Minus Icon -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12h14" class="group-open:hidden" />
+        <path d="M5 12h14" class="hidden group-open:block" />
+      </svg>
     </span>
   </summary>
-  <div class="text-whenua/80 mt-2 mb-6 font-sans leading-relaxed space-y-4">
+  <div class="text-whenua/80 text-lg font-light leading-relaxed pb-8 animate-fade-in">
     <slot />
   </div>
 </details>

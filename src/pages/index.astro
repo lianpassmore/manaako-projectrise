@@ -4,126 +4,257 @@ import Accordion from '../components/Accordion.astro';
 import CrisisModal from '../components/CrisisModal.jsx';
 ---
 
-<Layout title="Mana Ako x Project Rise | Wānanga">
-  
+<Layout title="When Culture Meets Conversational AI | Mana Ako x Project Rise">
+
   <!-- Hero Section -->
-  <section class="py-20 px-6 max-w-3xl mx-auto text-center">
-    <h1 class="text-5xl md:text-6xl text-whenua mb-6 leading-tight">We need your voice.</h1>
-    <p class="text-xl md:text-2xl text-whenua/80 mb-8 font-light leading-relaxed">
-      We are two researchers building conversational AI tools for vulnerable spaces. 
-      We have reached a point where we cannot answer the most important questions alone.
-    </p>
-    
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
-      <a href="/participate" class="bg-ako text-white px-8 py-4 rounded font-bold text-lg hover:bg-teal-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto">
-        I'm in — take me to the details
-      </a>
-      <a href="https://calendar.app.google/9tWGVwUnDeSaXL3z6" target="_blank" class="text-whenua underline decoration-kakahu hover:text-ako transition-colors text-sm sm:text-base mt-4 sm:mt-0">
-        Want to talk to a person first? Book a 30-min kōrero →
-      </a>
-    </div>
-  </section>
-
-  <!-- Need to Know Section -->
-  <section class="bg-white/50 py-16 px-6">
-    <div class="max-w-3xl mx-auto space-y-8">
-      <h2 class="text-3xl text-whenua">This is new ground.</h2>
-      <div class="prose prose-lg text-whenua/80 font-sans">
-        <p>
-          There is research on data sovereignty. There is research on shame and safety in language learning. 
-          But nobody has woven those together to ask:
+  <section class="pt-20 pb-16 px-6 md:px-12 max-w-5xl mx-auto animate-fade-in">
+    <div class="border-l-2 border-ako/30 pl-6 md:pl-10 mb-12">
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tight leading-[0.95] mb-8 text-whenua">
+            We need <br/>
+            your voice.
+        </h1>
+        <p class="text-xl md:text-2xl text-whenua/70 max-w-2xl leading-relaxed font-light">
+            We are two researchers building conversational AI tools for vulnerable spaces — one for te reo Māori learning, one for relationship support. We have reached a point in our work where we cannot answer the most important questions alone.
         </p>
-        <blockquote class="border-l-4 border-ako pl-4 italic my-4 text-whenua">
-          What happens when conversational AI holds a conversation that touches something sacred or vulnerable? 
-          What cultural obligations arise? And how do we design for that?
-        </blockquote>
-        <p>
-          That is the gap — and your whakaaro helps fill it.
-        </p>
+    </div>
+
+    <!-- Body (NEED TO KNOW) -->
+    <div class="max-w-3xl pl-0 md:pl-10 space-y-6 text-lg text-whenua/80 leading-relaxed mb-12">
+      <p>
+        We are Lian and Lee. We are completing our Master of Technological Futures and we have both built conversational AI that people use in moments of vulnerability — when they are scared to speak te reo, or scared to open up about their relationships.
+      </p>
+      <p>
+        We have learned a lot. But the deeper we go, the bigger the questions get.
+      </p>
+      <p>
+        What does safety actually feel like when conversational AI holds a vulnerable conversation? Where are the cultural boundaries that technology should not cross? And who gets to decide?
+      </p>
+      <p>
+        We cannot figure this out from research papers. We need people — people who carry lived experience, cultural knowledge, and honest instincts about what feels right and what does not.
+      </p>
+      <p>
+        That is why we are inviting you to participate in a kōrero — on your terms — followed by an online wānanga where we explore these questions together.
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-5 pl-0 md:pl-10">
+      <a href="#choose-your-path" class="inline-flex items-center justify-center bg-whenua text-rauhuia px-8 py-4 rounded-none border border-whenua font-medium tracking-wide hover:bg-transparent hover:text-whenua transition-all duration-300">
+        I'm in — show me how to take part
+      </a>
+    </div>
+  </section>
+
+  <!-- Choose Your Path -->
+  <section id="choose-your-path" class="py-24 px-6 md:px-12 border-t border-whenua/10 bg-white/40 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">Choose Your Path</h2>
+      <h3 class="text-3xl md:text-4xl font-bold leading-tight mb-6">Four ways to take part</h3>
+      <p class="text-lg text-whenua/80 max-w-3xl mb-12">
+        There is no preferred option. Every path gives us what we need. Choose whatever feels right for you — and if you change your mind along the way, you can switch. You do not need to explain your choice.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Option 1 -->
+        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
+          <h4 class="font-bold text-whenua text-lg mb-2">Option 1</h4>
+          <p class="font-bold text-ako mb-2">AI first, then kōrero with a person</p>
+          <p class="text-whenua/70">Have a 10–15 minute conversation with the AI, then follow up with Lian or Lee if you want to go deeper or debrief.</p>
+        </div>
+
+        <!-- Option 2 -->
+        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
+          <h4 class="font-bold text-whenua text-lg mb-2">Option 2</h4>
+          <p class="font-bold text-ako mb-2">Kōrero with a person first, then AI</p>
+          <p class="text-whenua/70">Start with a 30-minute conversation with Lian or Lee, then try the AI experience afterwards.</p>
+        </div>
+
+        <!-- Option 3 -->
+        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
+          <h4 class="font-bold text-whenua text-lg mb-2">Option 3</h4>
+          <p class="font-bold text-ako mb-2">AI only</p>
+          <p class="text-whenua/70">Have the AI conversation and leave it there. Your kōrero still contributes fully to the research.</p>
+        </div>
+
+        <!-- Option 4 -->
+        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
+          <h4 class="font-bold text-whenua text-lg mb-2">Option 4</h4>
+          <p class="font-bold text-ako mb-2">Kōrero with a person only</p>
+          <p class="text-whenua/70">Not interested in talking to an AI? That is completely fine — and genuinely useful for our research too. Book a 30-minute conversation with Lian or Lee instead.</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-whenua/50 max-w-3xl mb-10">
+        You can change your mind at any point. If you start with the AI and decide you would rather talk to a person, we are here. If you start with a person and want to try the AI, the door is open. There is no wrong way to do this.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5">
+        <a href="/participate" class="inline-flex items-center justify-center bg-whenua text-rauhuia px-8 py-4 rounded-none border border-whenua font-medium tracking-wide hover:bg-transparent hover:text-whenua transition-all duration-300">
+          Start the AI conversation →
+        </a>
+        <a href="/human" class="inline-flex items-center justify-center px-8 py-4 text-whenua border border-whenua/20 hover:border-ako hover:text-ako transition-all duration-300">
+          Book a kōrero with Lian or Lee →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Timeline Section -->
-  <section class="py-16 px-6 max-w-3xl mx-auto">
-    <h2 class="text-3xl text-whenua mb-10">The Wānanga Timeline</h2>
-    <div class="border-l-2 border-kakahu ml-4 space-y-12">
-      
-      <!-- Item 1 -->
-      <div class="relative pl-8">
-        <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-ako border-4 border-rauhuia"></div>
-        <h3 class="font-bold text-xl text-whenua">Now — Feb 25</h3>
-        <p class="text-whenua/80">Have your AI conversation (10–15 minutes).</p>
-      </div>
+  <!-- What We Are Exploring -->
+  <section class="py-24 px-6 md:px-12 border-t border-whenua/10">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-12 gap-12">
+        <div class="md:col-span-4">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">The Context</h2>
+            <h3 class="text-3xl md:text-4xl font-bold leading-tight">This is new <br/>ground.</h3>
+        </div>
+        <div class="md:col-span-8 space-y-6 text-lg text-whenua/80 leading-relaxed">
+            <p>
+                There is research on data sovereignty. There is research on shame and safety in language learning. There is research on AI and Indigenous communities. But nobody has woven those together to ask:
+            </p>
+            <p class="text-2xl font-light text-whenua italic py-6 border-l-2 border-kakahu pl-6 my-6">
+                What happens when conversational AI holds a conversation that touches something sacred or vulnerable? What cultural obligations arise? And how do we design for that?
+            </p>
+            <p>
+                That is the gap — and your whakaaro helps fill it.
+            </p>
 
-      <!-- Item 2 -->
-      <div class="relative pl-8">
-        <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-whenua border-4 border-rauhuia"></div>
-        <h3 class="font-bold text-xl text-whenua">Thursday 26 Feb, 6.30pm</h3>
-        <p class="text-whenua/80">Online wānanga via Zoom.</p>
-      </div>
+            <h4 class="font-bold text-whenua text-xl mt-10 mb-2">What you will do</h4>
+            <p>
+                Have a kōrero — either with the AI (about 10–15 minutes using Lian's voice), with a person (about 30 minutes with Lian or Lee), or both. It will explore safety, vulnerability, and what feels right when conversational AI is involved in culturally significant spaces. It is not a test. There are no wrong answers. It is a kōrero.
+            </p>
+            <p>
+                Then, join us for a 90-minute online wānanga on <strong>Thursday 26 February, 6.30pm to 8pm NZDT</strong>, where we go deeper — together.
+            </p>
+            <p>
+                The wānanga is designed as a culturally grounded space to reflect on your experience. If you have the AI conversation in the same week, you will be able to sit with it while it is still fresh and explore what it brought up alongside others who have been through the same thing.
+            </p>
+            <p>
+                At the end of the wānanga, you will have the option to share any final reflections.
+            </p>
 
-      <!-- Item 3 -->
-      <div class="relative pl-8">
-        <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-kakahu border-4 border-rauhuia"></div>
-        <h3 class="font-bold text-xl text-whenua">After the wānanga</h3>
-        <p class="text-whenua/80">Share final reflections (written or voice).</p>
-      </div>
-
+            <h4 class="font-bold text-whenua text-xl mt-10 mb-2">What you will need</h4>
+            <p>
+                A quiet space, a device with a microphone, and about 15 minutes for the AI conversation (or 30 minutes for a person-to-person kōrero). The wānanga will be on Zoom.
+            </p>
+        </div>
     </div>
   </section>
 
-  <!-- Deep Dive Info (Accordions) -->
-  <section class="bg-white/50 py-16 px-6">
+  <!-- Timeline -->
+  <section class="py-24 px-6 md:px-12 max-w-5xl mx-auto border-t border-whenua/10">
+    <h2 class="text-xs uppercase tracking-[0.2em] text-marama font-bold mb-4">How This Works</h2>
+    <h3 class="text-3xl font-bold mb-16">The Timeline</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0 relative">
+        <!-- Connecting Line (Desktop) -->
+        <div class="hidden md:block absolute top-3 left-0 w-full h-px bg-whenua/20 -z-10"></div>
+
+        <!-- Step 1 -->
+        <div class="relative group">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-ako rounded-full mb-6 z-10 relative group-hover:bg-ako transition-colors"></div>
+            <h4 class="text-lg font-bold mb-2">Now — February 25</h4>
+            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Have your AI conversation (10–15 minutes, anytime that suits you) or book a kōrero with Lian or Lee.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative group">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-whenua rounded-full mb-6 z-10 relative"></div>
+            <h4 class="text-lg font-bold mb-2">Thu 26 Feb, 6.30pm</h4>
+            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Online wānanga — we explore these questions together on Zoom. This is the space to reflect on your experience in a culturally grounded setting alongside others.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative group">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-kakahu rounded-full mb-6 z-10 relative"></div>
+            <h4 class="text-lg font-bold mb-2">After the wānanga</h4>
+            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Share your final reflections (5 minutes — AI or written form).</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative group">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-marama rounded-full mb-6 z-10 relative"></div>
+            <h4 class="text-lg font-bold mb-2">Two weeks after</h4>
+            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Deadline to withdraw your data from the research if you change your mind.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- Why Online? -->
+  <section class="py-24 px-6 md:px-12 border-t border-whenua/10 bg-white/40 backdrop-blur-sm">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl text-whenua mb-8">Who We Are & The Research</h2>
-      
-      <Accordion title="Who We Are (Lian & Lee)">
-        <div class="space-y-6">
-          <div>
-            <h4 class="font-bold text-lg">Lian Passmore (Project Rise)</h4>
-            <p>Moana Tiriti researcher exploring how conversational AI can transform transactional digital interactions into relational, trust-building experiences.</p>
-          </div>
-          <div>
-            <h4 class="font-bold text-lg">Lee Palamo (Mana Ako)</h4>
-            <p>Learning Experience Lead exploring how AI can support te reo Māori learners by providing a culturally grounded, emotionally safe learning experience.</p>
-          </div>
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">A note on format</h2>
+      <h3 class="text-3xl font-bold mb-8">Why online?</h3>
+      <div class="space-y-6 text-lg text-whenua/80 leading-relaxed">
+        <p>
+          If we could get everyone in one room, we would. Kanohi ki te kanohi is always the first choice for this kind of mahi. But our participants are spread right across Aotearoa — from Tai Tokerau to Ōtautahi and everywhere in between — and two master's students do not come with a travel budget (if you know someone who wants to fund us, send them our way).
+        </p>
+        <p>
+          So we are doing what we can with what we have. We are building with the tools and skills available to us, and being as transparent and authentic as possible about what those tools can and cannot do. What we lack in resources we are making up for in care and honesty.
+        </p>
+        <p>
+          If this work grows beyond our theses — and we hope it does — the aspiration is always to be together in person. For now, this is where we start.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section - Accordions -->
+  <section class="py-24 px-6 md:px-12 border-t border-whenua/10">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12">The Details</h2>
+
+      <Accordion title="Lian Passmore">
+        <div class="space-y-4 py-4">
+          <p>Moana Tiriti researcher (Samoan and NZ European). My project — Project Rise — explores how conversational AI can transform transactional digital interactions into relational, trust-building experiences for marginalised communities. I have built Ray, a voice-based AI relationship coach grounded in Māori and Pasifika values. My research asks: <em>How might we design ethical conversational AI for vulnerable interactions using Māori and Pasifika values to protect marginalised communities?</em></p>
+          <p class="text-sm text-whenua/60">Supervisor: Felix Scholz, AcademyEX<br/>Cultural supervision: Monthly sessions with Māori and Pasifika advisors</p>
         </div>
       </Accordion>
 
-      <Accordion title="Why Online?">
-        <p>If we could get everyone in one room, we would. Kanohi ki te kanohi is always the first choice.</p>
-        <p>But our participants are spread right across Aotearoa. So we are doing what we can with what we have. What we lack in resources we are making up for in care and honesty.</p>
+      <Accordion title="Lee Palamo">
+        <div class="space-y-4 py-4">
+          <p>Learning Experience Lead at Northpower, with a background in instructional design at Auckland Council and learning design at The Warehouse Group. Lee brings a designer's eye and a South Auckland sense of humour to everything she builds. Her master's project explores how conversational AI can support te reo Māori learners by providing a personalised, culturally grounded, and emotionally safe learning experience — creating space for people to practise te reo without the fear and shame that often accompanies learning in front of others.</p>
+          <p class="text-sm text-whenua/60">Supervisor: Paula Gair, AcademyEX</p>
+        </div>
       </Accordion>
 
-      <Accordion title="Our Research Questions">
-        <ul class="list-disc pl-5 space-y-2">
-            <li><strong>Lian:</strong> How might we design ethical conversational AI for vulnerable interactions using Māori and Pasifika values?</li>
-            <li><strong>Lee:</strong> How might conversational AI support te reo Māori learners by providing a personalised, culturally grounded, and emotionally safe learning experience?</li>
-        </ul>
+      <Accordion title="Why we are working together">
+        <div class="py-4">
+          <p>We realised our projects sit in the same space. The people using Lee's app are scared — scared of making mistakes, of being judged, of not being Māori enough. The people using Lian's app are scared too — scared of being vulnerable, of opening up to a machine. The emotional terrain is the same. The cultural questions are the same. We are stronger exploring them together.</p>
+        </div>
       </Accordion>
 
       <Accordion title="Infrastructure Transparency">
-        <p>We believe in being upfront about our tools and their limitations. This research uses:</p>
-        <ul class="list-disc pl-5 space-y-1">
+        <div class="py-4 space-y-4">
+          <p>We believe in being upfront about our tools and their limitations. This research uses:</p>
+          <ul class="list-disc pl-5 space-y-1 text-whenua/70">
             <li>ElevenLabs (US-based) for the conversational AI voice agent</li>
-            <li>Supabase (hosted in Sydney, Australia) for our research database</li>
+            <li>Supabase (hosted in Sydney, Australia) for our research database, with row-level security</li>
             <li>Zoom for the live wānanga</li>
-        </ul>
-        <p class="mt-2">We do not own or control the AI infrastructure. The voice platform is built by a company based outside Aotearoa.</p>
+          </ul>
+          <p>We do not own or control the AI infrastructure. The voice platform is built by a company based outside Aotearoa, governed by US law, with data stored on US servers. We have opted out of our data being used for AI model training, but ElevenLabs' Terms of Service include a broad license on data processed through their platform.</p>
+          <p>We chose these tools because building our own voice AI infrastructure was beyond our resources as two master's students working across Aotearoa. Te Hiku Media — who built their own speech recognition for te reo Māori — have shown what full sovereignty looks like. We are not there. We are honest about that, and the tension between our principles and our tools is part of what this research examines.</p>
+          <p>Full details are provided in the consent section before you begin the conversation.</p>
+        </div>
       </Accordion>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="py-20 px-6 text-center">
-    <h2 class="text-3xl font-serif text-whenua mb-6">Ready to join the kōrero?</h2>
-    <a href="/participate" class="inline-block bg-ako text-white px-8 py-4 rounded font-bold text-lg hover:bg-teal-700 transition-colors shadow-lg">
-      Start the journey
-    </a>
+  <section class="py-32 px-6 text-center bg-whenua text-rauhuia relative overflow-hidden">
+    <!-- Inverted Pattern for footer -->
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 20L40 0H0L20 20ZM20 20L40 40H0L20 20Z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E')"></div>
+
+    <div class="relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Ready to kōrero?</h2>
+        <div class="flex flex-col sm:flex-row gap-5 justify-center">
+          <a href="/participate" class="inline-block bg-rauhuia text-whenua px-10 py-5 font-bold text-lg hover:bg-ako hover:text-white transition-all duration-300">
+            Start the AI conversation
+          </a>
+          <a href="/human" class="inline-block border border-rauhuia/40 text-rauhuia px-10 py-5 font-bold text-lg hover:bg-rauhuia/10 transition-all duration-300">
+            Book a kōrero with a person
+          </a>
+        </div>
+    </div>
   </section>
 
-  <!-- Persistent Safety Modal -->
   <CrisisModal client:load />
 
 </Layout>

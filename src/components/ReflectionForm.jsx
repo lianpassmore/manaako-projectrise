@@ -12,7 +12,6 @@ export default function ReflectionForm() {
         setError(null);
         const formData = new FormData(e.target);
 
-        // Save to Supabase 'reflections' table
         const { error: dbError } = await supabase
             .from('reflections')
             .insert([{
@@ -20,6 +19,8 @@ export default function ReflectionForm() {
                 shift_experience: formData.get('shift'),
                 private_vs_public: formData.get('private_public'),
                 feeling_right_wrong: formData.get('feelings'),
+                use_again: formData.get('use_again'),
+                recommend: formData.get('recommend'),
                 other_thoughts: formData.get('other'),
                 submitted_at: new Date().toISOString()
             }]);
@@ -34,7 +35,7 @@ export default function ReflectionForm() {
 
     if (sent) return (
         <div className="text-center py-10">
-            <h3 className="text-2xl font-serif text-ako mb-4">Ngā mihi nui.</h3>
+            <h3 className="text-2xl font-bold text-ako mb-4">Ngā mihi nui.</h3>
             <p>Your reflections have been safely received.</p>
             <p className="mt-4">We will send the summary insights to you soon.</p>
         </div>
@@ -47,6 +48,7 @@ export default function ReflectionForm() {
                     {error}
                 </div>
             )}
+
             <div>
                 <label className="block font-bold text-whenua mb-2">Your Email (so we can link this to your registration)</label>
                 <input type="email" name="email" required className="w-full p-3 border border-kakahu rounded" placeholder="The one you used to register" />
@@ -58,7 +60,7 @@ export default function ReflectionForm() {
             </div>
 
             <div>
-                <label className="block font-bold text-whenua mb-2">Was there anything you shared with the AI that you wouldn't say in the room — or vice versa?</label>
+                <label className="block font-bold text-whenua mb-2">Was there anything you shared with the AI that you would not have said in the room — or something that came up in the room that you would not have told the AI?</label>
                 <textarea name="private_public" rows="4" className="w-full p-3 border border-kakahu rounded"></textarea>
             </div>
 
@@ -68,8 +70,32 @@ export default function ReflectionForm() {
             </div>
 
             <div>
-                <label className="block font-bold text-whenua mb-2">Anything else?</label>
-                <textarea name="other" rows="2" className="w-full p-3 border border-kakahu rounded"></textarea>
+                <label className="block font-bold text-whenua mb-2">Would you use something like this again?</label>
+                <div className="flex gap-4">
+                    {['Yes', 'No', 'Maybe'].map(opt => (
+                        <label key={opt} className="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="use_again" value={opt} className="w-4 h-4 text-ako focus:ring-ako" />
+                            <span className="text-whenua">{opt}</span>
+                        </label>
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <label className="block font-bold text-whenua mb-2">Would you recommend this experience to someone you care about?</label>
+                <div className="flex gap-4">
+                    {['Yes', 'No', 'Maybe'].map(opt => (
+                        <label key={opt} className="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="recommend" value={opt} className="w-4 h-4 text-ako focus:ring-ako" />
+                            <span className="text-whenua">{opt}</span>
+                        </label>
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <label className="block font-bold text-whenua mb-2">Anything else you want us to know?</label>
+                <textarea name="other" rows="3" className="w-full p-3 border border-kakahu rounded"></textarea>
             </div>
 
             <button disabled={loading} className="bg-whenua text-rauhuia px-8 py-3 rounded font-bold hover:bg-papa transition w-full">

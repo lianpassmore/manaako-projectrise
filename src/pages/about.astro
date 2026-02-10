@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CrisisModal from '../components/CrisisModal.jsx';
+---
+
+<Layout title="About the Research | Mana Ako x Project Rise">
+  <section class="py-20 px-6 max-w-4xl mx-auto">
+
+    <!-- Page Header -->
+    <div class="mb-16 animate-fade-in">
+      <h1 class="text-5xl md:text-6xl font-bold text-whenua mb-6">The full picture</h1>
+      <p class="text-xl text-whenua/70 max-w-3xl leading-relaxed">
+        This page exists for anyone who wants to understand the research foundations behind this wānanga. You do not need to read any of this to participate — the <a href="/" class="text-ako underline hover:text-teal-700">landing page</a> has everything essential. But if you are an academic, a practitioner, or just someone who likes to know the full story, here it is.
+      </p>
+    </div>
+
+    <!-- Our Research Questions -->
+    <div class="mb-16">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">Our Research Questions</h2>
+
+      <div class="bg-white/60 border border-kakahu/20 p-8 rounded-lg mb-8">
+        <h3 class="text-2xl font-bold text-whenua mb-4">Lian's main question</h3>
+        <p class="text-lg text-whenua/80 italic mb-6">
+          How might we design ethical conversational AI for vulnerable interactions using Māori and Pasifika values to protect marginalised communities?
+        </p>
+
+        <h4 class="font-bold text-whenua mb-3">Sub-questions (using Dr Kiri Dell's compass framework)</h4>
+        <ul class="space-y-3 text-whenua/80">
+          <li class="flex gap-3">
+            <span class="font-bold text-ako shrink-0">Kei raro (Foundations):</span>
+            <span>What systemic barriers silence vulnerable voices in digital spaces?</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="font-bold text-ako shrink-0">Kei mua (Values):</span>
+            <span>How do Māori and Pasifika values translate into AI design decisions?</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="font-bold text-ako shrink-0">Kei runga (Purpose):</span>
+            <span>What purpose does ethical AI serve for vulnerable communities?</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="font-bold text-ako shrink-0">Kei roto (Agency):</span>
+            <span>How do we protect data sovereignty, safety, and dignity?</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="font-bold text-ako shrink-0">Kei waho (Innovation):</span>
+            <span>How do we develop this ethically with cultural governance?</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white/60 border border-kakahu/20 p-8 rounded-lg">
+        <h3 class="text-2xl font-bold text-whenua mb-4">Lee's main question</h3>
+        <p class="text-lg text-whenua/80 italic mb-6">
+          How might conversational AI support te reo Māori learners by providing a personalised, culturally grounded, and emotionally safe learning experience?
+        </p>
+
+        <h4 class="font-bold text-whenua mb-3">Sub-questions</h4>
+        <ul class="space-y-3 text-whenua/80 list-disc pl-5">
+          <li>How might AI help foster a safe, non-judgemental community of practice where learners can build confidence, connect with others, and explore te reo Māori together?</li>
+          <li>What impact does using a conversational AI have on learners' confidence, motivation, and willingness to kōrero in te reo Māori?</li>
+          <li>How might personalisation through AI and interactive learning design support motivation and a deeper connection to te reo Māori?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Literature -->
+    <div class="mb-16">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">The Literature</h2>
+      <h3 class="text-3xl font-bold text-whenua mb-8">What the literature tells us — and where it runs out</h3>
+
+      <div class="space-y-6 text-lg text-whenua/80 leading-relaxed">
+        <p>
+          Our work is informed by Indigenous data sovereignty research (Te Mana Raraunga, Taiuru, Kukutai and Taylor), te reo revitalisation research (Keegan, Te Ataarangi, He rongoā tō te reo), and Indigenous AI development (Te Hiku Media, Running Wolf's FLAIR initiative).
+        </p>
+        <p>
+          The literature gives us strong frameworks for data governance and sovereignty. It shows us how whakamā, hopo, and intergenerational language trauma create barriers that are emotional and spiritual, not just educational. It shows us models like Te Hiku Media who built their own AI infrastructure from the ground up to maintain complete sovereignty.
+        </p>
+        <p>
+          But nobody has yet asked what happens at the intersection: when the tool that might strip cultural knowledge of its sacredness is also the tool that creates safe space for people carrying shame to engage with that knowledge.
+        </p>
+        <p class="text-2xl font-light text-whenua italic py-6 border-l-2 border-kakahu pl-6">
+          That is the paradox we are sitting in. That is what this wānanga explores.
+        </p>
+      </div>
+    </div>
+
+    <!-- Methodology -->
+    <div class="mb-16">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">Methodology</h2>
+      <div class="space-y-6 text-lg text-whenua/80 leading-relaxed">
+        <p>
+          This wānanga sits within a Participatory Action Research methodology. You are not a research subject — you are a co-researcher. Your whakaaro does not just inform our findings; it shapes the framework itself.
+        </p>
+        <p>
+          Both projects operate under kaupapa Māori research principles with regular cultural supervision.
+        </p>
+      </div>
+    </div>
+
+    <!-- Infrastructure Transparency -->
+    <div class="mb-16">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">Infrastructure Transparency</h2>
+      <div class="space-y-6 text-lg text-whenua/80 leading-relaxed">
+        <p>
+          We believe in being upfront about our tools and their limitations. This research uses:
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>ElevenLabs (US-based) for the conversational AI voice agent</li>
+          <li>Supabase (hosted in Sydney, Australia) for our research database, with row-level security</li>
+          <li>Zoom for the live wānanga</li>
+        </ul>
+        <p>
+          We do not own or control the AI infrastructure. The voice platform is built by a company based outside Aotearoa, governed by US law, with data stored on US servers. We have opted out of our data being used for AI model training, but ElevenLabs' Terms of Service include a broad license on data processed through their platform.
+        </p>
+        <p>
+          We chose these tools because building our own voice AI infrastructure was beyond our resources as two master's students working across Aotearoa. Te Hiku Media — who built their own speech recognition for te reo Māori — have shown what full sovereignty looks like. We are not there. We are honest about that, and the tension between our principles and our tools is part of what this research examines.
+        </p>
+        <p>
+          Full details are provided in the consent section before you begin the conversation.
+        </p>
+      </div>
+    </div>
+
+    <!-- Back Links -->
+    <div class="pt-8 border-t border-kakahu/30 flex flex-col sm:flex-row gap-4">
+      <a href="/" class="text-ako font-bold hover:underline">← Back to Home</a>
+      <a href="/participate" class="text-ako font-bold hover:underline">Start the AI conversation →</a>
+      <a href="/human" class="text-ako font-bold hover:underline">Book a kōrero with a person →</a>
+    </div>
+
+  </section>
+
+  <CrisisModal client:load />
+</Layout>
