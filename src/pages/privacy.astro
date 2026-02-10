@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy & Data Sovereignty | Mana Ako x Project Rise">
+  <section class="py-20 px-6 max-w-3xl mx-auto bg-white/80 rounded-lg shadow-sm mt-10">
+    <h1 class="text-4xl font-serif text-whenua mb-8">Privacy & Data Sovereignty</h1>
+    
+    <div class="prose prose-lg text-whenua/80">
+      <p class="lead font-bold">We are researching data sovereignty while using platforms we do not control. This page explains exactly how we manage that tension.</p>
+
+      <h3>1. Two Layers of Control</h3>
+      <p><strong>Layer A: The Research (Us)</strong><br>
+      Lian and Lee control the research data. This includes your registration details and the transcripts we download for analysis. This data is stored in Supabase (hosted in Sydney, Australia) with Row-Level Security. We delete this data 3 years after project completion.</p>
+
+      <p><strong>Layer B: The Technology (Them)</strong><br>
+      ElevenLabs (USA) processes the voice conversation. By using the AI agent, your data is subject to their Terms of Service. We have opted out of "AI Training," but they retain a license to process the data to provide the service. We cannot revoke this license retrospectively.</p>
+
+      <h3>2. Where your data goes</h3>
+      <ul>
+        <li><strong>Registration:</strong> Supabase (Australia).</li>
+        <li><strong>Voice Audio:</strong> ElevenLabs (USA).</li>
+        <li><strong>Live Wānanga:</strong> Zoom (US Servers).</li>
+      </ul>
+
+      <h3>3. Your Rights</h3>
+      <p>You have the right to withdraw your data from our research analysis up to two weeks after the wānanga. Email <a href="mailto:lianpassmore@gmail.com" class="text-ako underline">lianpassmore@gmail.com</a> to request this.</p>
+      
+      <p><em>Note: We can delete our copy of your transcript, but we cannot force ElevenLabs to delete their processing logs immediately.</em></p>
+
+      <div class="mt-10 pt-10 border-t border-kakahu/30">
+        <a href="/" class="text-ako font-bold">← Return Home</a>
+      </div>
+    </div>
+  </section>
+</Layout>

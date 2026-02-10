@@ -1,17 +1,129 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import CrisisModal from '../components/CrisisModal.jsx';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Mana Ako x Project Rise | Wānanga">
+  
+  <!-- Hero Section -->
+  <section class="py-20 px-6 max-w-3xl mx-auto text-center">
+    <h1 class="text-5xl md:text-6xl text-whenua mb-6 leading-tight">We need your voice.</h1>
+    <p class="text-xl md:text-2xl text-whenua/80 mb-8 font-light leading-relaxed">
+      We are two researchers building conversational AI tools for vulnerable spaces. 
+      We have reached a point where we cannot answer the most important questions alone.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+      <a href="/participate" class="bg-ako text-white px-8 py-4 rounded font-bold text-lg hover:bg-teal-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto">
+        I'm in — take me to the details
+      </a>
+      <a href="https://calendar.app.google/9tWGVwUnDeSaXL3z6" target="_blank" class="text-whenua underline decoration-kakahu hover:text-ako transition-colors text-sm sm:text-base mt-4 sm:mt-0">
+        Want to talk to a person first? Book a 30-min kōrero →
+      </a>
+    </div>
+  </section>
+
+  <!-- Need to Know Section -->
+  <section class="bg-white/50 py-16 px-6">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <h2 class="text-3xl text-whenua">This is new ground.</h2>
+      <div class="prose prose-lg text-whenua/80 font-sans">
+        <p>
+          There is research on data sovereignty. There is research on shame and safety in language learning. 
+          But nobody has woven those together to ask:
+        </p>
+        <blockquote class="border-l-4 border-ako pl-4 italic my-4 text-whenua">
+          What happens when conversational AI holds a conversation that touches something sacred or vulnerable? 
+          What cultural obligations arise? And how do we design for that?
+        </blockquote>
+        <p>
+          That is the gap — and your whakaaro helps fill it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-16 px-6 max-w-3xl mx-auto">
+    <h2 class="text-3xl text-whenua mb-10">The Wānanga Timeline</h2>
+    <div class="border-l-2 border-kakahu ml-4 space-y-12">
+      
+      <!-- Item 1 -->
+      <div class="relative pl-8">
+        <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-ako border-4 border-rauhuia"></div>
+        <h3 class="font-bold text-xl text-whenua">Now — Feb 25</h3>
+        <p class="text-whenua/80">Have your AI conversation (10–15 minutes).</p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="relative pl-8">
+        <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-whenua border-4 border-rauhuia"></div>
+        <h3 class="font-bold text-xl text-whenua">Thursday 26 Feb, 6.30pm</h3>
+        <p class="text-whenua/80">Online wānanga via Zoom.</p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="relative pl-8">
+        <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-kakahu border-4 border-rauhuia"></div>
+        <h3 class="font-bold text-xl text-whenua">After the wānanga</h3>
+        <p class="text-whenua/80">Share final reflections (written or voice).</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Deep Dive Info (Accordions) -->
+  <section class="bg-white/50 py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl text-whenua mb-8">Who We Are & The Research</h2>
+      
+      <Accordion title="Who We Are (Lian & Lee)">
+        <div class="space-y-6">
+          <div>
+            <h4 class="font-bold text-lg">Lian Passmore (Project Rise)</h4>
+            <p>Moana Tiriti researcher exploring how conversational AI can transform transactional digital interactions into relational, trust-building experiences.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg">Lee Palamo (Mana Ako)</h4>
+            <p>Learning Experience Lead exploring how AI can support te reo Māori learners by providing a culturally grounded, emotionally safe learning experience.</p>
+          </div>
+        </div>
+      </Accordion>
+
+      <Accordion title="Why Online?">
+        <p>If we could get everyone in one room, we would. Kanohi ki te kanohi is always the first choice.</p>
+        <p>But our participants are spread right across Aotearoa. So we are doing what we can with what we have. What we lack in resources we are making up for in care and honesty.</p>
+      </Accordion>
+
+      <Accordion title="Our Research Questions">
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Lian:</strong> How might we design ethical conversational AI for vulnerable interactions using Māori and Pasifika values?</li>
+            <li><strong>Lee:</strong> How might conversational AI support te reo Māori learners by providing a personalised, culturally grounded, and emotionally safe learning experience?</li>
+        </ul>
+      </Accordion>
+
+      <Accordion title="Infrastructure Transparency">
+        <p>We believe in being upfront about our tools and their limitations. This research uses:</p>
+        <ul class="list-disc pl-5 space-y-1">
+            <li>ElevenLabs (US-based) for the conversational AI voice agent</li>
+            <li>Supabase (hosted in Sydney, Australia) for our research database</li>
+            <li>Zoom for the live wānanga</li>
+        </ul>
+        <p class="mt-2">We do not own or control the AI infrastructure. The voice platform is built by a company based outside Aotearoa.</p>
+      </Accordion>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-serif text-whenua mb-6">Ready to join the kōrero?</h2>
+    <a href="/participate" class="inline-block bg-ako text-white px-8 py-4 rounded font-bold text-lg hover:bg-teal-700 transition-colors shadow-lg">
+      Start the journey
+    </a>
+  </section>
+
+  <!-- Persistent Safety Modal -->
+  <CrisisModal client:load />
+
+</Layout>

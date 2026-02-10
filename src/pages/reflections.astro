@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CrisisModal from '../components/CrisisModal.jsx';
+import ReflectionForm from '../components/ReflectionForm.jsx'; // We will build this below
+---
+
+<Layout title="Final Reflections | Mana Ako x Project Rise">
+  
+  <!-- Load ElevenLabs Script -->
+  <script is:inline src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+
+  <section class="min-h-screen py-12 px-4 md:px-6 bg-rauhuia">
+    <div class="max-w-4xl mx-auto text-center mb-10">
+      <h1 class="text-4xl md:text-5xl text-whenua mb-6 font-serif">Final Reflections</h1>
+      <p class="text-xl text-whenua/80 max-w-2xl mx-auto leading-relaxed">
+        You have just spent 90 minutes in kōrero. Before you go, we would love to capture where you have landed.
+      </p>
+    </div>
+
+    <!-- The Switching Interface -->
+    <div class="max-w-3xl mx-auto bg-white/60 p-1 rounded-lg border border-kakahu/30 flex mb-8">
+      <a href="#talk" class="flex-1 py-3 text-center rounded font-bold text-whenua hover:bg-white transition-colors" onclick="document.getElementById('mode-write').style.display='none'; document.getElementById('mode-talk').style.display='block';">
+        Talk to the AI
+      </a>
+      <a href="#write" class="flex-1 py-3 text-center rounded font-bold text-whenua hover:bg-white transition-colors" onclick="document.getElementById('mode-talk').style.display='none'; document.getElementById('mode-write').style.display='block';">
+        Write your thoughts
+      </a>
+    </div>
+
+    <!-- MODE A: TALK -->
+    <div id="mode-talk" class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-kakahu/20 text-center animate-fade-in">
+        <h2 class="text-2xl font-bold text-whenua mb-4">Kōrero with Ray (Reflection Mode)</h2>
+        <p class="text-whenua/80 mb-8">This is a shorter conversation (about 5 minutes) to capture your immediate thoughts.</p>
+        
+        <div class="min-h-[300px] flex flex-col items-center justify-center bg-rauhuia/30 rounded border border-kakahu/10 p-6">
+            <elevenlabs-convai agent-id="REFLECTION_AGENT_ID_HERE"></elevenlabs-convai>
+        </div>
+    </div>
+
+    <!-- MODE B: WRITE -->
+    <div id="mode-write" class="hidden max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm border border-kakahu/20 animate-fade-in">
+        <ReflectionForm client:load />
+    </div>
+
+  </section>
+
+  <CrisisModal client:load />
+</Layout>

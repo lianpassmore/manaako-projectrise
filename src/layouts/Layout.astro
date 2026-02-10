@@ -15,6 +15,11 @@ const { title } = Astro.props;
 		<meta name="description" content="When Culture Meets Conversational AI - A Wānanga" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta property="og:title" content="When Culture Meets Conversational AI" />
+		<meta property="og:description" content="A wānanga exploring safety, vulnerability, and AI. Join Lian Passmore and Lee Palamo." />
+		<meta property="og:image" content="https://manaako-rise.vercel.app/social-share.jpg" />
+		<meta property="og:url" content="https://manaako-rise.vercel.app" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<title>{title}</title>
 	</head>
 	<body class="bg-rauhuia text-whenua min-h-screen flex flex-col">
@@ -22,12 +27,16 @@ const { title } = Astro.props;
         <!-- Navigation / Header -->
         <header class="py-6 px-6 border-b border-kakahu/30">
             <div class="max-w-3xl mx-auto flex justify-between items-center">
-                <div class="flex gap-4 items-center">
-                    <!-- Placeholder for Logos -->
+                <a href="/" class="flex gap-4 items-center hover:opacity-80 transition-opacity">
                     <div class="font-serif font-bold text-lg tracking-wide">
                         <span class="text-ako">Mana Ako</span> <span class="text-kakahu px-1">x</span> Project Rise
                     </div>
-                </div>
+                </a>
+                <nav class="flex gap-4 text-sm font-sans">
+                    <a href="/participate" class="text-whenua/70 hover:text-ako transition-colors">Participate</a>
+                    <a href="/human" class="text-whenua/70 hover:text-ako transition-colors">Human Kōrero</a>
+                    <a href="/privacy" class="text-whenua/70 hover:text-ako transition-colors">Privacy</a>
+                </nav>
             </div>
         </header>
 
