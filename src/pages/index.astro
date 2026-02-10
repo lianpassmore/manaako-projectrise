@@ -7,23 +7,32 @@ import CrisisModal from '../components/CrisisModal.jsx';
 <Layout title="When Culture Meets Conversational AI | Mana Ako x Project Rise">
 
   <!-- Hero Section -->
-  <section class="pt-20 pb-16 px-6 md:px-12 max-w-5xl mx-auto animate-fade-in">
-    <div class="border-l-2 border-ako/30 pl-6 md:pl-10 mb-12">
-        <h1 class="text-6xl md:text-8xl font-bold tracking-tight leading-[0.95] mb-8 text-whenua">
-            We need <br/>
-            your voice.
-        </h1>
-        <p class="text-xl md:text-2xl text-whenua/70 max-w-2xl leading-relaxed font-light">
-            We are two researchers building conversational AI tools for vulnerable spaces — one for te reo Māori learning, one for relationship support. We have reached a point in our work where we cannot answer the most important questions alone.
-        </p>
+  <section class="pt-10 md:pt-20 pb-12 md:pb-16 px-4 md:px-12 max-w-5xl mx-auto animate-fade-in">
+
+    <!-- Photo: centered at top on mobile -->
+    <div class="flex justify-center mb-8 md:hidden">
+      <img src="/lian-lee.png" alt="Lian Passmore and Lee Palamo" class="w-36 h-36 rounded-full object-cover border-4 border-kakahu/30 shadow-lg" />
     </div>
 
-    <div class="pl-0 md:pl-10 mb-12">
-      <img src="/lian-lee.png" alt="Lian Passmore and Lee Palamo" class="rounded-lg max-w-sm w-full" />
+    <!-- Desktop: two-column with text left, circular photo right -->
+    <div class="md:flex md:items-start md:gap-12 mb-10 md:mb-12">
+      <div class="flex-1 border-l-2 border-ako/30 pl-5 md:pl-10">
+          <h1 class="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight leading-[0.95] mb-5 md:mb-8 text-whenua">
+              We need <br/>
+              your voice.
+          </h1>
+          <p class="text-lg md:text-2xl text-whenua/70 max-w-2xl leading-relaxed font-light">
+              We are two researchers building conversational AI tools for vulnerable spaces — one for te reo Māori learning, one for relationship support. We have reached a point in our work where we cannot answer the most important questions alone.
+          </p>
+      </div>
+      <!-- Photo: right side on desktop -->
+      <div class="hidden md:flex md:shrink-0 md:pt-4">
+        <img src="/lian-lee.png" alt="Lian Passmore and Lee Palamo" class="w-52 h-52 rounded-full object-cover border-4 border-kakahu/30 shadow-lg" />
+      </div>
     </div>
 
-    <!-- Body (NEED TO KNOW) -->
-    <div class="max-w-3xl pl-0 md:pl-10 space-y-6 text-lg text-whenua/80 leading-relaxed mb-12">
+    <!-- Body -->
+    <div class="max-w-3xl pl-0 md:pl-10 space-y-4 md:space-y-6 text-base md:text-lg text-whenua/80 leading-relaxed mb-8 md:mb-12">
       <p>
         We are Lian and Lee. We are completing our Master of Technological Futures and we have both built conversational AI that people use in moments of vulnerability — when they are scared to speak te reo, or scared to open up about their relationships.
       </p>
@@ -41,77 +50,73 @@ import CrisisModal from '../components/CrisisModal.jsx';
       </p>
     </div>
 
-    <div class="flex flex-col sm:flex-row gap-5 pl-0 md:pl-10">
-      <a href="#choose-your-path" class="inline-flex items-center justify-center bg-whenua text-rauhuia px-8 py-4 rounded-none border border-whenua font-medium tracking-wide hover:bg-transparent hover:text-whenua transition-all duration-300">
+    <div class="pl-0 md:pl-10">
+      <a href="#choose-your-path" class="inline-flex items-center justify-center bg-whenua text-rauhuia px-6 md:px-8 py-3.5 md:py-4 border border-whenua font-medium tracking-wide hover:bg-transparent hover:text-whenua transition-all duration-300 w-full sm:w-auto text-center">
         I'm in — show me how to take part
       </a>
     </div>
   </section>
 
   <!-- Choose Your Path -->
-  <section id="choose-your-path" class="py-24 px-6 md:px-12 border-t border-whenua/10 bg-white/40 backdrop-blur-sm">
+  <section id="choose-your-path" class="py-16 md:py-24 px-4 md:px-12 border-t border-whenua/10 bg-white/40 backdrop-blur-sm">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">Choose Your Path</h2>
-      <h3 class="text-3xl md:text-4xl font-bold leading-tight mb-6">Four ways to take part</h3>
-      <p class="text-lg text-whenua/80 max-w-3xl mb-12">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-3 md:mb-4">Choose Your Path</h2>
+      <h3 class="text-2xl md:text-4xl font-bold leading-tight mb-4 md:mb-6">Four ways to take part</h3>
+      <p class="text-base md:text-lg text-whenua/80 max-w-3xl mb-8 md:mb-12">
         There is no preferred option. Every path gives us what we need. Choose whatever feels right for you — and if you change your mind along the way, you can switch. You do not need to explain your choice.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <!-- Option 1 -->
-        <a href="/participate" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
-          <p class="font-bold text-ako mb-2">Talk to the AI</p>
-          <p class="text-whenua/70">Have a 10–15 minute voice conversation with a conversational AI using Lian's voice. It will explore safety, vulnerability, and what feels right when AI is involved in culturally significant spaces.</p>
-          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Start the AI conversation →</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+        <a href="/participate" class="block bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-1.5 md:mb-2">Talk to the AI</p>
+          <p class="text-whenua/70 text-sm md:text-base">Have a 10–15 minute voice conversation with a conversational AI using Lian's voice. It will explore safety, vulnerability, and what feels right when AI is involved in culturally significant spaces.</p>
+          <span class="inline-block mt-2 md:mt-3 text-ako text-sm font-medium group-hover:underline">Start the AI conversation →</span>
         </a>
 
-        <!-- Option 2 -->
-        <a href="/participate" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
-          <p class="font-bold text-ako mb-2">Complete a written form</p>
-          <p class="text-whenua/70">Prefer to write? You can share your whakaaro in your own time through a written form. Your contribution is just as valuable as a spoken kōrero.</p>
-          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Go to the form →</span>
+        <a href="/participate" class="block bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-1.5 md:mb-2">Complete a written form</p>
+          <p class="text-whenua/70 text-sm md:text-base">Prefer to write? You can share your whakaaro in your own time through a written form. Your contribution is just as valuable as a spoken kōrero.</p>
+          <span class="inline-block mt-2 md:mt-3 text-ako text-sm font-medium group-hover:underline">Go to the form →</span>
         </a>
 
-        <!-- Option 3 -->
-        <a href="/human" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
-          <p class="font-bold text-ako mb-2">Kōrero with Lian or Lee</p>
-          <p class="text-whenua/70">Book a 30-minute conversation with a person. We will cover the same territory as the AI conversation, just human to human. This option is also available for anyone under 18.</p>
-          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Book 30 minutes →</span>
+        <a href="/human" class="block bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-1.5 md:mb-2">Kōrero with Lian or Lee</p>
+          <p class="text-whenua/70 text-sm md:text-base">Book a 30-minute conversation with a person. We will cover the same territory as the AI conversation, just human to human. This option is also available for anyone under 18.</p>
+          <span class="inline-block mt-2 md:mt-3 text-ako text-sm font-medium group-hover:underline">Book 30 minutes →</span>
         </a>
 
-        <!-- Option 4 -->
-        <a href="/participate#contact" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
-          <p class="font-bold text-ako mb-2">Not sure? We'll reach out</p>
-          <p class="text-whenua/70">Leave us your contact details and we will get in touch to figure out the best path for you — no pressure, no commitment.</p>
-          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Leave your details →</span>
+        <a href="/participate#contact" class="block bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-1.5 md:mb-2">Not sure? We'll reach out</p>
+          <p class="text-whenua/70 text-sm md:text-base">Leave us your contact details and we will get in touch to figure out the best path for you — no pressure, no commitment.</p>
+          <span class="inline-block mt-2 md:mt-3 text-ako text-sm font-medium group-hover:underline">Leave your details →</span>
         </a>
       </div>
 
-      <p class="text-sm text-whenua/50 max-w-3xl mb-10">
+      <p class="text-xs md:text-sm text-whenua/50 max-w-3xl">
         You can change your mind at any point. If you start with the AI and decide you would rather talk to a person, we are here. If you start with a person and want to try the AI, the door is open. There is no wrong way to do this.
       </p>
     </div>
   </section>
 
   <!-- What We Are Exploring -->
-  <section class="py-24 px-6 md:px-12 border-t border-whenua/10">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-12 gap-12">
+  <section class="py-16 md:py-24 px-4 md:px-12 border-t border-whenua/10">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-12 gap-6 md:gap-12">
         <div class="md:col-span-4">
-            <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">The Context</h2>
-            <h3 class="text-3xl md:text-4xl font-bold leading-tight">This is new <br/>ground.</h3>
+            <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-3 md:mb-4">The Context</h2>
+            <h3 class="text-2xl md:text-4xl font-bold leading-tight">This is new ground.</h3>
         </div>
-        <div class="md:col-span-8 space-y-6 text-lg text-whenua/80 leading-relaxed">
+        <div class="md:col-span-8 space-y-4 md:space-y-6 text-base md:text-lg text-whenua/80 leading-relaxed">
             <p>
                 There is research on data sovereignty. There is research on shame and safety in language learning. There is research on AI and Indigenous communities. But nobody has woven those together to ask:
             </p>
-            <p class="text-2xl font-light text-whenua italic py-6 border-l-2 border-kakahu pl-6 my-6">
+            <p class="text-xl md:text-2xl font-light text-whenua italic py-4 md:py-6 border-l-2 border-kakahu pl-4 md:pl-6 my-4 md:my-6">
                 What happens when conversational AI holds a conversation that touches something sacred or vulnerable? What cultural obligations arise? And how do we design for that?
             </p>
             <p>
                 That is the gap — and your whakaaro helps fill it.
             </p>
 
-            <h4 class="font-bold text-whenua text-xl mt-10 mb-2">What you will do</h4>
+            <h4 class="font-bold text-whenua text-lg md:text-xl mt-8 md:mt-10 mb-2">What you will do</h4>
             <p>
                 Have a kōrero — either with the AI (about 10–15 minutes using Lian's voice), with a person (about 30 minutes with Lian or Lee), or both. It will explore safety, vulnerability, and what feels right when conversational AI is involved in culturally significant spaces. It is not a test. There are no wrong answers. It is a kōrero.
             </p>
@@ -125,7 +130,7 @@ import CrisisModal from '../components/CrisisModal.jsx';
                 At the end of the wānanga, you will have the option to share any final reflections.
             </p>
 
-            <h4 class="font-bold text-whenua text-xl mt-10 mb-2">What you will need</h4>
+            <h4 class="font-bold text-whenua text-lg md:text-xl mt-8 md:mt-10 mb-2">What you will need</h4>
             <p>
                 A quiet space, a device with a microphone, and about 15 minutes for the AI conversation (or 30 minutes for a person-to-person kōrero). The wānanga will be on Zoom.
             </p>
@@ -134,50 +139,54 @@ import CrisisModal from '../components/CrisisModal.jsx';
   </section>
 
   <!-- Timeline -->
-  <section class="py-24 px-6 md:px-12 max-w-5xl mx-auto border-t border-whenua/10">
-    <h2 class="text-xs uppercase tracking-[0.2em] text-marama font-bold mb-4">How This Works</h2>
-    <h3 class="text-3xl font-bold mb-16">The Timeline</h3>
+  <section class="py-16 md:py-24 px-4 md:px-12 max-w-5xl mx-auto border-t border-whenua/10">
+    <h2 class="text-xs uppercase tracking-[0.2em] text-marama font-bold mb-3 md:mb-4">How This Works</h2>
+    <h3 class="text-2xl md:text-3xl font-bold mb-10 md:mb-16">The Timeline</h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0 relative">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-0 relative">
         <!-- Connecting Line (Desktop) -->
         <div class="hidden md:block absolute top-3 left-0 w-full h-px bg-whenua/20 -z-10"></div>
 
-        <!-- Step 1 -->
-        <div class="relative group">
-            <div class="w-6 h-6 bg-rauhuia border-2 border-ako rounded-full mb-6 z-10 relative group-hover:bg-ako transition-colors"></div>
-            <h4 class="text-lg font-bold mb-2">Now — February 25</h4>
-            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Have your AI conversation (10–15 minutes, anytime that suits you) or book a kōrero with Lian or Lee.</p>
+        <div class="relative group flex md:block items-start gap-4">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-ako rounded-full mb-0 md:mb-6 z-10 relative shrink-0 mt-1 md:mt-0 group-hover:bg-ako transition-colors"></div>
+            <div>
+              <h4 class="text-base md:text-lg font-bold mb-1 md:mb-2">Now — February 25</h4>
+              <p class="text-whenua/60 text-sm leading-relaxed">Have your AI conversation (10–15 minutes, anytime that suits you) or book a kōrero with Lian or Lee.</p>
+            </div>
         </div>
 
-        <!-- Step 2 -->
-        <div class="relative group">
-            <div class="w-6 h-6 bg-rauhuia border-2 border-whenua rounded-full mb-6 z-10 relative"></div>
-            <h4 class="text-lg font-bold mb-2">Thu 26 Feb, 6.30pm</h4>
-            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Online wānanga — we explore these questions together on Zoom. This is the space to reflect on your experience in a culturally grounded setting alongside others.</p>
+        <div class="relative group flex md:block items-start gap-4">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-whenua rounded-full mb-0 md:mb-6 z-10 relative shrink-0 mt-1 md:mt-0"></div>
+            <div>
+              <h4 class="text-base md:text-lg font-bold mb-1 md:mb-2">Thu 26 Feb, 6.30pm</h4>
+              <p class="text-whenua/60 text-sm leading-relaxed">Online wānanga — we explore these questions together on Zoom. This is the space to reflect on your experience in a culturally grounded setting alongside others.</p>
+            </div>
         </div>
 
-        <!-- Step 3 -->
-        <div class="relative group">
-            <div class="w-6 h-6 bg-rauhuia border-2 border-kakahu rounded-full mb-6 z-10 relative"></div>
-            <h4 class="text-lg font-bold mb-2">After the wānanga</h4>
-            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Share your final reflections (5 minutes — AI or written form).</p>
+        <div class="relative group flex md:block items-start gap-4">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-kakahu rounded-full mb-0 md:mb-6 z-10 relative shrink-0 mt-1 md:mt-0"></div>
+            <div>
+              <h4 class="text-base md:text-lg font-bold mb-1 md:mb-2">After the wānanga</h4>
+              <p class="text-whenua/60 text-sm leading-relaxed">Share your final reflections (5 minutes — AI or written form).</p>
+            </div>
         </div>
 
-        <!-- Step 4 -->
-        <div class="relative group">
-            <div class="w-6 h-6 bg-rauhuia border-2 border-marama rounded-full mb-6 z-10 relative"></div>
-            <h4 class="text-lg font-bold mb-2">Two weeks after</h4>
-            <p class="text-whenua/60 text-sm leading-relaxed max-w-[200px]">Deadline to withdraw your data from the research if you change your mind.</p>
+        <div class="relative group flex md:block items-start gap-4">
+            <div class="w-6 h-6 bg-rauhuia border-2 border-marama rounded-full mb-0 md:mb-6 z-10 relative shrink-0 mt-1 md:mt-0"></div>
+            <div>
+              <h4 class="text-base md:text-lg font-bold mb-1 md:mb-2">Two weeks after</h4>
+              <p class="text-whenua/60 text-sm leading-relaxed">Deadline to withdraw your data from the research if you change your mind.</p>
+            </div>
         </div>
     </div>
   </section>
 
   <!-- Why Online? -->
-  <section class="py-24 px-6 md:px-12 border-t border-whenua/10 bg-white/40 backdrop-blur-sm">
+  <section class="py-16 md:py-24 px-4 md:px-12 border-t border-whenua/10 bg-white/40 backdrop-blur-sm">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-4">A note on format</h2>
-      <h3 class="text-3xl font-bold mb-8">Why online?</h3>
-      <div class="space-y-6 text-lg text-whenua/80 leading-relaxed">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-ako font-bold mb-3 md:mb-4">A note on format</h2>
+      <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Why online?</h3>
+      <div class="space-y-4 md:space-y-6 text-base md:text-lg text-whenua/80 leading-relaxed">
         <p>
           If we could get everyone in one room, we would. Kanohi ki te kanohi is always the first choice for this kind of mahi. But our participants are spread right across Aotearoa — from Tai Tokerau to Ōtautahi and everywhere in between — and two master's students do not come with a travel budget (if you know someone who wants to fund us, send them our way).
         </p>
@@ -192,9 +201,9 @@ import CrisisModal from '../components/CrisisModal.jsx';
   </section>
 
   <!-- Info Section - Accordions -->
-  <section class="py-24 px-6 md:px-12 border-t border-whenua/10">
+  <section class="py-16 md:py-24 px-4 md:px-12 border-t border-whenua/10">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-12">The Details</h2>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12">The Details</h2>
 
       <Accordion title="Lian Passmore">
         <div class="space-y-4 py-4">
@@ -234,17 +243,16 @@ import CrisisModal from '../components/CrisisModal.jsx';
   </section>
 
   <!-- Final CTA -->
-  <section class="py-32 px-6 text-center bg-whenua text-rauhuia relative overflow-hidden">
-    <!-- Inverted Pattern for footer -->
+  <section class="py-20 md:py-32 px-4 md:px-6 text-center bg-whenua text-rauhuia relative overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 20L40 0H0L20 20ZM20 20L40 40H0L20 20Z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E')"></div>
 
     <div class="relative z-10">
-        <h2 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Ready to kōrero?</h2>
-        <div class="flex flex-col sm:flex-row gap-5 justify-center">
-          <a href="/participate" class="inline-block bg-rauhuia text-whenua px-10 py-5 font-bold text-lg hover:bg-ako hover:text-white transition-all duration-300">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-8 tracking-tight">Ready to kōrero?</h2>
+        <div class="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center px-4">
+          <a href="/participate" class="inline-block bg-rauhuia text-whenua px-8 md:px-10 py-4 md:py-5 font-bold text-base md:text-lg hover:bg-ako hover:text-white transition-all duration-300">
             Start the AI conversation
           </a>
-          <a href="/human" class="inline-block border border-rauhuia/40 text-rauhuia px-10 py-5 font-bold text-lg hover:bg-rauhuia/10 transition-all duration-300">
+          <a href="/human" class="inline-block border border-rauhuia/40 text-rauhuia px-8 md:px-10 py-4 md:py-5 font-bold text-base md:text-lg hover:bg-rauhuia/10 transition-all duration-300">
             Book a kōrero with a person
           </a>
         </div>
