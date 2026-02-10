@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CrisisModal from '../components/CrisisModal.jsx';
+---
+
+<Layout title="Book a Human Kōrero | Mana Ako x Project Rise">
+  <section class="min-h-screen py-12 px-4 md:px-6 bg-rauhuia">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
+      
+      <h1 class="text-4xl md:text-5xl text-whenua font-serif">Prefer to kōrero with a person?</h1>
+      
+      <p class="text-xl text-whenua/80 font-light leading-relaxed max-w-2xl mx-auto">
+        Not everyone wants to talk to an AI, and that is completely fine. 
+        You can book a 30-minute conversation with Lian or Lee instead.
+      </p>
+
+      <div class="bg-white/60 p-6 rounded-lg border border-kakahu/30 text-left max-w-3xl mx-auto">
+        <h2 class="text-xl font-bold text-whenua mb-2">How this works</h2>
+        <ul class="list-disc pl-5 space-y-2 text-whenua/80">
+            <li>We will cover the same territory as the AI conversation, just human to human.</li>
+            <li>This option is available for anyone, including those under 18.</li>
+            <li>After your kōrero, you will receive the same wānanga invitation as everyone else.</li>
+        </ul>
+      </div>
+
+      <!-- Google Calendar Embed -->
+      <div class="bg-white rounded-xl shadow-lg border border-kakahu/20 overflow-hidden mt-10">
+        <iframe 
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0PzxMDtEWjUBq3wlxYZMuAWtkrCS2OVhDPkPptGaqxkde9VI4_mydHmHJQIKP5HpKUZtmKzX2Z?gv=true" 
+            style="border: 0" 
+            width="100%" 
+            height="700" 
+            frameborder="0"
+            title="Book a conversation with Lian and Lee"
+        ></iframe>
+      </div>
+
+      <div class="pt-8 pb-20">
+        <a href="/" class="text-ako font-bold hover:underline">← Back to Home</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Persistent Safety Modal -->
+  <CrisisModal client:load />
+</Layout>

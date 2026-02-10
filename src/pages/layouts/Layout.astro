@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="When Culture Meets Conversational AI - A Wānanga" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-rauhuia text-whenua min-h-screen flex flex-col">
+		
+        <!-- Navigation / Header -->
+        <header class="py-6 px-6 border-b border-kakahu/30">
+            <div class="max-w-3xl mx-auto flex justify-between items-center">
+                <div class="flex gap-4 items-center">
+                    <!-- Placeholder for Logos -->
+                    <div class="font-serif font-bold text-lg tracking-wide">
+                        <span class="text-ako">Mana Ako</span> <span class="text-kakahu px-1">x</span> Project Rise
+                    </div>
+                </div>
+            </div>
+        </header>
+
+		<main class="flex-grow">
+			<slot />
+		</main>
+
+        <!-- Footer -->
+        <footer class="bg-papa text-rauhuia py-12 px-6 mt-20">
+            <div class="max-w-3xl mx-auto text-sm space-y-4">
+                <p>Research conducted by Lian Passmore and Lee Palamo.</p>
+                <p>Master of Technological Futures, AcademyEX.</p>
+                <div class="pt-4 border-t border-rauhuia/20 text-marama text-xs">
+                    <p>Contact: lianpassmore@gmail.com | leepalamo275@gmail.com</p>
+                    <p class="mt-2"><a href="/privacy" class="underline hover:text-white">Privacy & Data Rights</a></p>
+                </div>
+            </div>
+        </footer>
+
+	</body>
+</html>
