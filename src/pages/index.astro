@@ -18,6 +18,10 @@ import CrisisModal from '../components/CrisisModal.jsx';
         </p>
     </div>
 
+    <div class="pl-0 md:pl-10 mb-12">
+      <img src="/lian-lee.png" alt="Lian Passmore and Lee Palamo" class="rounded-lg max-w-sm w-full" />
+    </div>
+
     <!-- Body (NEED TO KNOW) -->
     <div class="max-w-3xl pl-0 md:pl-10 space-y-6 text-lg text-whenua/80 leading-relaxed mb-12">
       <p>
@@ -55,46 +59,37 @@ import CrisisModal from '../components/CrisisModal.jsx';
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <!-- Option 1 -->
-        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
-          <h4 class="font-bold text-whenua text-lg mb-2">Option 1</h4>
-          <p class="font-bold text-ako mb-2">AI first, then kōrero with a person</p>
-          <p class="text-whenua/70">Have a 10–15 minute conversation with the AI, then follow up with Lian or Lee if you want to go deeper or debrief.</p>
-        </div>
+        <a href="/participate" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-2">Talk to the AI</p>
+          <p class="text-whenua/70">Have a 10–15 minute voice conversation with a conversational AI using Lian's voice. It will explore safety, vulnerability, and what feels right when AI is involved in culturally significant spaces.</p>
+          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Start the AI conversation →</span>
+        </a>
 
         <!-- Option 2 -->
-        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
-          <h4 class="font-bold text-whenua text-lg mb-2">Option 2</h4>
-          <p class="font-bold text-ako mb-2">Kōrero with a person first, then AI</p>
-          <p class="text-whenua/70">Start with a 30-minute conversation with Lian or Lee, then try the AI experience afterwards.</p>
-        </div>
+        <a href="/participate" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-2">Complete a written form</p>
+          <p class="text-whenua/70">Prefer to write? You can share your whakaaro in your own time through a written form. Your contribution is just as valuable as a spoken kōrero.</p>
+          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Go to the form →</span>
+        </a>
 
         <!-- Option 3 -->
-        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
-          <h4 class="font-bold text-whenua text-lg mb-2">Option 3</h4>
-          <p class="font-bold text-ako mb-2">AI only</p>
-          <p class="text-whenua/70">Have the AI conversation and leave it there. Your kōrero still contributes fully to the research.</p>
-        </div>
+        <a href="/human" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-2">Kōrero with Lian or Lee</p>
+          <p class="text-whenua/70">Book a 30-minute conversation with a person. We will cover the same territory as the AI conversation, just human to human. This option is also available for anyone under 18.</p>
+          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Book 30 minutes →</span>
+        </a>
 
         <!-- Option 4 -->
-        <div class="bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors">
-          <h4 class="font-bold text-whenua text-lg mb-2">Option 4</h4>
-          <p class="font-bold text-ako mb-2">Kōrero with a person only</p>
-          <p class="text-whenua/70">Not interested in talking to an AI? That is completely fine — and genuinely useful for our research too. Book a 30-minute conversation with Lian or Lee instead.</p>
-        </div>
+        <a href="/participate#contact" class="block bg-white/60 border border-kakahu/20 p-6 rounded-lg hover:border-ako/40 transition-colors group">
+          <p class="font-bold text-ako mb-2">Not sure? We'll reach out</p>
+          <p class="text-whenua/70">Leave us your contact details and we will get in touch to figure out the best path for you — no pressure, no commitment.</p>
+          <span class="inline-block mt-3 text-ako font-medium group-hover:underline">Leave your details →</span>
+        </a>
       </div>
 
       <p class="text-sm text-whenua/50 max-w-3xl mb-10">
         You can change your mind at any point. If you start with the AI and decide you would rather talk to a person, we are here. If you start with a person and want to try the AI, the door is open. There is no wrong way to do this.
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-5">
-        <a href="/participate" class="inline-flex items-center justify-center bg-whenua text-rauhuia px-8 py-4 rounded-none border border-whenua font-medium tracking-wide hover:bg-transparent hover:text-whenua transition-all duration-300">
-          Start the AI conversation →
-        </a>
-        <a href="/human" class="inline-flex items-center justify-center px-8 py-4 text-whenua border border-whenua/20 hover:border-ako hover:text-ako transition-all duration-300">
-          Book a kōrero with Lian or Lee →
-        </a>
-      </div>
     </div>
   </section>
 
@@ -203,7 +198,7 @@ import CrisisModal from '../components/CrisisModal.jsx';
 
       <Accordion title="Lian Passmore">
         <div class="space-y-4 py-4">
-          <p>Moana Tiriti researcher (Samoan and NZ European). My project — Project Rise — explores how conversational AI can transform transactional digital interactions into relational, trust-building experiences for marginalised communities. I have built Ray, a voice-based AI relationship coach grounded in Māori and Pasifika values. My research asks: <em>How might we design ethical conversational AI for vulnerable interactions using Māori and Pasifika values to protect marginalised communities?</em></p>
+          <p>Founder of DreamStorm, mum of five (including triplets), based in Whangārei. Samoan and NZ European. After 14 years in learning design, coaching, and organisational wellbeing, Lian kept seeing the same thing — people are not the problem, systems are. So she taught herself to build. Her master's project — Project Rise — explores how relational conversational AI can serve Māori, Pasifika, disabled, and digitally excluded communities, with one non-negotiable: build tech that serves people rather than extracts from them.</p>
           <p class="text-sm text-whenua/60">Supervisor: Felix Scholz, AcademyEX<br/>Cultural supervision: Monthly sessions with Māori and Pasifika advisors</p>
         </div>
       </Accordion>
@@ -216,8 +211,9 @@ import CrisisModal from '../components/CrisisModal.jsx';
       </Accordion>
 
       <Accordion title="Why we are working together">
-        <div class="py-4">
-          <p>We realised our projects sit in the same space. The people using Lee's app are scared — scared of making mistakes, of being judged, of not being Māori enough. The people using Lian's app are scared too — scared of being vulnerable, of opening up to a machine. The emotional terrain is the same. The cultural questions are the same. We are stronger exploring them together.</p>
+        <div class="py-4 space-y-4">
+          <p>Lian and Lee go way back. They first crossed paths when Lian was four or five — Lee went to school with her older sister. Fast forward twenty years and they found each other again as Learning Designers, battling it out for top spot at eLearning conference competitions year after year. That rivalry turned into a partnership when they worked together at Northpower for three to four years in the People and Capability team, and stood alongside each other as Kaitiaki in the peer support network.</p>
+          <p>Now they are doing their master's side by side — and the research landed in the same space. The people using Lee's app are scared — scared of making mistakes, of being judged, of not being Māori enough. The people using Lian's app are scared too — scared of being vulnerable, of opening up to a machine. The emotional terrain is the same. The cultural questions are the same. They are stronger exploring them together.</p>
         </div>
       </Accordion>
 
