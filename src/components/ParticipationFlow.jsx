@@ -632,7 +632,8 @@ export default function ParticipationFlow() {
 
           <div className="min-h-[300px] flex flex-col items-center justify-center bg-white rounded-lg border border-kakahu/30 p-8 shadow-inner">
             <elevenlabs-convai
-              agent-id="YOUR_AGENT_ID_HERE"
+              agent-id={import.meta.env.PUBLIC_ELEVENLABS_AGENT}
+              dynamic-variables={JSON.stringify({ first_name: formData.first_name, last_name: formData.last_name })}
               className="w-full max-w-sm"
             ></elevenlabs-convai>
           </div>

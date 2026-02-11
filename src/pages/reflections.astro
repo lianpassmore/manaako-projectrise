@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CrisisModal from '../components/CrisisModal.jsx';
 import ReflectionForm from '../components/ReflectionForm.jsx';
+const agentId = import.meta.env.PUBLIC_ELEVENLABS_AGENT;
 ---
 
 <Layout title="Final Reflections | Mana Ako x Project Rise">
@@ -35,10 +36,29 @@ import ReflectionForm from '../components/ReflectionForm.jsx';
         <h2 class="text-xl md:text-2xl font-bold text-whenua mb-3 md:mb-4">Kōrero with Ray (Reflection Mode)</h2>
         <p class="text-whenua/80 mb-6 md:mb-8 text-sm md:text-base">This is a shorter conversation (about 5 minutes) to capture your immediate thoughts.</p>
 
-        <div class="min-h-[300px] flex flex-col items-center justify-center bg-rauhuia/30 rounded border border-kakahu/10 p-6">
-            <elevenlabs-convai agent-id="REFLECTION_AGENT_ID_HERE"></elevenlabs-convai>
+        <div id="name-prompt" class="mb-6 space-y-3">
+            <label class="block font-bold text-whenua text-sm">Your first name (so Ray knows who you are)</label>
+            <div class="flex gap-3 justify-center items-center max-w-sm mx-auto">
+                <input type="text" id="reflection-name" placeholder="First name" class="flex-1 p-3 border border-kakahu rounded text-sm" />
+                <button id="start-reflection" class="bg-whenua text-rauhuia px-5 py-3 rounded font-bold hover:bg-papa transition text-sm">Start</button>
+            </div>
+        </div>
+
+        <div id="reflection-widget" class="hidden min-h-[300px] flex flex-col items-center justify-center bg-rauhuia/30 rounded border border-kakahu/10 p-6">
+            <elevenlabs-convai agent-id={agentId}></elevenlabs-convai>
         </div>
     </div>
+
+    <script is:inline>
+        document.getElementById('start-reflection').addEventListener('click', function() {
+            const name = document.getElementById('reflection-name').value.trim();
+            if (!name) return;
+            const widget = document.querySelector('#reflection-widget elevenlabs-convai');
+            widget.setAttribute('dynamic-variables', JSON.stringify({ first_name: name }));
+            document.getElementById('name-prompt').style.display = 'none';
+            document.getElementById('reflection-widget').classList.remove('hidden');
+        });
+    </script>
 
     <!-- MODE B: WRITE -->
     <div id="mode-write" class="hidden max-w-3xl mx-auto bg-white p-5 md:p-8 rounded-lg shadow-sm border border-kakahu/20 animate-fade-in">
