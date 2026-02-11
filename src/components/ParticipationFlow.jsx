@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
+import AgentConversation from './AgentConversation';
 
 const PATH_MAP = {
   ai: { type: 'AI Conversation', step: 1 },
@@ -72,6 +73,7 @@ export default function ParticipationFlow() {
     contact_preference: '',
   });
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [participantId, setParticipantId] = useState(null);
 
   const choosePath = (type) => {
     if (type === 'Talk to a Person') {
@@ -184,7 +186,7 @@ export default function ParticipationFlow() {
 
     try {
       if (supabase) {
-        const { error: dbError } = await supabase
+        const { data, error: dbError } = await supabase
           .from('participants')
           .insert([{
             ...formData,
@@ -196,6 +198,8 @@ export default function ParticipationFlow() {
 
         if (dbError) {
           console.error('Supabase error:', dbError);
+        } else if (data && data[0]?.id) {
+          setParticipantId(data[0].id);
         }
       } else {
         console.warn('Supabase not configured — skipping save');
@@ -626,16 +630,8 @@ export default function ParticipationFlow() {
         <div className="text-center space-y-6 animate-fade-in">
           <h2 className="text-2xl font-bold text-whenua mb-4">Kōrero with Ray</h2>
 
-          <p className="text-sm text-marama mb-8">
-            Click the microphone to start. Speak naturally. When you are finished, click "End Conversation".
-          </p>
-
-          <div className="min-h-[300px] flex flex-col items-center justify-center bg-white rounded-lg border border-kakahu/30 p-8 shadow-inner">
-            <elevenlabs-convai
-              agent-id={import.meta.env.PUBLIC_ELEVENLABS_AGENT}
-              dynamic-variables={JSON.stringify({ first_name: formData.first_name, last_name: formData.last_name })}
-              className="w-full max-w-sm"
-            ></elevenlabs-convai>
+          <div className="bg-white rounded-lg border border-kakahu/30 p-8 shadow-inner">
+            <AgentConversation firstName={formData.first_name} lastName={formData.last_name} participantId={participantId} />
           </div>
 
           <div className="flex justify-center gap-4 mt-8">
