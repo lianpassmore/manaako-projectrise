@@ -67,23 +67,31 @@ export default function ParticipationFlow() {
     setError(null);
 
     try {
-      const { data, error: dbError } = await supabase
-        .from('participants')
-        .insert([{
-          ...formData,
-          consent_agreed: true,
-          consent_timestamp: new Date().toISOString(),
-          participation_type: 'AI Conversation'
-        }])
-        .select();
+      if (supabase) {
+        const { error: dbError } = await supabase
+          .from('participants')
+          .insert([{
+            ...formData,
+            consent_agreed: true,
+            consent_timestamp: new Date().toISOString(),
+            participation_type: 'AI Conversation'
+          }])
+          .select();
 
-      if (dbError) throw dbError;
+        if (dbError) {
+          console.error('Supabase error:', dbError);
+        }
+      } else {
+        console.warn('Supabase not configured — skipping save');
+      }
 
       setStep(3);
       window.scrollTo(0, 0);
     } catch (err) {
-      console.error(err);
-      setError("Unable to save registration. Please try again.");
+      console.error('Registration save error:', err);
+      // Proceed anyway so participants aren't blocked
+      setStep(3);
+      window.scrollTo(0, 0);
     } finally {
       setLoading(false);
     }
@@ -207,91 +215,140 @@ export default function ParticipationFlow() {
         <div className="space-y-6 animate-fade-in">
           <h2 className="text-3xl font-bold text-whenua">Consent</h2>
           <p className="text-whenua/80">
-            Before we start the kōrero, please read through the following and confirm you are comfortable to proceed. Consent is not a one-time gate — it is ongoing. You can change your mind about any part of your participation at any time, no questions asked.
+            Before we start the kōrero, please read through the following and confirm you are comfortable to proceed. Consent is ongoing — you can change your mind at any time.
           </p>
 
-          {/* Scrollable consent content */}
-          <div className="prose prose-sm text-whenua/90 bg-white p-6 rounded border border-kakahu/30 max-h-[500px] overflow-y-auto space-y-6">
+          {/* Expandable consent sections */}
+          <div className="space-y-0 border border-kakahu/30 rounded-lg overflow-hidden bg-white">
 
-            <div>
-              <h3 className="font-bold text-lg text-whenua">WHAT THIS INVOLVES</h3>
-              <p>You will have a 10 to 15 minute voice conversation with a conversational AI agent. It uses Lian's voice and will ask you about safety, vulnerability, and cultural considerations around conversational AI. After the conversation, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group.</p>
-              <p>If at any point during the AI conversation you would prefer to talk to a person instead, you can stop and book a kōrero with Lian or Lee. The same applies in reverse — if you start with a person and want to try the AI, you can.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">ABOUT THE AI</h3>
-              <p>Before you begin, we want to be upfront about what you are talking to.</p>
-              <p>This is a conversational AI. It uses Lian's voice, but it is not Lian. It is not a person, a teacher, a therapist, or an authority on anything. It is a tool — and like all tools, it has limitations.</p>
-              <p>The AI can make mistakes. It may misunderstand what you say, respond in ways that do not quite fit, or miss nuance that a person would catch. It does not hold cultural knowledge the way a person does. It cannot read your body language or your silence. It does not remember you between sessions.</p>
-              <p>We are not presenting it as something it is not. Part of what this research explores is exactly where AI works and where it falls short — and your experience of those edges is some of the most valuable data we will collect.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">HOW YOUR KŌRERO IS PROCESSED</h3>
-              <p>When you speak to the AI agent, your voice and words are processed by ElevenLabs, a US-based voice AI company. Your conversation is sent to their servers in the United States to generate the AI response and create a transcript. All data is transferred to and stored in the United States, regardless of your location.</p>
-              <p>We have opted out of ElevenLabs using your data for AI model training. However, by using the agent, your conversation is subject to ElevenLabs' Terms of Service, which grants them a broad, perpetual license to use conversation data to provide and improve their services. We cannot revoke this license after the fact. You can read their full terms at <a href="https://elevenlabs.io/terms-of-use" target="_blank" rel="noopener" className="text-ako underline">elevenlabs.io/terms-of-use</a>.</p>
-              <p>ElevenLabs also reserves the right to moderate conversations for safety purposes, which means their staff or contractors may access your conversation content. The AI does not retain memory between sessions — it will not remember you if you come back.</p>
-              <p>Your conversation will not be used to train any AI model. Your words stay as your words — they do not become part of how this or any other AI learns.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">HOW WE USE YOUR KŌRERO</h3>
-              <p>We separately store your conversation transcript in our own research database (Supabase, hosted in Sydney, Australia) with row-level security ensuring your data is isolated and protected. Your insights will be analysed as part of both Lian's and Lee's master's research projects at AcademyEX.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">TWO LAYERS OF DATA CONTROL</h3>
-              <p>There are two separate systems handling your data, each with different controls.</p>
-              <p><strong>Lian and Lee</strong> control how your conversation content is used for research purposes — what gets analysed, how it is stored in Supabase, and how findings are shared. You can ask us to delete your research data at any time.</p>
-              <p><strong>ElevenLabs</strong> controls the technical processing and storage of your voice recordings on their platform. Their retention and usage policies are governed by their own Terms of Service.</p>
-              <p>Our research protocols are separate from ElevenLabs' platform policies. You have rights under both.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">WHO WILL SEE YOUR RESPONSES</h3>
-              <p>Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and Paula Gair). Cultural advisors may review de-identified themes. Your name will not appear in any published work unless you specifically request attribution.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">WHY WE ARE BEING THIS DIRECT</h3>
-              <p>We are two master's students with participants spread across Aotearoa. Our first choice would always be kanohi ki te kanohi — face to face. But geography and funding mean that is not possible right now, so we are using the best tools available to us and being completely transparent about what those tools can and cannot do.</p>
-              <p>We are researching data sovereignty while using a platform we do not control, hosted in a country with different privacy laws than Aotearoa. The terms of that platform do not align with the Indigenous data sovereignty principles our research is built on. We chose it because building our own voice AI was beyond our capacity, and we believe this research needs to happen now rather than waiting for perfect infrastructure.</p>
-              <p>You deserve to know exactly what you are agreeing to. This contradiction is real, and it is one of the things we are exploring in this research. What we lack in resources, we are making up for in honesty.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">YOUR RIGHTS</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Participation is completely voluntary — and consent is ongoing, not a one-time decision</li>
-                <li>You can stop the conversation at any time — just close the browser</li>
-                <li>You can switch from the AI to a person, or from a person to the AI, at any point</li>
-                <li>You can withdraw your data from our research database up to two weeks after the wānanga by emailing us</li>
-                <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
-                <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform</li>
-                <li>You can participate in the AI conversation without attending the wānanga, or vice versa</li>
-                <li>You must be 18 or older to use the AI agent</li>
-                <li>If you are under 18 or prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a> instead</li>
-                <li>Choosing not to participate has no consequences whatsoever</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">WHAT IS IN IT FOR YOU</h3>
-              <p>You are helping build something that does not exist yet — a culturally grounded framework for how conversational AI should behave in vulnerable spaces. After the wānanga, we will share what we learned with all participants. Your insights directly shape how these tools are designed.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg text-whenua">IF SOMETHING COMES UP</h3>
-              <p>These conversations can touch on personal experiences of vulnerability, shame, or cultural harm. If anything feels uncomfortable, you are welcome to stop at any time. You do not need to explain why.</p>
-              <p>If you would like to talk to someone:</p>
-              <div className="space-y-2 mt-2">
-                <p><strong>Mental Health Support</strong><br/>1737 — free call or text, anytime (24/7)<br/>Lifeline — 0800 543 354</p>
-                <p><strong>Domestic Violence</strong><br/>Women's Refuge — 0800 733 843</p>
-                <p><strong>Emergency</strong><br/>111</p>
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">What this involves</span>
+                  <span className="text-sm text-whenua/60">10–15 min voice conversation with an AI using Lian's voice, then an online wānanga.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>You will have a 10 to 15 minute voice conversation with a conversational AI agent. It uses Lian's voice and will ask you about safety, vulnerability, and cultural considerations around conversational AI. After the conversation, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group.</p>
+                <p>If at any point during the AI conversation you would prefer to talk to a person instead, you can stop and book a kōrero with Lian or Lee. The same applies in reverse.</p>
               </div>
-              <p className="mt-2">Lian and Lee are also available if you want to debrief: <a href="mailto:lianpassmore@gmail.com" className="text-ako underline">lianpassmore@gmail.com</a> or <a href="mailto:leepalamo275@gmail.com" className="text-ako underline">leepalamo275@gmail.com</a></p>
-            </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">About the AI</span>
+                  <span className="text-sm text-whenua/60">This is a tool, not a person. It makes mistakes. That's part of what we're studying.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>This is a conversational AI. It uses Lian's voice, but it is not Lian. It is not a person, a teacher, a therapist, or an authority on anything. It is a tool — and like all tools, it has limitations.</p>
+                <p>The AI can make mistakes. It may misunderstand what you say, respond in ways that do not quite fit, or miss nuance that a person would catch. It does not hold cultural knowledge the way a person does. It cannot read your body language or your silence. It does not remember you between sessions.</p>
+                <p>We are not presenting it as something it is not. Part of what this research explores is exactly where AI works and where it falls short — and your experience of those edges is some of the most valuable data we will collect.</p>
+              </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">How your voice is processed</span>
+                  <span className="text-sm text-whenua/60">Processed by ElevenLabs (US). We've opted out of training. Full terms linked.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>When you speak to the AI agent, your voice and words are processed by ElevenLabs, a US-based voice AI company. Your conversation is sent to their servers in the United States. All data is transferred to and stored in the United States, regardless of your location.</p>
+                <p>We have opted out of ElevenLabs using your data for AI model training. However, by using the agent, your conversation is subject to ElevenLabs' <a href="https://elevenlabs.io/terms-of-use" target="_blank" rel="noopener" className="text-ako underline">Terms of Service</a>, which grants them a broad, perpetual license to use conversation data to provide and improve their services. We cannot revoke this license after the fact.</p>
+                <p>ElevenLabs also reserves the right to moderate conversations for safety purposes, which means their staff or contractors may access your conversation content.</p>
+              </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">How we use your kōrero</span>
+                  <span className="text-sm text-whenua/60">Downloaded from ElevenLabs for analysis. Used for both master's projects.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>Your conversation transcript is stored in ElevenLabs. We download it from there for analysis as part of both Lian's and Lee's master's research projects at AcademyEX. Your registration details are stored separately in Supabase (Sydney, Australia) with row-level security.</p>
+              </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">Two layers of data control</span>
+                  <span className="text-sm text-whenua/60">We control the research use. ElevenLabs controls the tech processing.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p><strong>Lian and Lee</strong> control how your conversation content is used for research purposes — what gets analysed and how findings are shared. Your registration data is in Supabase; transcripts are downloaded from ElevenLabs. You can ask us to delete your registration data at any time.</p>
+                <p><strong>ElevenLabs</strong> controls the technical processing and storage of your voice recordings on their platform. Their retention and usage policies are governed by their own Terms of Service.</p>
+                <p>Our research protocols are separate from ElevenLabs' platform policies. You have rights under both.</p>
+              </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">Who sees your responses</span>
+                  <span className="text-sm text-whenua/60">Lian, Lee, and supervisors. Cultural advisors see de-identified themes only.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and Paula Gair). Cultural advisors may review de-identified themes. Your name will not appear in any published work unless you specifically request attribution.</p>
+              </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">Your rights</span>
+                  <span className="text-sm text-whenua/60">Voluntary. Ongoing consent. Withdraw anytime. 18+ for AI.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Participation is completely voluntary — and consent is ongoing, not a one-time decision</li>
+                  <li>You can stop the conversation at any time — just close the browser</li>
+                  <li>You can switch from the AI to a person, or from a person to the AI, at any point</li>
+                  <li>You can withdraw your data from our research database up to two weeks after the wānanga by emailing us</li>
+                  <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
+                  <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention</li>
+                  <li>You must be 18 or older to use the AI agent</li>
+                  <li>If you are under 18 or prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a></li>
+                  <li>Choosing not to participate has no consequences whatsoever</li>
+                </ul>
+              </div>
+            </details>
+
+            <details className="group">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
+                  <span className="font-bold text-whenua block">If something comes up</span>
+                  <span className="text-sm text-whenua/60">Support resources available. You can stop anytime, no explanation needed.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>These conversations can touch on personal experiences of vulnerability, shame, or cultural harm. If anything feels uncomfortable, you are welcome to stop at any time. You do not need to explain why.</p>
+                <p>If you would like to talk to someone:</p>
+                <div className="space-y-2">
+                  <p><strong>Mental Health Support</strong><br/>1737 — free call or text, anytime (24/7)<br/>Lifeline — 0800 543 354</p>
+                  <p><strong>Domestic Violence</strong><br/>Women's Refuge — 0800 733 843</p>
+                  <p><strong>Emergency</strong><br/>111</p>
+                </div>
+                <p>Lian and Lee are also available if you want to debrief: <a href="mailto:lianpassmore@gmail.com" className="text-ako underline">lianpassmore@gmail.com</a> or <a href="mailto:leepalamo275@gmail.com" className="text-ako underline">leepalamo275@gmail.com</a></p>
+              </div>
+            </details>
+
           </div>
 
           {/* Consent Checkboxes */}
