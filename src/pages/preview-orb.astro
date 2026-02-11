@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AnimatedOrb from '../components/AnimatedOrb.jsx';
+---
+
+<Layout title="Orb Preview">
+  <section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      <h1 class="text-3xl font-bold text-whenua">Poutama Orb — All States</h1>
+      <p class="text-sm text-marama">Preview of the animated orb in each state, with conversation UI below.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <!-- Idle state (pre-start) -->
+        <div class="flex flex-col items-center gap-2">
+          <div class="bg-white/40 rounded-xl border border-whenua/5 p-6 shadow-inner">
+            <div class="flex flex-col items-center gap-6 py-10">
+              <div class="relative flex items-center justify-center">
+                <AnimatedOrb client:only="react" state="idle" size={180} />
+              </div>
+              <div class="text-center space-y-2">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-whenua/60 cursor-pointer hover:text-ako">
+                  Tap to begin
+                </p>
+                <p class="text-[11px] text-crisis/70 font-medium max-w-xs mx-auto leading-relaxed">
+                  This is an AI tool, not a person. It can make mistakes, miss nuance, or get things wrong.
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-whenua/60">Idle</p>
+        </div>
+
+        <!-- Connected state (listening) -->
+        <div class="flex flex-col items-center gap-2">
+          <div class="bg-white/40 rounded-xl border border-whenua/5 p-6 shadow-inner">
+            <div class="flex flex-col items-center gap-6 py-10">
+              <div class="relative flex items-center justify-center">
+                <AnimatedOrb client:only="react" state="connected" size={180} />
+              </div>
+              <div class="text-center space-y-2">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-whenua/60">
+                  Listening
+                </p>
+                <p class="text-[11px] text-crisis/70 font-medium max-w-xs mx-auto leading-relaxed">
+                  This is an AI tool, not a person. It can make mistakes, miss nuance, or get things wrong.
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-whenua/60">Connected</p>
+        </div>
+
+        <!-- Speaking state -->
+        <div class="flex flex-col items-center gap-2">
+          <div class="bg-white/40 rounded-xl border border-whenua/5 p-6 shadow-inner">
+            <div class="flex flex-col items-center gap-6 py-10">
+              <div class="relative flex items-center justify-center">
+                <AnimatedOrb client:only="react" state="speaking" size={180} />
+              </div>
+              <div class="text-center space-y-2">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-ako">
+                  Speaking
+                </p>
+                <p class="text-[11px] text-crisis/70 font-medium max-w-xs mx-auto leading-relaxed">
+                  This is an AI tool, not a person. It can make mistakes, miss nuance, or get things wrong.
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-whenua/60">Speaking</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

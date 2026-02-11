@@ -32,6 +32,9 @@ export default function ParticipationFlow() {
     location: '',
     role_context: '',
     cultural_identities: '',
+    parent_name: '',
+    parent_email: '',
+    parent_phone: '',
   });
 
   // Consent State
@@ -160,11 +163,17 @@ export default function ParticipationFlow() {
     setConsents({ ...consents, [e.target.name]: e.target.checked });
   };
 
+  const isUnder18 = formData.age_range === 'under-18';
+
   // Step 1 -> 2: Validation
   const submitRegistration = (e) => {
     e.preventDefault();
     if (!formData.first_name || !formData.last_name || !formData.email) {
       setError("Please fill in the required fields (Name & Email).");
+      return;
+    }
+    if (isUnder18 && (!formData.parent_name || !formData.parent_email)) {
+      setError("Please provide your parent or guardian's name and email.");
       return;
     }
     setError(null);
@@ -186,14 +195,21 @@ export default function ParticipationFlow() {
 
     try {
       if (supabase) {
-        const { data, error: dbError } = await supabase
-          .from('participants')
-          .insert([{
+        const participantData = {
             ...formData,
             consent_agreed: true,
             consent_timestamp: new Date().toISOString(),
-            participation_type: participationType
-          }])
+            participation_type: participationType,
+          };
+        // Only include parent fields if under 18
+        if (!isUnder18) {
+          delete participantData.parent_name;
+          delete participantData.parent_email;
+          delete participantData.parent_phone;
+        }
+        const { data, error: dbError } = await supabase
+          .from('participants')
+          .insert([participantData])
           .select();
 
         if (dbError) {
@@ -362,6 +378,7 @@ export default function ParticipationFlow() {
               <label className={labelClass}>Age Range</label>
               <select name="age_range" className={selectClass} onChange={handleInput} value={formData.age_range}>
                 <option value="">Select...</option>
+                <option value="under-18">Under 18</option>
                 <option value="18-24">18–24</option>
                 <option value="25-34">25–34</option>
                 <option value="35-44">35–44</option>
@@ -375,6 +392,27 @@ export default function ParticipationFlow() {
               <input type="text" name="location" placeholder="e.g. Hamilton, Tai Tokerau" className={inputClass} onChange={handleInput} value={formData.location} />
             </div>
           </div>
+
+          {formData.age_range === 'under-18' && (
+            <div className="bg-white p-5 rounded-lg border border-ako/30 space-y-4">
+              <h3 className="font-bold text-whenua">Parent or Guardian Details</h3>
+              <p className="text-sm text-whenua/70">
+                Because you're under 18, we need a parent or guardian's contact details so we can get their consent before you take part.
+              </p>
+              <div>
+                <label className={labelClass}>Parent/Guardian Full Name *</label>
+                <input type="text" name="parent_name" required placeholder="Their full name" className={inputClass} onChange={handleInput} value={formData.parent_name} />
+              </div>
+              <div>
+                <label className={labelClass}>Parent/Guardian Email *</label>
+                <input type="email" name="parent_email" required placeholder="parent@example.com" className={inputClass} onChange={handleInput} value={formData.parent_email} />
+              </div>
+              <div>
+                <label className={labelClass}>Parent/Guardian Phone</label>
+                <input type="tel" name="parent_phone" placeholder="e.g. 021 123 4567" className={inputClass} onChange={handleInput} value={formData.parent_phone} />
+              </div>
+            </div>
+          )}
 
           <p className="text-sm text-whenua/50">
             These details help us understand who is in the room. They are optional — share what feels comfortable. Nothing here affects your ability to participate.
@@ -446,11 +484,12 @@ export default function ParticipationFlow() {
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">How we use your kōrero</span>
-                  <span className="text-sm text-whenua/60">Downloaded from ElevenLabs for analysis. Used for both master's projects.</span>
+                  <span className="text-sm text-whenua/60">Anonymised, used in both master's projects, and may inform a public resource.</span>
                 </div>
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
                 <p>Your conversation transcript is stored in ElevenLabs. We download it from there for analysis as part of both Lian's and Lee's master's research projects at AcademyEX. Your registration details are stored separately in Supabase (Sydney, Australia) with row-level security.</p>
+                <p>All data used in our research will be anonymised — your name and identifying details will be removed before analysis or publication. Anonymised insights and themes from this research may also be used to develop a public-facing resource (such as a report or guide) to share what we have learned about designing conversational AI for vulnerable and culturally significant spaces.</p>
               </div>
             </details>
 
@@ -478,7 +517,7 @@ export default function ParticipationFlow() {
                 </div>
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and Paula Gair). Cultural advisors may review de-identified themes. Your name will not appear in any published work unless you specifically request attribution.</p>
+                <p>Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and Paula Gair). Cultural advisors may review de-identified themes. All responses are anonymised before analysis — your name will not appear in any published work or public resource unless you specifically request attribution.</p>
               </div>
             </details>
 
@@ -498,8 +537,8 @@ export default function ParticipationFlow() {
                   <li>You can withdraw your data from our research database up to two weeks after the wānanga by emailing us</li>
                   <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
                   <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention</li>
-                  <li>You must be 18 or older to use the AI agent</li>
-                  <li>If you are under 18 or prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a></li>
+                  <li>If you are under 18, you can participate with a parent or guardian's consent</li>
+                  <li>If you prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a></li>
                   <li>Choosing not to participate has no consequences whatsoever</li>
                 </ul>
               </div>
@@ -534,8 +573,10 @@ export default function ParticipationFlow() {
               { id: 'understand_recording', text: 'I understand my conversation will be recorded, transcribed, and stored for research purposes' },
               { id: 'voluntary', text: 'I understand my participation is voluntary, consent is ongoing, and I can withdraw at any time' },
               { id: 'understand_ai', text: 'I understand the AI is a tool with limitations — it is not a person, teacher, or authority' },
-              { id: 'research_use', text: "I consent to my insights being used in Lian Passmore's and Lee Palamo's master's research at AcademyEX" },
-              { id: 'age_confirm', text: 'I confirm I am 18 years or older' },
+              { id: 'research_use', text: "I consent to my anonymised insights being used in Lian Passmore's and Lee Palamo's master's research at AcademyEX, and in any public resource developed from this research" },
+              { id: 'age_confirm', text: formData.age_range === 'under-18'
+                ? 'I confirm I am under 18 and have provided my parent or guardian\'s contact details so they can give consent on my behalf'
+                : 'I confirm I am 18 years or older' },
               { id: 'ready', text: 'I am ready to begin' },
             ].map((item) => (
               <label key={item.id} className="flex items-start gap-3 cursor-pointer">
@@ -628,16 +669,21 @@ export default function ParticipationFlow() {
       {/* STEP 4: ELEVENLABS CONVERSATION */}
       {step === 4 && (
         <div className="text-center space-y-6 animate-fade-in">
-          <h2 className="text-2xl font-bold text-whenua mb-4">Kōrero with Ray</h2>
+          <h2 className="text-3xl font-serif text-whenua mb-2">Kōrero with the AI Agent</h2>
 
-          <div className="bg-white rounded-lg border border-kakahu/30 p-8 shadow-inner">
-            <AgentConversation firstName={formData.first_name} lastName={formData.last_name} participantId={participantId} />
+          <div className="bg-white/40 rounded-xl border border-whenua/5 p-4 md:p-10 shadow-inner">
+            <AgentConversation
+              agentId={import.meta.env.PUBLIC_ELEVENLABS_AGENT}
+              firstName={formData.first_name}
+              lastName={formData.last_name}
+              participantId={participantId}
+            />
           </div>
 
           <div className="flex justify-center gap-4 mt-8">
             <button
               onClick={() => { setStep(5); window.scrollTo(0, 0); }}
-              className="text-whenua underline hover:text-ako text-sm"
+              className="text-whenua/60 hover:text-whenua underline decoration-kakahu text-sm transition-colors"
             >
               I have finished the conversation →
             </button>
