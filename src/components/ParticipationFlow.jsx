@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
+const PATH_MAP = {
+  ai: { type: 'AI Conversation', step: 1 },
+  form: { type: 'Written Form', step: 1 },
+  contact: { type: 'Contact Me', step: 6 },
+};
+
 export default function ParticipationFlow() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [participationType, setParticipationType] = useState('');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const path = params.get('path');
+    if (path && PATH_MAP[path]) {
+      setParticipationType(PATH_MAP[path].type);
+      setStep(PATH_MAP[path].step);
+    }
+  }, []);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -35,6 +51,105 @@ export default function ParticipationFlow() {
     anything_else: '',
   });
 
+  // Written Form State
+  const [formAnswers, setFormAnswers] = useState({});
+  const [formFeeling, setFormFeeling] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const writtenQuestions = [
+    "Think about a time you wanted to share something personal or important in a digital space (online, an app, a form). What was that experience like? What made it feel safe or unsafe?",
+    "Imagine someone talking to an AI about something deeply personal — their relationship, something tied to their identity, or something painful. What's your gut reaction to that idea? Where would you draw the line?",
+    "Some knowledge and experiences feel sacred or protected — things that shouldn't just become \"data.\" In te ao Māori this is described as tapu (sacred/protected) vs noa (ordinary/freely shared). How do you think about what should stay protected vs what can be shared with or through technology?",
+    "If researchers are building AI for vulnerable conversations (relationship support, language learning, cultural spaces), what must they absolutely get right? What should they never forget?",
+  ];
+
+  // Contact Me State
+  const [contactData, setContactData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    contact_preference: '',
+  });
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+
+  const choosePath = (type) => {
+    if (type === 'Talk to a Person') {
+      window.location.href = '/human';
+      return;
+    }
+    if (type === 'Contact Me') {
+      setParticipationType(type);
+      setStep(6);
+      window.scrollTo(0, 0);
+      return;
+    }
+    setParticipationType(type);
+    setStep(1);
+    window.scrollTo(0, 0);
+  };
+
+  const submitContact = async (e) => {
+    e.preventDefault();
+    if (!contactData.first_name || !contactData.last_name || !contactData.email || !contactData.contact_preference) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      if (supabase) {
+        const { error: dbError } = await supabase
+          .from('participants')
+          .insert([{
+            first_name: contactData.first_name,
+            last_name: contactData.last_name,
+            email: contactData.email,
+            participation_type: 'Contact Me',
+          }]);
+        if (dbError) console.error('Supabase error:', dbError);
+      }
+      setContactSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setContactSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const submitFormAnswers = async () => {
+    const answered = Object.values(formAnswers).filter(a => a && a.trim()).length;
+    if (answered === 0) {
+      setError("Please answer at least one question.");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      if (supabase) {
+        const { error: dbError } = await supabase
+          .from('form_responses')
+          .insert([{
+            email: formData.email,
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            feeling: formFeeling,
+            ...Object.fromEntries(
+              writtenQuestions.map((q, i) => [`q${i + 1}`, formAnswers[i] || ''])
+            ),
+          }]);
+        if (dbError) console.error('Supabase error:', dbError);
+      }
+      setFormSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setFormSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -55,7 +170,8 @@ export default function ParticipationFlow() {
     window.scrollTo(0, 0);
   };
 
-  // Step 2 -> 3: Save to Supabase
+  // Step 2 -> 3 (or 4 for non-AI paths): Save to Supabase
+
   const submitConsent = async () => {
     const allChecked = Object.values(consents).every(val => val === true);
     if (!allChecked) {
@@ -74,7 +190,7 @@ export default function ParticipationFlow() {
             ...formData,
             consent_agreed: true,
             consent_timestamp: new Date().toISOString(),
-            participation_type: 'AI Conversation'
+            participation_type: participationType
           }])
           .select();
 
@@ -85,12 +201,15 @@ export default function ParticipationFlow() {
         console.warn('Supabase not configured — skipping save');
       }
 
-      setStep(3);
+      // AI path goes to prepare screen; other paths skip to post-conversation
+      const nextStep = participationType === 'AI Conversation' ? 3 : participationType === 'Written Form' ? 7 : 5;
+      setStep(nextStep);
       window.scrollTo(0, 0);
     } catch (err) {
       console.error('Registration save error:', err);
       // Proceed anyway so participants aren't blocked
-      setStep(3);
+      const nextStep = participationType === 'AI Conversation' ? 3 : participationType === 'Written Form' ? 7 : 5;
+      setStep(nextStep);
       window.scrollTo(0, 0);
     } finally {
       setLoading(false);
@@ -122,13 +241,19 @@ export default function ParticipationFlow() {
   return (
     <div className="max-w-3xl mx-auto bg-white/60 p-6 md:p-10 rounded-lg shadow-sm border border-kakahu/20">
 
-      {/* Progress Indicator */}
-      <div className="flex justify-between mb-8 text-xs font-bold tracking-widest uppercase text-marama">
-        <span className={step >= 1 ? "text-ako" : ""}>1. Details</span>
-        <span className={step >= 2 ? "text-ako" : ""}>2. Consent</span>
-        <span className={step >= 3 ? "text-ako" : ""}>3. Prepare</span>
-        <span className={step >= 4 ? "text-ako" : ""}>4. Kōrero</span>
-      </div>
+      {/* Progress Indicator - only show for registration/consent flows */}
+      {step >= 1 && step <= 5 && (
+        <div className="flex justify-between mb-8 text-xs font-bold tracking-widest uppercase text-marama">
+          <span className={step >= 1 ? "text-ako" : ""}>1. Details</span>
+          <span className={step >= 2 ? "text-ako" : ""}>2. Consent</span>
+          {participationType === 'AI Conversation' && (
+            <>
+              <span className={step >= 3 ? "text-ako" : ""}>3. Prepare</span>
+              <span className={step >= 4 ? "text-ako" : ""}>4. Kōrero</span>
+            </>
+          )}
+        </div>
+      )}
 
       {error && (
         <div className="bg-red-50 text-crisis p-4 mb-6 rounded border border-crisis/20">
@@ -136,9 +261,56 @@ export default function ParticipationFlow() {
         </div>
       )}
 
+      {/* STEP 0: CHOOSE YOUR PATH */}
+      {step === 0 && (
+        <div className="space-y-6 animate-fade-in">
+          <h2 className="text-3xl font-bold text-whenua">How would you like to take part?</h2>
+          <p className="text-whenua/80">
+            Pick whatever feels right. You can switch anytime.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              onClick={() => choosePath('AI Conversation')}
+              className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
+            >
+              <p className="font-bold text-ako mb-1.5">Talk to the AI</p>
+              <p className="text-whenua/70 text-sm">10–15 min voice conversation using Lian's voice.</p>
+            </button>
+
+            <button
+              onClick={() => choosePath('Written Form')}
+              className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
+            >
+              <p className="font-bold text-ako mb-1.5">Fill in a form</p>
+              <p className="text-whenua/70 text-sm">Share your thoughts in writing, in your own time.</p>
+            </button>
+
+            <button
+              onClick={() => choosePath('Talk to a Person')}
+              className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
+            >
+              <p className="font-bold text-ako mb-1.5">Talk to a person</p>
+              <p className="text-whenua/70 text-sm">30 min kōrero with Lian or Lee. Also available for under 18s.</p>
+            </button>
+
+            <button
+              onClick={() => choosePath('Contact Me')}
+              className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
+            >
+              <p className="font-bold text-ako mb-1.5">Not sure yet</p>
+              <p className="text-whenua/70 text-sm">Leave your details and we'll reach out.</p>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* STEP 1: REGISTRATION */}
       {step === 1 && (
         <form onSubmit={submitRegistration} className="space-y-6 animate-fade-in">
+          <button type="button" onClick={() => { setStep(0); window.scrollTo(0, 0); }} className="text-sm text-whenua/60 hover:text-ako transition-colors">
+            ← Back to path selection
+          </button>
           <h2 className="text-3xl font-bold text-whenua">Your Details</h2>
           <p className="text-whenua/80">
             Kia ora — before we begin, we need a few details. This takes about 60 seconds.
@@ -583,6 +755,184 @@ export default function ParticipationFlow() {
               Return to Home
             </a>
           </div>
+        </div>
+      )}
+
+      {/* STEP 6: CONTACT ME */}
+      {step === 6 && (
+        <div className="space-y-6 animate-fade-in">
+          {!contactSubmitted ? (
+            <form onSubmit={submitContact} className="space-y-6">
+              <h2 className="text-3xl font-bold text-whenua">We'll reach out to you</h2>
+              <p className="text-whenua/80">
+                Leave your details and we'll get in touch to find the right way for you to take part.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className={labelClass}>First Name *</label>
+                  <input type="text" required placeholder="Enter your first name" className={inputClass}
+                    value={contactData.first_name}
+                    onChange={(e) => setContactData({ ...contactData, first_name: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>Last Name *</label>
+                  <input type="text" required placeholder="Enter your last name" className={inputClass}
+                    value={contactData.last_name}
+                    onChange={(e) => setContactData({ ...contactData, last_name: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className={labelClass}>Email Address *</label>
+                <input type="email" required placeholder="you@example.com" className={inputClass}
+                  value={contactData.email}
+                  onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
+                />
+              </div>
+
+              <div>
+                <label className={labelClass}>Phone Number</label>
+                <input type="tel" placeholder="e.g. 021 123 4567" className={inputClass}
+                  value={contactData.phone}
+                  onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
+                />
+              </div>
+
+              <div>
+                <label className={labelClass}>How would you like us to contact you? *</label>
+                <div className="flex gap-6 pt-2">
+                  {['Email', 'Call', 'Text'].map(method => (
+                    <label key={method} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="contact_preference"
+                        value={method}
+                        required
+                        onChange={(e) => setContactData({ ...contactData, contact_preference: e.target.value })}
+                        className="w-4 h-4 text-ako focus:ring-ako"
+                      />
+                      <span className="text-whenua">{method}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-ako text-white font-bold py-4 rounded hover:bg-teal-700 transition-colors shadow-md disabled:opacity-50"
+              >
+                {loading ? "Sending..." : "Send my details"}
+              </button>
+            </form>
+          ) : (
+            <div className="text-center space-y-4 py-8">
+              <h2 className="text-3xl font-bold text-ako">Ngā mihi — we'll be in touch.</h2>
+              <p className="text-lg text-whenua/80 max-w-xl mx-auto">
+                We've got your details and will reach out by {contactData.contact_preference.toLowerCase()} soon.
+              </p>
+              <div className="pt-4">
+                <a href="/" className="text-ako font-bold hover:underline">
+                  Return to Home
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* STEP 7: WRITTEN FORM */}
+      {step === 7 && (
+        <div className="space-y-6 animate-fade-in">
+          {!formSubmitted ? (
+            <>
+              <h2 className="text-3xl font-bold text-whenua">Your kōrero, in writing</h2>
+              <p className="text-whenua/80">
+                Answer as many or as few as you like. There are no right or wrong answers — we are interested in your honest experience and instincts. 3–5 sentences per question is ideal, but write as much or as little as feels right.
+              </p>
+
+              {/* Ice-breaker */}
+              <div className="bg-white p-5 rounded-lg border border-kakahu/20">
+                <label className="block font-bold text-whenua mb-3">How are you feeling about this experience?</label>
+                <div className="flex flex-wrap gap-3">
+                  {['Comfortable', 'A bit nervous', 'Curious', 'Sceptical', 'Other'].map(option => (
+                    <label key={option} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="feeling"
+                        value={option}
+                        checked={formFeeling === option}
+                        onChange={(e) => setFormFeeling(e.target.value)}
+                        className="w-4 h-4 text-ako focus:ring-ako"
+                      />
+                      <span className="text-whenua text-sm">{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Core Questions */}
+              <div className="space-y-8">
+                {writtenQuestions.map((question, i) => (
+                  <div key={i}>
+                    <label className="block font-bold text-whenua mb-2">{i + 1}. {question}</label>
+                    <textarea
+                      rows="4"
+                      className="w-full p-3 border border-kakahu/20 rounded-lg bg-white text-whenua focus:border-ako focus:outline-none transition-colors"
+                      placeholder="Write your thoughts here..."
+                      value={formAnswers[i] || ''}
+                      onChange={(e) => setFormAnswers({ ...formAnswers, [i]: e.target.value })}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={submitFormAnswers}
+                disabled={loading}
+                className="w-full bg-ako text-white font-bold py-4 rounded hover:bg-teal-700 transition-colors shadow-md disabled:opacity-50"
+              >
+                {loading ? "Submitting..." : "Submit my answers"}
+              </button>
+            </>
+          ) : (
+            <div className="space-y-8 py-6">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold text-ako mb-4">Ngā mihi — thank you.</h2>
+                <p className="text-xl text-whenua/80 max-w-xl mx-auto">
+                  Your written kōrero matters. What you have shared will help shape how we think about designing conversational AI for vulnerable spaces.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg border-l-4 border-ako text-left">
+                <h3 className="font-bold text-whenua mb-3">What happens next</h3>
+                <p className="text-whenua/80 mb-4">
+                  You are invited to the online wānanga on <strong>Thursday 26 February, 6.30pm to 8pm NZDT</strong>, where we explore these themes as a group.
+                </p>
+              </div>
+
+              <div className="bg-white/60 p-6 rounded-lg border border-kakahu/20">
+                <h3 className="font-bold text-whenua mb-2">Want to try another path?</h3>
+                <p className="text-whenua/80 mb-3">
+                  You can also talk to the AI or book a kōrero with Lian or Lee.
+                </p>
+                <div className="flex gap-4">
+                  <button onClick={() => { setFormSubmitted(false); setStep(0); window.scrollTo(0, 0); }} className="text-ako font-bold hover:underline">
+                    Choose another path
+                  </button>
+                </div>
+              </div>
+
+              <div className="text-center pt-4">
+                <a href="/" className="text-ako font-bold hover:underline">
+                  Return to Home
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
