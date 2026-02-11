@@ -16,8 +16,8 @@ export default {
         sans: ['"Inter Variable"', 'sans-serif'], // Ensure you have @fontsource-variable/inter installed
       },
       backgroundImage: {
-        // A subtle repeating triangle pattern (Niho Taniwha)
-        'niho-pattern': `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20L40 0H0L20 20ZM20 20L40 40H0L20 20Z' fill='%23584738' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        // Poutama pattern by Lee
+        'niho-pattern': `url("/Poutama.svg")`,
       },
       animation: {
         'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1)', // Slower, smoother ease

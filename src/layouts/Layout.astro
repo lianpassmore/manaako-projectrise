@@ -22,13 +22,13 @@ const { title } = Astro.props;
 	<body class="bg-rauhuia text-whenua font-sans antialiased min-h-screen flex flex-col selection:bg-kakahu/30 selection:text-whenua">
 		
         <!-- Background Texture (Fixed) -->
-        <div class="fixed inset-0 bg-niho-pattern pointer-events-none z-0 opacity-60"></div>
+        <div class="fixed inset-0 bg-niho-pattern bg-cover bg-center bg-no-repeat pointer-events-none z-0 opacity-20"></div>
 
         <!-- Navigation -->
         <header class="relative z-10 py-6 md:py-8 px-4 md:px-12 flex justify-between items-center">
             <a href="/" class="group flex flex-col">
                 <span class="text-xs uppercase tracking-[0.2em] text-marama group-hover:text-ako transition-colors">Wānanga 2026</span>
-                <span class="font-bold text-lg tracking-wide text-whenua">Mana Ako <span class="text-kakahu font-light px-1">×</span> Project Rise</span>
+                <span class="font-bold text-lg tracking-wide text-whenua"><span class="text-ako">Mana Ako</span> <span class="text-kakahu font-light px-1">×</span> Project Rise</span>
             </a>
             <!-- Desktop nav -->
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
