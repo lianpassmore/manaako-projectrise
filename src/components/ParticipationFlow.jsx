@@ -63,7 +63,7 @@ export default function ParticipationFlow() {
   const writtenQuestions = [
     "Think about a time you wanted to share something personal or important in a digital space (online, an app, a form). What was that experience like? What made it feel safe or unsafe?",
     "Imagine someone talking to an AI about something deeply personal — their relationship, something tied to their identity, or something painful. What's your gut reaction to that idea? Where would you draw the line?",
-    "Some knowledge and experiences feel sacred or protected — things that shouldn't just become \"data.\" In te ao Māori this is described as tapu (sacred/protected) vs noa (ordinary/freely shared). How do you think about what should stay protected vs what can be shared with or through technology?",
+    "Some knowledge and experiences feel sacred or protected — things that shouldn't just become \"data.\" In te ao Māori, this is described as tapu (sacred/protected) vs noa (ordinary/freely shared). How do you think about what should stay protected vs what can be shared with or through technology?",
     "If researchers are building AI for vulnerable conversations (relationship support, language learning, cultural spaces), what must they absolutely get right? What should they never forget?",
   ];
 

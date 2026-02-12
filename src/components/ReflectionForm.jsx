@@ -37,7 +37,7 @@ export default function ReflectionForm() {
         <div className="text-center py-10">
             <h3 className="text-2xl font-bold text-ako mb-4">Ngā mihi nui.</h3>
             <p>Your reflections have been safely received.</p>
-            <p className="mt-4">We will send the summary insights to you soon.</p>
+            <p className="mt-4">We will send you a summary of insights soon.</p>
         </div>
     );
 

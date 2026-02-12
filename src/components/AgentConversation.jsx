@@ -15,7 +15,7 @@ export default function AgentConversation({
   const conversation = useConversation({
     onError: (err) => {
       console.error('ElevenLabs error:', err);
-      setError("Unable to connect to the agent. Please try refreshing.");
+      setError("Unable to connect to the agent. Please try refreshing the page.");
       setStarted(false);
     },
   });
