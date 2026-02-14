@@ -17,6 +17,11 @@ const { title } = Astro.props;
 		<meta name="description" content="When Culture Meets Conversational AI" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={`https://www.culturemeetsai.space${Astro.url.pathname}`} />
+		<meta property="og:url" content={`https://www.culturemeetsai.space${Astro.url.pathname}`} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="When Culture Meets Conversational AI" />
+		<meta property="og:type" content="website" />
 		<title>{title}</title>
 	</head>
 	<body class="bg-rauhuia text-whenua font-sans antialiased min-h-screen flex flex-col selection:bg-kakahu/30 selection:text-whenua">
@@ -65,12 +70,11 @@ const { title } = Astro.props;
         <footer class="relative z-10 border-t border-whenua/10 mt-12 md:mt-20 py-8 md:py-12 px-4 md:px-12 bg-rauhuia">
             <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-whenua/60">
                 <div class="space-y-1">
-                    <p class="font-bold text-whenua">Research conducted by Lian Passmore & Lee Palamo</p>
+                    <p class="font-bold text-whenua">Research conducted by Lian Passmore and Lee Palamo</p>
                     <p>Programme: Master of Technological Futures, AcademyEX</p>
-                    <p>Supervisors: Felix Scholz (Lian) & Paula Gair (Lee)</p>
+                    <p>Supervisor: Felix Scholz</p>
                     <p>Ethics: Approved under AcademyEX Research, Enterprise and Ethics (REE) process</p>
-                    <p>Lian: MTF.8888.275 (approved 21/07/2025 – 21/07/2027)</p>
-                    <p>Lee: MTF.8888.274 (approved 21/07/2025 – 21/07/2027)</p>
+                    <p>Privacy: Compliant with the NZ Privacy Act 2020 and Biometric Processing Privacy Code 2025</p>
                 </div>
                 <div class="space-y-2">
                     <p>Questions? <a href="mailto:lianpassmore@gmail.com" class="hover:text-ako transition-colors underline">lianpassmore@gmail.com</a> or <a href="mailto:leepalamo275@gmail.com" class="hover:text-ako transition-colors underline">leepalamo275@gmail.com</a></p>
@@ -79,7 +83,7 @@ const { title } = Astro.props;
                 <div class="flex flex-col md:items-end gap-2">
                     <a href="/about" class="hover:text-ako transition-colors">About the Research</a>
                     <a href="/privacy" class="hover:text-ako transition-colors">Privacy & Data Rights</a>
-                    <p class="text-xs mt-2 text-whenua/40">Your rights: You can withdraw at any time. Consent is ongoing. You can request deletion of your data. You can switch between AI and person at any point. Contact us anytime.</p>
+                    <p class="text-xs mt-2 text-whenua/40">Your rights: You can withdraw at any time. You can request deletion of your data. You can complain to the NZ Privacy Commissioner at <a href="https://privacy.org.nz" target="_blank" rel="noopener" class="hover:text-ako transition-colors underline">privacy.org.nz</a></p>
                 </div>
             </div>
             <div class="max-w-screen-xl mx-auto mt-8 pt-4 border-t border-whenua/10 text-center">

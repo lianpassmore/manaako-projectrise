@@ -483,6 +483,21 @@ export default function ParticipationFlow() {
               <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
+                  <span className="font-bold text-whenua block">Your voice as biometric information</span>
+                  <span className="text-sm text-whenua/60">Your voice is classified as biometric information under NZ law. We explain why we collect it and what that means.</span>
+                </div>
+              </summary>
+              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                <p>Under New Zealand's Biometric Processing Privacy Code 2025, your voice is classified as biometric information — some of the most sensitive personal data there is. We take this seriously.</p>
+                <p>We use voice because this research specifically investigates how people experience conversational AI in vulnerable contexts. Text alone would not generate the same insights — the nuance, hesitation, emotion, and instinct that voice carries is central to what we are studying. We have assessed that this research purpose justifies the collection of voice data, and that no lower-privacy-risk alternative would achieve the same result.</p>
+                <p>By consenting to participate, you are authorising the cross-border transfer of your personal information (including voice data) to ElevenLabs in the United States for processing, as described above. This authorisation is made in accordance with Information Privacy Principle 12 of New Zealand's Privacy Act 2020.</p>
+              </div>
+            </details>
+
+            <details className="group border-b border-kakahu/20">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                <div>
                   <span className="font-bold text-whenua block">How we use your kōrero</span>
                   <span className="text-sm text-whenua/60">Anonymised, used in both master's projects, and may inform a public resource.</span>
                 </div>
@@ -531,15 +546,17 @@ export default function ParticipationFlow() {
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>Participation is completely voluntary — and consent is ongoing, not a one-time decision</li>
+                  <li>Participation is completely voluntary</li>
                   <li>You can stop the conversation at any time — just close the browser</li>
-                  <li>You can switch from the AI to a person, or from a person to the AI, at any point</li>
                   <li>You can withdraw your data from our research database up to two weeks after the wānanga by emailing us</li>
                   <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
-                  <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention</li>
-                  <li>If you are under 18, you can participate with a parent or guardian's consent</li>
-                  <li>If you prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a></li>
+                  <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform</li>
+                  <li>You can participate in the AI conversation without attending the wānanga, or vice versa</li>
+                  <li>You must be 18 or older to use the AI agent</li>
+                  <li>If you are under 18 or prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a> instead</li>
                   <li>Choosing not to participate has no consequences whatsoever</li>
+                  <li>You can request access to, correction of, or deletion of your personal information at any time by emailing us</li>
+                  <li>Your voice is classified as biometric information under New Zealand's Biometric Processing Privacy Code 2025. You have the right to make a complaint to the New Zealand Privacy Commissioner about how your biometric information is handled: <a href="https://privacy.org.nz" target="_blank" rel="noopener" className="text-ako underline">privacy.org.nz</a></li>
                 </ul>
               </div>
             </details>
