@@ -315,7 +315,8 @@ export default function ParticipationFlow() {
               className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
             >
               <p className="font-bold text-ako mb-1.5">Talk to the AI</p>
-              <p className="text-whenua/70 text-sm">10–15 min voice conversation using Lian's voice.</p>
+              <p className="text-whenua/70 text-sm">A 10–15 min voice conversation using Lian's voice, plus a quick sign-up and consent step beforehand.</p>
+              <p className="text-whenua/50 text-xs mt-1">~10 min</p>
             </button>
 
             <button
@@ -323,7 +324,8 @@ export default function ParticipationFlow() {
               className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
             >
               <p className="font-bold text-ako mb-1.5">Fill in a form</p>
-              <p className="text-whenua/70 text-sm">Share your thoughts in writing, in your own time.</p>
+              <p className="text-whenua/70 text-sm">4 open-ended questions you can answer in your own time, plus a quick sign-up and consent step.</p>
+              <p className="text-whenua/50 text-xs mt-1">~10 min</p>
             </button>
 
             <button
@@ -331,7 +333,8 @@ export default function ParticipationFlow() {
               className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
             >
               <p className="font-bold text-ako mb-1.5">Talk to a person</p>
-              <p className="text-whenua/70 text-sm">30 min kōrero with Lian or Lee. Also available for under 18s.</p>
+              <p className="text-whenua/70 text-sm">A 30 min scheduled kōrero with Lian or Lee. Also available for under 18s.</p>
+              <p className="text-whenua/50 text-xs mt-1">~2 min to book, then a 30 min call</p>
             </button>
 
             <button
@@ -340,6 +343,7 @@ export default function ParticipationFlow() {
             >
               <p className="font-bold text-ako mb-1.5">Not sure yet</p>
               <p className="text-whenua/70 text-sm">Leave your details and we'll reach out.</p>
+              <p className="text-whenua/50 text-xs mt-1">~2 min</p>
             </button>
           </div>
         </div>
