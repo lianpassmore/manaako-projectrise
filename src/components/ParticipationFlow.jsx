@@ -35,6 +35,7 @@ export default function ParticipationFlow() {
     parent_name: '',
     parent_email: '',
     parent_phone: '',
+    hui_attendance: '',
   });
 
   // Consent State
@@ -78,7 +79,6 @@ export default function ParticipationFlow() {
   });
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [participantId, setParticipantId] = useState(null);
-  const [huiAttendance, setHuiAttendance] = useState('');
 
   const choosePath = (type) => {
     if (type === 'Talk to a Person') {
@@ -448,8 +448,8 @@ export default function ParticipationFlow() {
                     type="radio"
                     name="hui_attendance"
                     value={option}
-                    checked={huiAttendance === option}
-                    onChange={(e) => setHuiAttendance(e.target.value)}
+                    checked={formData.hui_attendance === option}
+                    onChange={handleInput}
                     className="w-4 h-4 text-ako focus:ring-ako"
                   />
                   <span className="text-whenua">{option}</span>
@@ -488,7 +488,7 @@ export default function ParticipationFlow() {
                 </div>
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>You will have a 10 to 15 minute voice conversation with a conversational AI agent. It uses Lian's voice and will ask you about safety, vulnerability, and cultural considerations around conversational AI. After the conversation, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group.</p>
+                <p>You will have a 10 to 15 minute voice conversation with a conversational AI agent. It uses Lian's voice and will ask you about safety, vulnerability, and cultural considerations around conversational AI. After the conversation, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group. The wānanga will be recorded for research purposes only — the recording will not be shared.</p>
                 <p>If at any point during the AI conversation you would prefer to talk to a person instead, you can stop and book a kōrero with Lian or Lee. The same applies in reverse.</p>
               </div>
             </details>
