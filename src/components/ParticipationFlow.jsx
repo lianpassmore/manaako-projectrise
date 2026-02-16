@@ -621,7 +621,7 @@ export default function ParticipationFlow() {
                   type="checkbox"
                   name={item.id}
                   onChange={handleConsent}
-                  className="mt-1 w-5 h-5 text-ako rounded border-gray-300 focus:ring-ako"
+                  className="mt-1 w-5 h-5 min-w-[1.25rem] min-h-[1.25rem] shrink-0 text-ako rounded border-gray-300 focus:ring-ako appearance-none border-2 checked:bg-ako checked:border-ako"
                 />
                 <span className="text-sm text-whenua">{item.text}</span>
               </label>
