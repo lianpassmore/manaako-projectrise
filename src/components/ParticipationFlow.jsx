@@ -78,6 +78,7 @@ export default function ParticipationFlow() {
   });
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [participantId, setParticipantId] = useState(null);
+  const [huiAttendance, setHuiAttendance] = useState('');
 
   const choosePath = (type) => {
     if (type === 'Talk to a Person') {
@@ -437,6 +438,25 @@ export default function ParticipationFlow() {
               </div>
             </div>
           )}
+
+          <div>
+            <label className={labelClass}>Are you planning to attend the online wānanga? (Thu 26 Feb, 6.30–8pm NZDT)</label>
+            <div className="flex gap-6 pt-2">
+              {['Yes', 'No', 'Not sure yet'].map(option => (
+                <label key={option} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="hui_attendance"
+                    value={option}
+                    checked={huiAttendance === option}
+                    onChange={(e) => setHuiAttendance(e.target.value)}
+                    className="w-4 h-4 text-ako focus:ring-ako"
+                  />
+                  <span className="text-whenua">{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
 
           <p className="text-sm text-whenua/50">
             These details help us understand who is in the room. They are optional — share what feels comfortable. Nothing here affects your ability to participate.
