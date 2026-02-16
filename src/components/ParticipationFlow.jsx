@@ -460,7 +460,7 @@ export default function ParticipationFlow() {
           <div className="space-y-0 border border-kakahu/30 rounded-lg overflow-hidden bg-white">
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">What this involves</span>
@@ -474,7 +474,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">About the AI</span>
@@ -489,7 +489,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">How your voice is processed</span>
@@ -504,7 +504,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">Your voice as biometric information</span>
@@ -519,7 +519,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">How we use your kōrero</span>
@@ -533,7 +533,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">Two layers of data control</span>
@@ -548,7 +548,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">Who sees your responses</span>
@@ -561,7 +561,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">Your rights</span>
@@ -586,7 +586,7 @@ export default function ParticipationFlow() {
             </details>
 
             <details className="group">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white/60 transition-colors">
+              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">If something comes up</span>
@@ -819,7 +819,7 @@ export default function ParticipationFlow() {
           </div>
 
           {/* Want to switch paths */}
-          <div className="bg-white/60 p-6 rounded-lg border border-kakahu/20">
+          <div className="bg-white p-6 rounded-lg border border-kakahu/20">
             <h3 className="font-bold text-whenua mb-2">Want to switch paths?</h3>
             <p className="text-whenua/80 mb-3">
               If that conversation made you want to talk to a person, you can book a kōrero with Lian or Lee anytime.
@@ -1005,7 +1005,7 @@ export default function ParticipationFlow() {
                 </p>
               </div>
 
-              <div className="bg-white/60 p-6 rounded-lg border border-kakahu/20">
+              <div className="bg-white p-6 rounded-lg border border-kakahu/20">
                 <h3 className="font-bold text-whenua mb-2">Want to try another path?</h3>
                 <p className="text-whenua/80 mb-3">
                   You can also talk to the AI or book a kōrero with Lian or Lee.
