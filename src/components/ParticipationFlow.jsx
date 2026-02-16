@@ -317,7 +317,7 @@ export default function ParticipationFlow() {
             >
               <p className="font-bold text-ako mb-1.5">Talk to the AI</p>
               <p className="text-whenua/70 text-sm">A 10–15 min voice conversation using Lian's voice, plus a quick sign-up and consent step beforehand.</p>
-              <p className="text-whenua/50 text-xs mt-1">~10 min</p>
+              <p className="text-whenua/50 text-xs mt-1">~10 min · 18+ only</p>
             </button>
 
             <button
@@ -326,7 +326,7 @@ export default function ParticipationFlow() {
             >
               <p className="font-bold text-ako mb-1.5">Fill in a form</p>
               <p className="text-whenua/70 text-sm">4 open-ended questions you can answer in your own time, plus a quick sign-up and consent step.</p>
-              <p className="text-whenua/50 text-xs mt-1">~10 min</p>
+              <p className="text-whenua/50 text-xs mt-1">~10 min · 18+ only</p>
             </button>
 
             <button
@@ -334,7 +334,7 @@ export default function ParticipationFlow() {
               className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
             >
               <p className="font-bold text-ako mb-1.5">Talk to a person</p>
-              <p className="text-whenua/70 text-sm">A 30 min scheduled kōrero with Lian or Lee. Also available for under 18s.</p>
+              <p className="text-whenua/70 text-sm">A 1-on-1 online kōrero with Lian or Lee. Under 18s welcome with parent or guardian consent.</p>
               <p className="text-whenua/50 text-xs mt-1">~2 min to book, then a 30 min call</p>
             </button>
 
@@ -418,24 +418,18 @@ export default function ParticipationFlow() {
             </div>
           </div>
 
-          {formData.age_range === 'under-18' && (
+          {formData.age_range === 'under-18' && (participationType === 'AI Conversation' || participationType === 'Written Form') && (
             <div className="bg-white p-5 rounded-lg border border-ako/30 space-y-4">
-              <h3 className="font-bold text-whenua">Parent or Guardian Details</h3>
-              <p className="text-sm text-whenua/70">
-                Because you're under 18, we need a parent or guardian's contact details so we can get their consent before you take part.
+              <h3 className="font-bold text-whenua">Under 18?</h3>
+              <p className="text-sm text-whenua/80">
+                Participants under 18 require consent from a parent or guardian and can only take part through a 1-on-1 online session with Lian or Lee.
               </p>
-              <div>
-                <label className={labelClass}>Parent/Guardian Full Name *</label>
-                <input type="text" name="parent_name" required placeholder="Their full name" className={inputClass} onChange={handleInput} value={formData.parent_name} />
-              </div>
-              <div>
-                <label className={labelClass}>Parent/Guardian Email *</label>
-                <input type="email" name="parent_email" required placeholder="parent@example.com" className={inputClass} onChange={handleInput} value={formData.parent_email} />
-              </div>
-              <div>
-                <label className={labelClass}>Parent/Guardian Phone</label>
-                <input type="tel" name="parent_phone" placeholder="e.g. 021 123 4567" className={inputClass} onChange={handleInput} value={formData.parent_phone} />
-              </div>
+              <a
+                href="/human"
+                className="inline-block bg-ako text-white font-bold py-3 px-6 rounded hover:bg-teal-700 transition-colors"
+              >
+                Book a 1-on-1 session →
+              </a>
             </div>
           )}
 
@@ -462,9 +456,11 @@ export default function ParticipationFlow() {
             These details help us understand who is in the room. They are optional — share what feels comfortable. Nothing here affects your ability to participate.
           </p>
 
-          <button type="submit" className="w-full bg-ako text-white font-bold py-4 rounded hover:bg-teal-700 transition-colors shadow-md">
-            Next Step: Consent
-          </button>
+          {!(isUnder18 && (participationType === 'AI Conversation' || participationType === 'Written Form')) && (
+            <button type="submit" className="w-full bg-ako text-white font-bold py-4 rounded hover:bg-teal-700 transition-colors shadow-md">
+              Next Step: Consent
+            </button>
+          )}
         </form>
       )}
 
@@ -596,8 +592,8 @@ export default function ParticipationFlow() {
                   <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
                   <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform</li>
                   <li>You can participate in the AI conversation without attending the wānanga, or vice versa</li>
-                  <li>You must be 18 or older to use the AI agent</li>
-                  <li>If you are under 18 or prefer not to use AI, you can <a href="/human" className="text-ako underline">book a conversation with us directly</a> instead</li>
+                  <li>You must be 18 or older to use the AI agent or written form</li>
+                  <li>If you are under 18, you can only participate through a <a href="/human" className="text-ako underline">1-on-1 online session</a> with Lian or Lee, with parent or guardian consent</li>
                   <li>Choosing not to participate has no consequences whatsoever</li>
                   <li>You can request access to, correction of, or deletion of your personal information at any time by emailing us</li>
                   <li>Your voice is classified as biometric information under New Zealand's Biometric Processing Privacy Code 2025. You have the right to make a complaint to the New Zealand Privacy Commissioner about how your biometric information is handled: <a href="https://privacy.org.nz" target="_blank" rel="noopener" className="text-ako underline">privacy.org.nz</a></li>
