@@ -54,6 +54,7 @@ export default function ParticipationFlow() {
     recommend: '',
     anything_else: '',
   });
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
   // Written Form State
   const [formAnswers, setFormAnswers] = useState({});
@@ -238,19 +239,38 @@ export default function ParticipationFlow() {
 
   // Step 5: Save post-conversation feedback
   const submitPostConversation = async () => {
-    if (!postData.use_again || !postData.recommend) return;
+    if (!postData.use_again || !postData.recommend) {
+      setError("Please answer both questions before submitting.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
 
     try {
-      await supabase
-        .from('participants')
-        .update({
-          use_again: postData.use_again,
-          recommend: postData.recommend,
-          anything_else: postData.anything_else,
-        })
-        .eq('email', formData.email);
+      if (supabase) {
+        const filter = participantId
+          ? { column: 'id', value: participantId }
+          : { column: 'email', value: formData.email };
+
+        const { error: dbError } = await supabase
+          .from('participants')
+          .update({
+            use_again: postData.use_again,
+            recommend: postData.recommend,
+            anything_else: postData.anything_else,
+          })
+          .eq(filter.column, filter.value);
+
+        if (dbError) {
+          console.error('Supabase error:', dbError);
+        }
+      }
     } catch (err) {
-      console.error(err);
+      console.error('Feedback save error:', err);
+    } finally {
+      setLoading(false);
+      setFeedbackSubmitted(true);
     }
   };
 
@@ -719,62 +739,69 @@ export default function ParticipationFlow() {
           </div>
 
           {/* Quick Feedback Questions */}
-          <div className="bg-white p-6 rounded-lg border border-kakahu/20 space-y-6">
-            <h3 className="font-bold text-whenua text-lg">Before you go — two quick questions</h3>
+          {!feedbackSubmitted ? (
+            <div className="bg-white p-6 rounded-lg border border-kakahu/20 space-y-6">
+              <h3 className="font-bold text-whenua text-lg">Before you go — two quick questions</h3>
 
-            <div>
-              <label className="block font-bold text-whenua mb-2">Would you use something like this again?</label>
-              <div className="flex gap-4">
-                {['Yes', 'No', 'Maybe'].map(opt => (
-                  <label key={opt} className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="use_again"
-                      value={opt}
-                      onChange={(e) => setPostData({ ...postData, use_again: e.target.value })}
-                      className="w-4 h-4 text-ako focus:ring-ako"
-                    />
-                    <span className="text-whenua">{opt}</span>
-                  </label>
-                ))}
+              <div>
+                <label className="block font-bold text-whenua mb-2">Would you use something like this again?</label>
+                <div className="flex gap-4">
+                  {['Yes', 'No', 'Maybe'].map(opt => (
+                    <label key={opt} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="use_again"
+                        value={opt}
+                        onChange={(e) => setPostData({ ...postData, use_again: e.target.value })}
+                        className="w-4 h-4 text-ako focus:ring-ako"
+                      />
+                      <span className="text-whenua">{opt}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block font-bold text-whenua mb-2">Would you recommend this experience to someone you care about?</label>
-              <div className="flex gap-4">
-                {['Yes', 'No', 'Maybe'].map(opt => (
-                  <label key={opt} className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="recommend"
-                      value={opt}
-                      onChange={(e) => setPostData({ ...postData, recommend: e.target.value })}
-                      className="w-4 h-4 text-ako focus:ring-ako"
-                    />
-                    <span className="text-whenua">{opt}</span>
-                  </label>
-                ))}
+              <div>
+                <label className="block font-bold text-whenua mb-2">Would you recommend this experience to someone you care about?</label>
+                <div className="flex gap-4">
+                  {['Yes', 'No', 'Maybe'].map(opt => (
+                    <label key={opt} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="recommend"
+                        value={opt}
+                        onChange={(e) => setPostData({ ...postData, recommend: e.target.value })}
+                        className="w-4 h-4 text-ako focus:ring-ako"
+                      />
+                      <span className="text-whenua">{opt}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block font-bold text-whenua mb-2">Is there anything else sitting with you right now? <span className="font-normal text-whenua/50">(Optional)</span></label>
-              <textarea
-                name="anything_else"
-                rows="3"
-                className="w-full p-3 border border-kakahu rounded"
-                onChange={(e) => setPostData({ ...postData, anything_else: e.target.value })}
-              ></textarea>
-            </div>
+              <div>
+                <label className="block font-bold text-whenua mb-2">Is there anything else sitting with you right now? <span className="font-normal text-whenua/50">(Optional)</span></label>
+                <textarea
+                  name="anything_else"
+                  rows="3"
+                  className="w-full p-3 border border-kakahu rounded"
+                  onChange={(e) => setPostData({ ...postData, anything_else: e.target.value })}
+                ></textarea>
+              </div>
 
-            <button
-              onClick={submitPostConversation}
-              className="bg-ako text-white font-bold py-3 px-6 rounded hover:bg-teal-700 transition-colors"
-            >
-              Submit
-            </button>
-          </div>
+              <button
+                onClick={submitPostConversation}
+                disabled={loading}
+                className="bg-ako text-white font-bold py-3 px-6 rounded hover:bg-teal-700 transition-colors disabled:opacity-50"
+              >
+                {loading ? "Submitting..." : "Submit"}
+              </button>
+            </div>
+          ) : (
+            <div className="bg-white p-6 rounded-lg border border-ako/30 text-center">
+              <p className="font-bold text-ako text-lg">Feedback received — ngā mihi.</p>
+            </div>
+          )}
 
           {/* What happens next */}
           <div className="bg-white p-6 rounded-lg border-l-4 border-ako text-left">
