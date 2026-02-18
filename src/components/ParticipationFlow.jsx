@@ -32,9 +32,6 @@ export default function ParticipationFlow() {
     location: '',
     role_context: '',
     cultural_identities: '',
-    parent_name: '',
-    parent_email: '',
-    parent_phone: '',
     hui_attendance: '',
   });
 
@@ -165,17 +162,12 @@ export default function ParticipationFlow() {
     setConsents({ ...consents, [e.target.name]: e.target.checked });
   };
 
-  const isUnder18 = formData.age_range === 'under-18';
 
   // Step 1 -> 2: Validation
   const submitRegistration = (e) => {
     e.preventDefault();
     if (!formData.first_name || !formData.last_name || !formData.email) {
       setError("Please fill in the required fields (Name & Email).");
-      return;
-    }
-    if (isUnder18 && (!formData.parent_name || !formData.parent_email)) {
-      setError("Please provide your parent or guardian's name and email.");
       return;
     }
     setError(null);
@@ -203,12 +195,6 @@ export default function ParticipationFlow() {
             consent_timestamp: new Date().toISOString(),
             participation_type: participationType,
           };
-        // Only include parent fields if under 18
-        if (!isUnder18) {
-          delete participantData.parent_name;
-          delete participantData.parent_email;
-          delete participantData.parent_phone;
-        }
         const { data, error: dbError } = await supabase
           .from('participants')
           .insert([participantData])
@@ -334,7 +320,7 @@ export default function ParticipationFlow() {
               className="text-left bg-white/60 border border-kakahu/20 p-5 md:p-6 rounded-lg hover:border-ako/40 transition-colors group"
             >
               <p className="font-bold text-ako mb-1.5">Talk to a person</p>
-              <p className="text-whenua/70 text-sm">A 1-on-1 online kōrero with Lian or Lee. Under 18s welcome with parent or guardian consent.</p>
+              <p className="text-whenua/70 text-sm">A 1-on-1 online kōrero with Lian or Lee.</p>
               <p className="text-whenua/50 text-xs mt-1">~2 min to book, then a 30 min call</p>
             </button>
 
@@ -403,7 +389,6 @@ export default function ParticipationFlow() {
               <label className={labelClass}>Age Range</label>
               <select name="age_range" className={selectClass} onChange={handleInput} value={formData.age_range}>
                 <option value="">Select...</option>
-                <option value="under-18">Under 18</option>
                 <option value="18-24">18–24</option>
                 <option value="25-34">25–34</option>
                 <option value="35-44">35–44</option>
@@ -418,20 +403,6 @@ export default function ParticipationFlow() {
             </div>
           </div>
 
-          {formData.age_range === 'under-18' && (participationType === 'AI Conversation' || participationType === 'Written Form') && (
-            <div className="bg-white p-5 rounded-lg border border-ako/30 space-y-4">
-              <h3 className="font-bold text-whenua">Under 18?</h3>
-              <p className="text-sm text-whenua/80">
-                Participants under 18 require consent from a parent or guardian and can only take part through a 1-on-1 online session with Lian or Lee.
-              </p>
-              <a
-                href="/human"
-                className="inline-block bg-ako text-white font-bold py-3 px-6 rounded hover:bg-teal-700 transition-colors"
-              >
-                Book a 1-on-1 session →
-              </a>
-            </div>
-          )}
 
           <div>
             <label className={labelClass}>Are you planning to attend the online wānanga? (Thu 26 Feb, 6.30–8pm NZDT)</label>
@@ -456,11 +427,9 @@ export default function ParticipationFlow() {
             These details help us understand who is in the room. They are optional — share what feels comfortable. Nothing here affects your ability to participate.
           </p>
 
-          {!(isUnder18 && (participationType === 'AI Conversation' || participationType === 'Written Form')) && (
-            <button type="submit" className="w-full bg-ako text-white font-bold py-4 rounded hover:bg-teal-700 transition-colors shadow-md">
-              Next Step: Consent
-            </button>
-          )}
+          <button type="submit" className="w-full bg-ako text-white font-bold py-4 rounded hover:bg-teal-700 transition-colors shadow-md">
+            Next Step: Consent
+          </button>
         </form>
       )}
 
@@ -581,7 +550,7 @@ export default function ParticipationFlow() {
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">Your rights</span>
-                  <span className="text-sm text-whenua/60">Voluntary. Ongoing consent. Withdraw anytime. 18+ for AI.</span>
+                  <span className="text-sm text-whenua/60">Voluntary. Ongoing consent. Withdraw anytime. 18+ only.</span>
                 </div>
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
@@ -592,8 +561,7 @@ export default function ParticipationFlow() {
                   <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
                   <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform</li>
                   <li>You can participate in the AI conversation without attending the wānanga, or vice versa</li>
-                  <li>You must be 18 or older to use the AI agent or written form</li>
-                  <li>If you are under 18, you can only participate through a <a href="/human" className="text-ako underline">1-on-1 online session</a> with Lian or Lee, with parent or guardian consent</li>
+                  <li>You must be 18 or older to participate</li>
                   <li>Choosing not to participate has no consequences whatsoever</li>
                   <li>You can request access to, correction of, or deletion of your personal information at any time by emailing us</li>
                   <li>Your voice is classified as biometric information under New Zealand's Biometric Processing Privacy Code 2025. You have the right to make a complaint to the New Zealand Privacy Commissioner about how your biometric information is handled: <a href="https://privacy.org.nz" target="_blank" rel="noopener" className="text-ako underline">privacy.org.nz</a></li>
@@ -631,9 +599,7 @@ export default function ParticipationFlow() {
               { id: 'voluntary', text: 'I understand my participation is voluntary, consent is ongoing, and I can withdraw at any time' },
               { id: 'understand_ai', text: 'I understand the AI is a tool with limitations — it is not a person, teacher, or authority' },
               { id: 'research_use', text: "I consent to my anonymised insights being used in Lian Passmore's and Lee Palamo's master's research at AcademyEX, and in any public resource developed from this research" },
-              { id: 'age_confirm', text: formData.age_range === 'under-18'
-                ? 'I confirm I am under 18 and have provided my parent or guardian\'s contact details so they can give consent on my behalf'
-                : 'I confirm I am 18 years or older' },
+              { id: 'age_confirm', text: 'I confirm I am 18 years or older' },
               { id: 'ready', text: 'I am ready to begin' },
             ].map((item) => (
               <label key={item.id} className="flex items-start gap-3 cursor-pointer">

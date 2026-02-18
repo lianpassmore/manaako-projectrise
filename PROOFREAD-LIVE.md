@@ -66,7 +66,7 @@ Share your thoughts in writing, in your own time.
 → Go to form →
 
 **Card 3 — Talk to a person**
-30 min kōrero with Lian or Lee. Also available for under 18s.
+30 min kōrero with Lian or Lee.
 → Book →
 
 **Card 4 — Not sure yet**
@@ -226,14 +226,11 @@ Not everyone wants to talk to an AI, and that is completely fine — it is actua
 
 You can book a 30-minute conversation with Lian or Lee instead. We will cover the same territory as the AI conversation, just human to human.
 
-This option is also available for anyone under 18 who wants to participate.
-
 If you have already had a kōrero with a person and want to try the AI conversation as well, you are welcome to do that too.
 
 ### How this works
 
 - We will cover the same territory as the AI conversation, just human to human.
-- This option is available for anyone, including those under 18.
 - After your kōrero, you will receive the same wānanga invitation as everyone else.
 - If you have already had the AI conversation, this is a great way to go deeper or debrief.
 
@@ -282,7 +279,7 @@ ElevenLabs (US) processes your voice. Your audio goes to US servers. We've opted
 - Withdraw from our database up to two weeks after wānanga
 - We delete our copy within 3 years (or earlier on request)
 - ElevenLabs retains up to 3 years — we can't control that
-- Must be 18+ for the AI; under 18 can book a person
+- Must be 18+ to participate
 - Not participating has zero consequences
 
 ---
@@ -367,7 +364,7 @@ Pick whatever feels right. You can switch anytime.
 Share your thoughts in writing, in your own time.
 
 **Card 3 — Talk to a person**
-30 min kōrero with Lian or Lee. Also available for under 18s.
+30 min kōrero with Lian or Lee.
 
 **Card 4 — Not sure yet**
 Leave your details and we'll reach out.
@@ -388,14 +385,8 @@ Kia ora — before we begin, we need a few details. This takes about 60 seconds.
   - *This is how we will send your wānanga invitation.*
 - **Which best describes you?** — Select... / Te reo Māori learner / Te reo Māori speaker or practitioner / Educator or kaiako / Kaupapa Māori practitioner / Technology or AI professional / Researcher or academic / Community member / Other
 - **Which cultural identities do you connect with?** — *Placeholder: e.g. Māori, Samoan, Pākehā...*
-- **Age Range** — Select... / Under 18 / 18–24 / 25–34 / 35–44 / 45–54 / 55–64 / 65+
+- **Age Range** — Select... / 18–24 / 25–34 / 35–44 / 45–54 / 55–64 / 65+
 - **Where in Aotearoa are you based?** — *Placeholder: e.g. Hamilton, Tai Tokerau*
-
-**Under 18 section (if selected):**
-- Parent/Guardian Full Name *
-- Parent/Guardian Email *
-- Parent/Guardian Phone
-- *Because you're under 18, we need a parent or guardian's contact details so we can get their consent before you take part.*
 
 *These details help us understand who is in the room. They are optional — share what feels comfortable. Nothing here affects your ability to participate.*
 
@@ -403,7 +394,6 @@ Kia ora — before we begin, we need a few details. This takes about 60 seconds.
 
 **Errors:**
 - Please fill in the required fields (Name & Email).
-- Please provide your parent or guardian's name and email.
 
 ---
 
@@ -460,7 +450,7 @@ Our research protocols are separate from ElevenLabs' platform policies. You have
 Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and Paula Gair). Cultural advisors may review de-identified themes. All responses are anonymised before analysis — your name will not appear in any published work or public resource unless you specifically request attribution.
 
 #### Your rights
-*Summary: Voluntary. Ongoing consent. Withdraw anytime. 18+ for AI.*
+*Summary: Voluntary. Ongoing consent. Withdraw anytime. 18+ only.*
 
 - Participation is completely voluntary — and consent is ongoing, not a one-time decision
 - You can stop the conversation at any time — just close the browser
@@ -468,8 +458,7 @@ Lian and Lee (the researchers), and our academic supervisors (Felix Scholz and P
 - You can withdraw your data from our research database up to two weeks after the wānanga by emailing us
 - We will delete our copy of your transcript within 3 years of project completion, or earlier at your request
 - ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention
-- If you are under 18, you can participate with a parent or guardian's consent
-- If you prefer not to use AI, you can book a conversation with us directly
+- You must be 18 or older to participate
 - Choosing not to participate has no consequences whatsoever
 
 #### If something comes up
@@ -500,7 +489,7 @@ Lian and Lee are also available if you want to debrief: lianpassmore@gmail.com o
 3. I understand my participation is voluntary, consent is ongoing, and I can withdraw at any time
 4. I understand the AI is a tool with limitations — it is not a person, teacher, or authority
 5. I consent to my anonymised insights being used in Lian Passmore's and Lee Palamo's master's research at AcademyEX, and in any public resource developed from this research
-6. I confirm I am 18 years or older *(or: I confirm I am under 18 and have provided my parent or guardian's contact details)*
+6. I confirm I am 18 years or older
 7. I am ready to begin
 
 *By proceeding, you are giving informed consent as described above. You can revisit or change your mind about any part of this at any time. If you have any questions before starting, email lianpassmore@gmail.com or leepalamo275@gmail.com, or book a kōrero with us.*

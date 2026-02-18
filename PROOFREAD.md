@@ -69,7 +69,7 @@ Prefer to write? You can share your whakaaro in your own time through a written 
 → Go to the form →
 
 **Card 3 — Kōrero with Lian or Lee**
-Book a 30-minute conversation with a person. We will cover the same territory as the AI conversation, just human to human. This option is also available for anyone under 18.
+Book a 30-minute conversation with a person. We will cover the same territory as the AI conversation, just human to human.
 → Book 30 minutes →
 
 **Card 4 — Not sure? We'll reach out**
@@ -277,14 +277,11 @@ Not everyone wants to talk to an AI, and that is completely fine — it is actua
 
 You can book a 30-minute conversation with Lian or Lee instead. We will cover the same territory as the AI conversation, just human to human.
 
-This option is also available for anyone under 18 who wants to participate.
-
 If you have already had a kōrero with a person and want to try the AI conversation as well, you are welcome to do that too.
 
 ### How this works
 
 - We will cover the same territory as the AI conversation, just human to human.
-- This option is available for anyone, including those under 18.
 - After your kōrero, you will receive the same wānanga invitation as everyone else.
 - If you have already had the AI conversation, this is a great way to go deeper or debrief.
 
@@ -344,8 +341,7 @@ We have opted out of ElevenLabs using your data for AI model training. However, 
 - You can switch from the AI to a person, or from a person to the AI, at any point.
 - You can withdraw your data from our research database up to two weeks after the wānanga by emailing us.
 - You can participate in the AI conversation without attending the wānanga, or vice versa.
-- You must be 18 or older to use the AI agent.
-- If you are under 18 or prefer not to use AI, you can book a conversation with us directly.
+- You must be 18 or older to participate.
 - Choosing not to participate has no consequences whatsoever.
 
 *Note: We can delete our copy of your transcript, but we cannot force ElevenLabs to delete their processing logs. You have separate rights under their Terms of Service.*
@@ -517,8 +513,7 @@ You deserve to know exactly what you are agreeing to. This contradiction is real
 - We will delete our copy of your transcript within 3 years of project completion, or earlier at your request
 - ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform
 - You can participate in the AI conversation without attending the wānanga, or vice versa
-- You must be 18 or older to use the AI agent
-- If you are under 18 or prefer not to use AI, you can book a conversation with us directly instead
+- You must be 18 or older to participate
 - Choosing not to participate has no consequences whatsoever
 
 #### WHAT IS IN IT FOR YOU
