@@ -87,7 +87,7 @@ export default function AgentConversation({
           </p>
         )}
         <p className="text-[11px] text-crisis/70 font-medium max-w-xs mx-auto leading-relaxed">
-          This is an AI tool, not a person. It can make mistakes, miss nuance, or get things wrong.
+          This is an AI tool, not a person. It can make mistakes, miss nuance, or get things wrong. Its pronunciation of te reo Māori may not be accurate.
         </p>
       </div>
 

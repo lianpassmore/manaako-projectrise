@@ -655,6 +655,9 @@ export default function ParticipationFlow() {
               <p className="mt-4">
                 The AI is a tool. It can make mistakes, miss nuance, or respond in ways that feel off. That is okay — noticing those moments is part of what makes your experience valuable to this research.
               </p>
+              <p className="mt-4">
+                The AI's pronunciation of te reo Māori may not be accurate. This is a known limitation of the technology and does not reflect the mana of the language.
+              </p>
             </div>
 
             <div>
