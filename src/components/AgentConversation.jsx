@@ -2,6 +2,11 @@ import React, { useState, useCallback } from 'react';
 import { useConversation } from '@elevenlabs/react';
 import AnimatedOrb from './AnimatedOrb';
 
+function isInAppBrowser() {
+  const ua = navigator.userAgent || '';
+  return /FBAN|FBAV|Instagram|Messenger|Line\/|Twitter|Snapchat|WhatsApp|MicroMessenger/i.test(ua);
+}
+
 export default function AgentConversation({
   agentId = import.meta.env.PUBLIC_ELEVENLABS_AGENT,
   firstName = 'Friend',
@@ -11,6 +16,7 @@ export default function AgentConversation({
   const [started, setStarted] = useState(false);
   const [muted, setMuted] = useState(false);
   const [error, setError] = useState(null);
+  const inApp = typeof navigator !== 'undefined' && isInAppBrowser();
 
   const conversation = useConversation({
     onError: (err) => {
@@ -26,7 +32,7 @@ export default function AgentConversation({
       await navigator.mediaDevices.getUserMedia({ audio: true });
     } catch (err) {
       console.error('Mic access error:', err);
-      setError("Microphone access denied. Please check your browser settings and try again.");
+      setError("Microphone access denied. Please allow microphone access in your browser settings, or try opening this page in Safari or Chrome.");
       return;
     }
     try {
@@ -59,6 +65,30 @@ export default function AgentConversation({
 
   const isSpeaking = conversation.isSpeaking;
   const isConnected = conversation.status === 'connected';
+
+  if (inApp) {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    return (
+      <div className="flex flex-col items-center gap-6 py-10 px-4 text-center">
+        <p className="text-crisis font-bold text-lg">
+          Please open this link in Safari or Chrome
+        </p>
+        <p className="text-whenua/80 text-sm max-w-xs leading-relaxed">
+          The in-app browser (e.g. Messenger, Instagram) does not support microphone access. Tap the button below to copy the link, then paste it in Safari or Chrome.
+        </p>
+        <button
+          onClick={() => {
+            navigator.clipboard?.writeText(url);
+            alert('Link copied! Open Safari or Chrome and paste it in the address bar.');
+          }}
+          className="px-6 py-3 rounded-full font-bold text-sm bg-ako text-white hover:bg-ako/90 transition-all"
+        >
+          Copy Link
+        </button>
+        <p className="text-whenua/50 text-xs break-all max-w-xs">{url}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-6 py-10">
