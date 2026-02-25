@@ -178,7 +178,7 @@ export default function ParticipationFlow() {
   // Step 2 -> 3 (or 4 for non-AI paths): Save to Supabase
 
   const submitConsent = async () => {
-    const allChecked = Object.values(consents).every(val => val === true);
+    const allChecked = consentItems.every(item => consents[item.id] === true);
     if (!allChecked) {
       setError("Please confirm all consent checkboxes to proceed.");
       return;
@@ -260,6 +260,22 @@ export default function ParticipationFlow() {
       setFeedbackSubmitted(true);
     }
   };
+
+  const isAI = participationType === 'AI Conversation';
+
+  const consentItems = [
+    { id: 'understand_process', text: isAI
+      ? 'I understand what this research involves and how my data will be processed, including by ElevenLabs under their Terms of Service'
+      : 'I understand what this research involves and how my data will be used' },
+    { id: 'understand_recording', text: isAI
+      ? 'I understand my conversation will be recorded, transcribed, and stored for research purposes'
+      : 'I understand my responses will be stored and used for research purposes' },
+    { id: 'voluntary', text: 'I understand my participation is voluntary, consent is ongoing, and I can withdraw at any time' },
+    ...(isAI ? [{ id: 'understand_ai', text: 'I understand the AI is a tool with limitations — it is not a person, teacher, or authority' }] : []),
+    { id: 'research_use', text: "I consent to my anonymised insights being used in Lian Passmore's and Lee Palamo's master's research at AcademyEX, and in any public resource developed from this research" },
+    { id: 'age_confirm', text: 'I confirm I am 18 years or older' },
+    { id: 'ready', text: 'I am ready to begin' },
+  ];
 
   const inputClass = "w-full bg-transparent border-b border-whenua/20 py-3 text-lg text-whenua focus:border-ako focus:outline-none transition-colors placeholder-whenua/20";
   const selectClass = "w-full bg-rauhuia border-b border-whenua/20 py-3 text-lg text-whenua focus:border-ako focus:outline-none transition-colors";
@@ -449,59 +465,72 @@ export default function ParticipationFlow() {
                 <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
                 <div>
                   <span className="font-bold text-whenua block">What this involves</span>
-                  <span className="text-sm text-whenua/60">10–15 min voice conversation with an AI using Lian's voice, then an online wānanga.</span>
+                  <span className="text-sm text-whenua/60">{isAI ? '10–15 min voice conversation with an AI using Lian\'s voice, then an online wānanga.' : '4 open-ended written questions, then an online wānanga.'}</span>
                 </div>
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>You will have a 10 to 15 minute voice conversation with a conversational AI agent. It uses Lian's voice and will ask you about safety, vulnerability, and cultural considerations around conversational AI. After the conversation, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group. The wānanga will be recorded for research purposes only — the recording will not be shared.</p>
-                <p>If at any point during the AI conversation you would prefer to talk to a person instead, you can stop and book a kōrero with Lian or Lee. The same applies in reverse.</p>
+                {isAI ? (
+                  <>
+                    <p>You will have a 10 to 15 minute voice conversation with a conversational AI agent. It uses Lian's voice and will ask you about safety, vulnerability, and cultural considerations around conversational AI. After the conversation, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group. The wānanga will be recorded for research purposes only — the recording will not be shared.</p>
+                    <p>If at any point during the AI conversation you would prefer to talk to a person instead, you can stop and book a kōrero with Lian or Lee. The same applies in reverse.</p>
+                  </>
+                ) : (
+                  <>
+                    <p>You will answer 4 open-ended questions exploring themes of safety, vulnerability, and cultural considerations around conversational AI. You can take as long as you like. After completing the form, you will be invited to an online wānanga on Thursday 26 February, 6.30pm to 8pm NZDT, where we explore these themes as a group. The wānanga will be recorded for research purposes only — the recording will not be shared.</p>
+                    <p>Your written responses do not involve any AI processing or voice recording. Your answers are stored securely and used for research analysis only.</p>
+                  </>
+                )}
               </div>
             </details>
 
-            <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
-                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
-                <div>
-                  <span className="font-bold text-whenua block">About the AI</span>
-                  <span className="text-sm text-whenua/60">This is a tool, not a person. It makes mistakes. That's part of what we're studying.</span>
-                </div>
-              </summary>
-              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>This is a conversational AI. It uses Lian's voice, but it is not Lian. It is not a person, a teacher, a therapist, or an authority on anything. It is a tool — and like all tools, it has limitations.</p>
-                <p>The AI can make mistakes. It may misunderstand what you say, respond in ways that do not quite fit, or miss nuance that a person would catch. It does not hold cultural knowledge the way a person does. It cannot read your body language or your silence. It does not remember you between sessions.</p>
-                <p>We are not presenting it as something it is not. Part of what this research explores is exactly where AI works and where it falls short — and your experience of those edges is some of the most valuable data we will collect.</p>
-              </div>
-            </details>
+            {isAI && (
+              <>
+                <details className="group border-b border-kakahu/20">
+                  <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
+                    <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                    <div>
+                      <span className="font-bold text-whenua block">About the AI</span>
+                      <span className="text-sm text-whenua/60">This is a tool, not a person. It makes mistakes. That's part of what we're studying.</span>
+                    </div>
+                  </summary>
+                  <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                    <p>This is a conversational AI. It uses Lian's voice, but it is not Lian. It is not a person, a teacher, a therapist, or an authority on anything. It is a tool — and like all tools, it has limitations.</p>
+                    <p>The AI can make mistakes. It may misunderstand what you say, respond in ways that do not quite fit, or miss nuance that a person would catch. It does not hold cultural knowledge the way a person does. It cannot read your body language or your silence. It does not remember you between sessions.</p>
+                    <p>We are not presenting it as something it is not. Part of what this research explores is exactly where AI works and where it falls short — and your experience of those edges is some of the most valuable data we will collect.</p>
+                  </div>
+                </details>
 
-            <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
-                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
-                <div>
-                  <span className="font-bold text-whenua block">How your voice is processed</span>
-                  <span className="text-sm text-whenua/60">Processed by ElevenLabs (US). We've opted out of training. Full terms linked.</span>
-                </div>
-              </summary>
-              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>When you speak to the AI agent, your voice and words are processed by ElevenLabs, a US-based voice AI company. Your conversation is sent to their servers in the United States. All data is transferred to and stored in the United States, regardless of your location.</p>
-                <p>We have opted out of ElevenLabs using your data for AI model training. However, by using the agent, your conversation is subject to ElevenLabs' <a href="https://elevenlabs.io/terms-of-use" target="_blank" rel="noopener" className="text-ako underline">Terms of Service</a>, which grants them a broad, perpetual license to use conversation data to provide and improve their services. We cannot revoke this license after the fact.</p>
-                <p>ElevenLabs also reserves the right to moderate conversations for safety purposes, which means their staff or contractors may access your conversation content.</p>
-              </div>
-            </details>
+                <details className="group border-b border-kakahu/20">
+                  <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
+                    <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                    <div>
+                      <span className="font-bold text-whenua block">How your voice is processed</span>
+                      <span className="text-sm text-whenua/60">Processed by ElevenLabs (US). We've opted out of training. Full terms linked.</span>
+                    </div>
+                  </summary>
+                  <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                    <p>When you speak to the AI agent, your voice and words are processed by ElevenLabs, a US-based voice AI company. Your conversation is sent to their servers in the United States. All data is transferred to and stored in the United States, regardless of your location.</p>
+                    <p>We have opted out of ElevenLabs using your data for AI model training. However, by using the agent, your conversation is subject to ElevenLabs' <a href="https://elevenlabs.io/terms-of-use" target="_blank" rel="noopener" className="text-ako underline">Terms of Service</a>, which grants them a broad, perpetual license to use conversation data to provide and improve their services. We cannot revoke this license after the fact.</p>
+                    <p>ElevenLabs also reserves the right to moderate conversations for safety purposes, which means their staff or contractors may access your conversation content.</p>
+                  </div>
+                </details>
 
-            <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
-                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
-                <div>
-                  <span className="font-bold text-whenua block">Your voice as biometric information</span>
-                  <span className="text-sm text-whenua/60">Your voice is classified as biometric information under NZ law. We explain why we collect it and what that means.</span>
-                </div>
-              </summary>
-              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>Under New Zealand's Biometric Processing Privacy Code 2025, your voice is classified as biometric information — some of the most sensitive personal data there is. We take this seriously.</p>
-                <p>We use voice because this research specifically investigates how people experience conversational AI in vulnerable contexts. Text alone would not generate the same insights — the nuance, hesitation, emotion, and instinct that voice carries is central to what we are studying. We have assessed that this research purpose justifies the collection of voice data, and that no lower-privacy-risk alternative would achieve the same result.</p>
-                <p>By consenting to participate, you are authorising the cross-border transfer of your personal information (including voice data) to ElevenLabs in the United States for processing, as described above. This authorisation is made in accordance with Information Privacy Principle 12 of New Zealand's Privacy Act 2020.</p>
-              </div>
-            </details>
+                <details className="group border-b border-kakahu/20">
+                  <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
+                    <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                    <div>
+                      <span className="font-bold text-whenua block">Your voice as biometric information</span>
+                      <span className="text-sm text-whenua/60">Your voice is classified as biometric information under NZ law. We explain why we collect it and what that means.</span>
+                    </div>
+                  </summary>
+                  <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                    <p>Under New Zealand's Biometric Processing Privacy Code 2025, your voice is classified as biometric information — some of the most sensitive personal data there is. We take this seriously.</p>
+                    <p>We use voice because this research specifically investigates how people experience conversational AI in vulnerable contexts. Text alone would not generate the same insights — the nuance, hesitation, emotion, and instinct that voice carries is central to what we are studying. We have assessed that this research purpose justifies the collection of voice data, and that no lower-privacy-risk alternative would achieve the same result.</p>
+                    <p>By consenting to participate, you are authorising the cross-border transfer of your personal information (including voice data) to ElevenLabs in the United States for processing, as described above. This authorisation is made in accordance with Information Privacy Principle 12 of New Zealand's Privacy Act 2020.</p>
+                  </div>
+                </details>
+              </>
+            )}
 
             <details className="group border-b border-kakahu/20">
               <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
@@ -512,25 +541,31 @@ export default function ParticipationFlow() {
                 </div>
               </summary>
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p>Your conversation transcript is stored in ElevenLabs. We download it from there for analysis as part of both Lian's and Lee's master's research projects at AcademyEX. Your registration details are stored separately in Supabase (Sydney, Australia) with row-level security.</p>
+                {isAI ? (
+                  <p>Your conversation transcript is stored in ElevenLabs. We download it from there for analysis as part of both Lian's and Lee's master's research projects at AcademyEX. Your registration details are stored separately in Supabase (Sydney, Australia) with row-level security.</p>
+                ) : (
+                  <p>Your written responses are stored securely in Supabase (Sydney, Australia) with row-level security, and analysed as part of both Lian's and Lee's master's research projects at AcademyEX.</p>
+                )}
                 <p>All data used in our research will be anonymised — your name and identifying details will be removed before analysis or publication. Anonymised insights and themes from this research may also be used to develop a public-facing resource (such as a report or guide) to share what we have learned about designing conversational AI for vulnerable and culturally significant spaces.</p>
               </div>
             </details>
 
-            <details className="group border-b border-kakahu/20">
-              <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
-                <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
-                <div>
-                  <span className="font-bold text-whenua block">Two layers of data control</span>
-                  <span className="text-sm text-whenua/60">We control the research use. ElevenLabs controls the tech processing.</span>
+            {isAI && (
+              <details className="group border-b border-kakahu/20">
+                <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
+                  <span className="text-ako mt-0.5 shrink-0 transition-transform duration-300 group-open:rotate-90">▶</span>
+                  <div>
+                    <span className="font-bold text-whenua block">Two layers of data control</span>
+                    <span className="text-sm text-whenua/60">We control the research use. ElevenLabs controls the tech processing.</span>
+                  </div>
+                </summary>
+                <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
+                  <p><strong>Lian and Lee</strong> control how your conversation content is used for research purposes — what gets analysed and how findings are shared. Your registration data is in Supabase; transcripts are downloaded from ElevenLabs. You can ask us to delete your registration data at any time.</p>
+                  <p><strong>ElevenLabs</strong> controls the technical processing and storage of your voice recordings on their platform. Their retention and usage policies are governed by their own Terms of Service.</p>
+                  <p>Our research protocols are separate from ElevenLabs' platform policies. You have rights under both.</p>
                 </div>
-              </summary>
-              <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
-                <p><strong>Lian and Lee</strong> control how your conversation content is used for research purposes — what gets analysed and how findings are shared. Your registration data is in Supabase; transcripts are downloaded from ElevenLabs. You can ask us to delete your registration data at any time.</p>
-                <p><strong>ElevenLabs</strong> controls the technical processing and storage of your voice recordings on their platform. Their retention and usage policies are governed by their own Terms of Service.</p>
-                <p>Our research protocols are separate from ElevenLabs' platform policies. You have rights under both.</p>
-              </div>
-            </details>
+              </details>
+            )}
 
             <details className="group border-b border-kakahu/20">
               <summary className="flex items-start gap-3 p-4 cursor-pointer hover:bg-white transition-colors">
@@ -556,15 +591,15 @@ export default function ParticipationFlow() {
               <div className="px-4 pb-4 pl-10 text-sm text-whenua/80 space-y-3">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>Participation is completely voluntary</li>
-                  <li>You can stop the conversation at any time — just close the browser</li>
+                  <li>{isAI ? 'You can stop the conversation at any time — just close the browser' : 'You can stop at any time — just close the browser'}</li>
                   <li>You can withdraw your data from our research database up to two weeks after the wānanga by emailing us</li>
-                  <li>We will delete our copy of your transcript within 3 years of project completion, or earlier at your request</li>
-                  <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform</li>
-                  <li>You can participate in the AI conversation without attending the wānanga, or vice versa</li>
+                  <li>{isAI ? 'We will delete our copy of your transcript within 3 years of project completion, or earlier at your request' : 'We will delete your responses within 3 years of project completion, or earlier at your request'}</li>
+                  {isAI && <li>ElevenLabs retains voice data for up to 3 years after last interaction — we cannot control their retention or use of data already processed through their platform</li>}
+                  <li>{isAI ? 'You can participate in the AI conversation without attending the wānanga, or vice versa' : 'You can complete the written form without attending the wānanga, or vice versa'}</li>
                   <li>You must be 18 or older to participate</li>
                   <li>Choosing not to participate has no consequences whatsoever</li>
                   <li>You can request access to, correction of, or deletion of your personal information at any time by emailing us</li>
-                  <li>Your voice is classified as biometric information under New Zealand's Biometric Processing Privacy Code 2025. You have the right to make a complaint to the New Zealand Privacy Commissioner about how your biometric information is handled: <a href="https://privacy.org.nz" target="_blank" rel="noopener" className="text-ako underline">privacy.org.nz</a></li>
+                  {isAI && <li>Your voice is classified as biometric information under New Zealand's Biometric Processing Privacy Code 2025. You have the right to make a complaint to the New Zealand Privacy Commissioner about how your biometric information is handled: <a href="https://privacy.org.nz" target="_blank" rel="noopener" className="text-ako underline">privacy.org.nz</a></li>}
                 </ul>
               </div>
             </details>
@@ -593,15 +628,7 @@ export default function ParticipationFlow() {
 
           {/* Consent Checkboxes */}
           <div className="space-y-3 pt-4 border-t border-kakahu/30">
-            {[
-              { id: 'understand_process', text: 'I understand what this research involves and how my data will be processed, including by ElevenLabs under their Terms of Service' },
-              { id: 'understand_recording', text: 'I understand my conversation will be recorded, transcribed, and stored for research purposes' },
-              { id: 'voluntary', text: 'I understand my participation is voluntary, consent is ongoing, and I can withdraw at any time' },
-              { id: 'understand_ai', text: 'I understand the AI is a tool with limitations — it is not a person, teacher, or authority' },
-              { id: 'research_use', text: "I consent to my anonymised insights being used in Lian Passmore's and Lee Palamo's master's research at AcademyEX, and in any public resource developed from this research" },
-              { id: 'age_confirm', text: 'I confirm I am 18 years or older' },
-              { id: 'ready', text: 'I am ready to begin' },
-            ].map((item) => (
+            {consentItems.map((item) => (
               <label key={item.id} className="flex items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"

@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ConsentForm from '../components/ConsentForm.jsx';
+import CrisisModal from '../components/CrisisModal.jsx';
+---
+
+<Layout title="Consent | Mana Ako x Project Rise">
+  <section class="min-h-screen py-10 md:py-12 px-4 md:px-6 bg-rauhuia relative overflow-hidden">
+    <div class="absolute -top-10 -left-20 w-[250px] h-[250px] md:w-[350px] md:h-[350px] pointer-events-none opacity-[0.05]" style="background-image: url('/Poutama.svg'); background-size: contain; background-repeat: no-repeat;"></div>
+    <div class="max-w-4xl mx-auto text-center mb-8 md:mb-10 relative z-10">
+      <h1 class="text-3xl md:text-5xl text-whenua mb-3 md:mb-4">Wānanga Consent</h1>
+      <p class="text-lg md:text-xl text-whenua/80">Record your consent before the wānanga.</p>
+    </div>
+
+    <ConsentForm client:only="react" />
+
+  </section>
+
+  <CrisisModal client:load />
+
+</Layout>
