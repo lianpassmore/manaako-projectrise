@@ -12,6 +12,7 @@ export default function AgentConversation({
   firstName = 'Friend',
   lastName = '',
   participantId = '',
+  reflectionMode = false,
 }) {
   const [started, setStarted] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -43,6 +44,7 @@ export default function AgentConversation({
           first_name: firstName,
           last_name: lastName,
           participant_id: participantId,
+          reflection_mode: reflectionMode ? 'true' : 'false',
         },
       });
       setStarted(true);
