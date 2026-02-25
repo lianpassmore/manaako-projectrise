@@ -1,45 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CrisisModal from '../components/CrisisModal.jsx';
-import ReflectionForm from '../components/ReflectionForm.jsx';
-import ReflectionAgent from '../components/ReflectionAgent.jsx';
+import ReflectionGate from '../components/ReflectionGate.jsx';
 ---
 
 <Layout title="Final Reflections | Mana Ako x Project Rise">
 
   <section class="min-h-screen py-10 md:py-12 px-4 md:px-6 bg-rauhuia">
     <div class="max-w-4xl mx-auto text-center mb-8 md:mb-10">
-      <h1 class="text-3xl md:text-5xl text-whenua mb-4 md:mb-6 font-bold">Final reflections</h1>
+      <h1 class="text-3xl md:text-5xl text-whenua mb-4 md:mb-6 font-bold">Final Reflections — When Culture Meets AI Wānanga</h1>
       <p class="text-lg md:text-xl text-whenua/80 max-w-2xl mx-auto leading-relaxed">
-        You have just spent 90 minutes in kōrero with a room full of people thinking deeply about these questions. Before you go, we would love to capture where you have landed.
+        Ngā mihi nui for being part of tonight's wānanga. Your voice shaped the conversation, and now we'd love to hear what's sitting with you after our time together.
       </p>
       <p class="text-base md:text-lg text-whenua/60 max-w-2xl mx-auto mt-3 md:mt-4">
-        You can either talk to the AI again (same voice, shorter conversation — about 5 minutes) or fill in a written form below. Whatever feels right.
+        This should take about 5 minutes. Your responses will help Lian and Lee understand what landed, what shifted, and what matters most as they continue this mahi.
+      </p>
+      <p class="text-base md:text-lg text-whenua/60 max-w-2xl mx-auto mt-3 md:mt-4">
+        <strong>Prefer to talk it through?</strong> You can have a voice conversation with the AI instead.
       </p>
     </div>
 
-    <!-- The Switching Interface -->
-    <div class="max-w-3xl mx-auto bg-white/60 p-1 rounded-lg border border-kakahu/30 flex mb-6 md:mb-8">
-      <a href="#talk" class="flex-1 py-3 text-center rounded font-bold text-whenua hover:bg-white transition-colors" onclick="document.getElementById('mode-write').style.display='none'; document.getElementById('mode-talk').style.display='block';">
-        Talk to the AI
-      </a>
-      <a href="#write" class="flex-1 py-3 text-center rounded font-bold text-whenua hover:bg-white transition-colors" onclick="document.getElementById('mode-talk').style.display='none'; document.getElementById('mode-write').style.display='block';">
-        Write your reflections
-      </a>
-    </div>
-
-    <!-- MODE A: TALK -->
-    <div id="mode-talk" class="max-w-3xl mx-auto bg-white p-5 md:p-8 rounded-lg shadow-sm border border-kakahu/20 text-center animate-fade-in">
-        <h2 class="text-xl md:text-2xl font-bold text-whenua mb-3 md:mb-4">Kōrero with Ray (Reflection Mode)</h2>
-        <p class="text-whenua/80 mb-6 md:mb-8 text-sm md:text-base">This is a shorter conversation (about 5 minutes) to capture your immediate thoughts.</p>
-        <ReflectionAgent client:only="react" />
-    </div>
-
-    <!-- MODE B: WRITE -->
-    <div id="mode-write" class="hidden max-w-3xl mx-auto bg-white p-5 md:p-8 rounded-lg shadow-sm border border-kakahu/20 animate-fade-in">
-        <ReflectionForm client:load />
-    </div>
-
+    <ReflectionGate client:only="react" />
   </section>
 
   <CrisisModal client:load />
