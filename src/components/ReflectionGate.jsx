@@ -210,7 +210,7 @@ export default function ReflectionGate() {
               className="w-full bg-white border-2 border-whenua text-whenua font-bold py-4 rounded-lg hover:bg-whenua hover:text-rauhuia transition"
             >
               Talk to the AI
-              <span className="block text-xs font-normal mt-1 opacity-70">~5 minute voice conversation with Ray</span>
+              <span className="block text-xs font-normal mt-1 opacity-70">~5 minute voice conversation with Lian's Digital Voice</span>
             </button>
 
             <button
@@ -406,7 +406,7 @@ export default function ReflectionGate() {
   if (step === 'talk') {
     return (
       <div className="max-w-3xl mx-auto bg-white p-5 md:p-8 rounded-lg shadow-sm border border-kakahu/20 text-center animate-fade-in">
-        <h2 className="text-xl md:text-2xl font-bold text-whenua mb-3 md:mb-4">Korero with Ray (Reflection Mode)</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-whenua mb-3 md:mb-4">Kōrero with Lian's Digital Voice (Reflection Mode)</h2>
         <p className="text-whenua/80 mb-6 md:mb-8 text-sm md:text-base">This is a shorter conversation (about 5 minutes) to capture your immediate thoughts.</p>
         <ReflectionAgent
           firstName={participant.firstName}

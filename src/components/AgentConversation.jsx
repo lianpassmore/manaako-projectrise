@@ -44,7 +44,7 @@ export default function AgentConversation({
           first_name: firstName,
           last_name: lastName,
           participant_id: participantId,
-          reflection_mode: reflectionMode ? 'true' : 'false',
+          reflection_mode: (typeof window !== 'undefined' && window.location.pathname.includes('/reflections')) ? 'true' : 'false',
         },
       });
       setStarted(true);
