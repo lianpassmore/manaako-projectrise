@@ -412,6 +412,27 @@ export default function ReflectionGate() {
           firstName={participant.firstName}
           lastName={participant.lastName}
           participantId={participant.participantId || ''}
+          onUnavailable={() => setStep('agent-unavailable')}
+        />
+      </div>
+    );
+  }
+
+  if (step === 'agent-unavailable') {
+    return (
+      <div className="max-w-3xl mx-auto bg-white p-5 md:p-8 rounded-lg shadow-sm border border-kakahu/20 animate-fade-in">
+        <div className="text-center mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-whenua mb-3">Aroha mai — our voice agent is temporarily unavailable</h2>
+          <p className="text-whenua/80 text-sm md:text-base max-w-lg mx-auto">
+            We've had so much amazing kōrero that our voice agent has run out of credits for now. That's actually a beautiful problem to have — it means your community showed up.
+          </p>
+          <p className="text-whenua/70 text-sm mt-4 max-w-lg mx-auto">
+            Please complete your reflections using the written form below instead. Your voice still matters, even in writing.
+          </p>
+        </div>
+        <ReflectionForm
+          email={participant.email}
+          firstName={participant.firstName}
         />
       </div>
     );

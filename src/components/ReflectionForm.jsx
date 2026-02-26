@@ -92,21 +92,21 @@ export default function ReflectionForm({ email: emailProp, firstName: firstNameP
                 <h3 className="text-lg font-bold text-whenua border-b border-kakahu/30 pb-2">Core Reflections</h3>
 
                 <div>
-                    <label className="block font-bold text-whenua mb-1">What shifted for you tonight? <span className="text-crisis">*</span></label>
+                    <label className="block font-bold text-whenua mb-1">What shifted for you tonight?</label>
                     <p className="text-whenua/60 text-sm mb-2">Think about how you felt coming in versus how you feel now. What's different? What changed?</p>
-                    <textarea name="what_shifted" rows="4" required className="w-full p-3 border border-kakahu rounded"></textarea>
+                    <textarea name="what_shifted" rows="4" className="w-full p-3 border border-kakahu rounded"></textarea>
                 </div>
 
                 <div>
-                    <label className="block font-bold text-whenua mb-1">What's one thing you're holding from tonight's conversation that you want to keep thinking about? <span className="text-crisis">*</span></label>
+                    <label className="block font-bold text-whenua mb-1">What's one thing you're holding from tonight's conversation that you want to keep thinking about?</label>
                     <p className="text-whenua/60 text-sm mb-2">We covered a lot of ground. What's sitting with you? What do you want to keep exploring?</p>
-                    <textarea name="what_holding" rows="4" required className="w-full p-3 border border-kakahu rounded"></textarea>
+                    <textarea name="what_holding" rows="4" className="w-full p-3 border border-kakahu rounded"></textarea>
                 </div>
 
                 <div>
-                    <label className="block font-bold text-whenua mb-1">If Lian and Lee are building AI for vulnerable spaces, what's the ONE thing you'd tell them based on tonight? <span className="text-crisis">*</span></label>
+                    <label className="block font-bold text-whenua mb-1">If Lian and Lee are building AI for vulnerable spaces, what's the ONE thing you'd tell them based on tonight?</label>
                     <p className="text-whenua/60 text-sm mb-2">You've been part of a conversation most people haven't had yet. What matters most for them to remember?</p>
-                    <textarea name="what_matters_most" rows="4" required className="w-full p-3 border border-kakahu rounded"></textarea>
+                    <textarea name="what_matters_most" rows="4" className="w-full p-3 border border-kakahu rounded"></textarea>
                 </div>
             </div>
 

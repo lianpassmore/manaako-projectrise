@@ -13,6 +13,7 @@ export default function AgentConversation({
   lastName = '',
   participantId = '',
   reflectionMode = false,
+  onUnavailable = null,
 }) {
   const [started, setStarted] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -24,6 +25,7 @@ export default function AgentConversation({
       console.error('ElevenLabs error:', err);
       setError("Unable to connect to the agent. Please try refreshing the page.");
       setStarted(false);
+      if (onUnavailable) onUnavailable();
     },
   });
 
@@ -51,6 +53,7 @@ export default function AgentConversation({
     } catch (err) {
       console.error('ElevenLabs session error:', err);
       setError("Unable to connect to the agent. Please try refreshing the page.");
+      if (onUnavailable) onUnavailable();
     }
   }, [conversation, agentId, firstName, lastName, participantId]);
 

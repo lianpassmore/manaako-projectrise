@@ -53,6 +53,7 @@ export default function ParticipationFlow() {
     anything_else: '',
   });
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [agentUnavailable, setAgentUnavailable] = useState(false);
 
   // Written Form State
   const [formAnswers, setFormAnswers] = useState({});
@@ -720,7 +721,7 @@ export default function ParticipationFlow() {
       )}
 
       {/* STEP 4: ELEVENLABS CONVERSATION */}
-      {step === 4 && (
+      {step === 4 && !agentUnavailable && (
         <div className="text-center space-y-6 animate-fade-in">
           <h2 className="text-3xl font-serif text-whenua mb-2">Kōrero with the AI Agent</h2>
 
@@ -730,6 +731,7 @@ export default function ParticipationFlow() {
               firstName={formData.first_name}
               lastName={formData.last_name}
               participantId={participantId}
+              onUnavailable={() => setAgentUnavailable(true)}
             />
           </div>
 
@@ -740,6 +742,63 @@ export default function ParticipationFlow() {
             >
               I have finished the conversation →
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 4 FALLBACK: AGENT UNAVAILABLE */}
+      {step === 4 && agentUnavailable && (
+        <div className="space-y-8 animate-fade-in">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-whenua mb-3">Aroha mai — our voice agent is temporarily unavailable</h2>
+            <p className="text-whenua/80 text-base max-w-lg mx-auto">
+              We've had so much amazing kōrero that our voice agent has run out of credits for now. That's actually a beautiful problem to have — it means your community showed up.
+            </p>
+            <p className="text-whenua/70 text-sm mt-4 max-w-lg mx-auto">
+              Please complete your reflections using the written form below instead. Your voice still matters, even in writing.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 md:p-10 rounded-lg border border-kakahu/20">
+            {writtenQuestions.map((question, i) => (
+              <div key={i} className="mb-6">
+                <label className="block font-bold text-whenua mb-2">{question}</label>
+                <textarea
+                  rows="4"
+                  className="w-full p-3 border border-kakahu rounded resize-y"
+                  value={formAnswers[i] || ''}
+                  onChange={(e) => setFormAnswers({ ...formAnswers, [i]: e.target.value })}
+                />
+              </div>
+            ))}
+
+            <button
+              onClick={async () => {
+                const answered = Object.values(formAnswers).filter(a => a && a.trim()).length;
+                if (answered === 0) { setError("Please answer at least one question."); return; }
+                setLoading(true);
+                setError(null);
+                try {
+                  await supabase.from('written_responses').insert([{
+                    participant_id: participantId,
+                    responses: Object.fromEntries(
+                      writtenQuestions.map((q, i) => [`q${i + 1}`, formAnswers[i] || ''])
+                    ),
+                    submitted_at: new Date().toISOString(),
+                  }]);
+                  setStep(5);
+                  window.scrollTo(0, 0);
+                } catch (err) {
+                  setError("Unable to save. Please try again.");
+                }
+                setLoading(false);
+              }}
+              disabled={loading}
+              className="w-full bg-whenua text-rauhuia font-bold py-3 rounded hover:bg-papa transition disabled:opacity-50"
+            >
+              {loading ? "Sending..." : "Submit reflections"}
+            </button>
+            {error && <p className="text-crisis text-sm mt-2">{error}</p>}
           </div>
         </div>
       )}
