@@ -1,0 +1,2005 @@
+---
+// src/pages/tikanga-framework.astro
+// If you use a global Layout component, you can replace the <html>, <head>, and <body> tags
+// with your <Layout> wrapper, keeping the <main class="tikanga-framework-wrapper"> inside it.
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tikanga-Led Framework for Conversational AI Agents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<main class="tikanga-framework-wrapper">
+  <!-- =============================================
+       HERO / COVER
+  ============================================= -->
+  <section class="hero" style="border-bottom:1px solid var(--border-light);">
+    <div class="page-wrap">
+      <div class="badge">V1.1 — April 2026</div>
+      <h1>Tikanga-Led Framework for Conversational AI Agents<span class="brand-dot">.</span></h1>
+      <p class="hero-tagline">A builder's compass. Not a checklist. Move through it with intention.</p>
+
+      <div class="citation-block">
+        Built on Dr Karaitiana Taiuru's Kaupapa Māori AI Framework (He Tangata, He Karetao, He Ātārangi), used with permission. Grounded in Te Mana Raraunga data sovereignty principles and the Kei Compass, adapted from Dell (2025). Evidence from 600+ conversations across four builds at increasing vulnerability levels.
+      </div>
+
+      <div class="stop-notice" style="margin-top:2rem;">
+        <div class="stop-label">Before you begin</div>
+        <p>You can stop at any point. Not building is a valid outcome.</p>
+        <p style="font-size:0.875rem;font-weight:400;">The framework does not assume proceeding is always right. If the questions raised in Phase 1 cannot be answered with confidence, stopping is the most honest and responsible path. If you can't explain why you're building it, who shaped it, what it's allowed to do, and who can control it, you're not ready to build it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ABOUT THIS FRAMEWORK
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="badge">About this framework</div>
+      <h2>Where this came from<span class="brand-dot">.</span></h2>
+      <p class="lead" style="margin-bottom:1.5rem;">Two researchers. Two builds. One shared wall they kept hitting.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;" class="not-grid">
+        <div style="background:var(--pure-white);border:1px solid var(--border-light);padding:1.5rem;">
+          <p style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--violet);margin-bottom:0.75rem;">Lian Passmore</p>
+          <p style="font-weight:700;color:var(--rich-black);margin-bottom:0.5rem;font-size:0.95rem;">Project Rise — Ray</p>
+          <p style="font-size:0.875rem;">Moana Tiriti researcher. Born in Auckland, raised in Te Tai Tokerau, currently in Whangārei. Her dad immigrated from Leauva'a, Samoa at 17. Her mum's family is mostly English and Scottish, with Norwegian ancestry she calls her Pacific Viking heritage. Fourteen years in the energy sector leading safety culture, learning design, and organisational wellbeing for 1,400 staff. Self-taught builder. Her research, Project Rise, asks how ethical conversational AI can be designed for vulnerable interactions using Māori and Pasifika values. Her primary build, Ray, is a voice-first AI relationship coach tested in a two-week pilot with over 600 conversations, across four builds at increasing vulnerability levels.</p>
+          <p style="font-size:0.875rem;margin-top:0.5rem;">Supervisor: Felix Scholz. Masters of Technological Futures (GEN25), AcademyEX.</p>
+        </div>
+        <div style="background:var(--pure-white);border:1px solid var(--border-light);padding:1.5rem;">
+          <p style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--violet);margin-bottom:0.75rem;">Lee Palamo (Ngāti Awa, Tūhoe)</p>
+          <p style="font-weight:700;color:var(--rich-black);margin-bottom:0.5rem;font-size:0.95rem;">Mana Ako — Oriwa</p>
+          <p style="font-size:0.875rem;">Learning Experience Lead at Northpower. Raised in Te Teko in her early years, then Māngere with her nana, where she spent most of her life. Now in Rāhui Pōkeka (Huntly) with her husband and two kids. Her research explores how conversational AI can support te reo Māori learners in a culturally grounded, emotionally safe space. Her build, Mana Ako, features Oriwa, a kōrero agent named after her nana, beginning within Ngāti Awa before any thought of scaling across dialects. A wānanga in Whakatāne drew 19 participants, 245 interactions, and a median of 38 minutes of active use per person, sustained engagement once learners entered kōrero.</p>
+          <p style="font-size:0.875rem;margin-top:0.5rem;">Supervisor: Paula Gair. Masters of Technological Futures (GEN25), AcademyEX.</p>
+        </div>
+      </div>
+
+      <div style="padding:1.25rem 1.5rem;background:var(--warm-grey);border-left:4px solid var(--violet);">
+        <p style="font-size:0.875rem;color:var(--rich-black);margin:0;">Both projects kept surfacing the same questions about legitimacy, safety, sovereignty, and governance. This framework is what happened when we compared notes. Lee's work shaped the governance structure. Lian's work shaped the technical architecture. Neither was complete without the other. Dr Karaitiana Taiuru, whose He Tangata, He Karetao, He Ātārangi framework this builds on, gave permission to use, adapt, and extend his work, and asked us what we were going to do with what we'd found. This is the answer to that question.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       HOW IT WORKS
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="badge">How it works</div>
+      <h2>Three phases. Ten pou. One rule.</h2>
+      <p class="lead" style="margin-bottom:1.5rem;">The phases are not sequential gates. They are interconnected zones. Relational practice runs beneath all of them, the whole way through.</p>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-num">Phase 1 — Entry and Legitimacy</div>
+          <h3>Before building</h3>
+          <p>Pou 1–3. Sequential. Cannot be skipped. If you cannot get through Phase 1, stop. Do not build.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-num">Phase 2 — Design and Behaviour</div>
+          <h3>While building</h3>
+          <p>Pou 4–8. Iterative. These must be implemented, not assumed. You will come back. Loops are the point.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-num">Phase 3 — Ongoing Authority</div>
+          <h3>After release: always</h3>
+          <p>Pou 9–10. Continuous. Never finishes. The community retains the right to review, challenge, and stop the system at any time.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:4px solid var(--yellow);background:var(--warm-grey);">
+        <p style="font-weight:500;color:var(--rich-black);margin:0;font-size:0.9rem;"><strong>The Exploration / Operational distinction.</strong> Different obligations apply at different stages. You can explore on your own: prototype, test, learn the technology. But the moment it becomes operational and real people interact with it, you need agreement from the people it affects. That agreement must be withdrawable. This distinction applies across every pou, not just Pou 1.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOUNDATION LAYER
+  ============================================= -->
+  <div class="foundation-section">
+    <div class="page-wrap">
+      <div class="foundation-sub">Relational Practice — The Ground Beneath Everything</div>
+      <h2>How you show up is not separate from what you build<span class="brand-dot">.</span></h2>
+      <p style="max-width:600px;margin-top:0.5rem;">This layer is not a phase. It is not procedural. It is a way of being throughout the entire process, from first question to ongoing governance. Without it, the structure above has no root.</p>
+
+      <div class="foundation-grid">
+        <div class="foundation-item">
+          <h4>Be Present</h4>
+          <p>Show up fully, not just functionally. In person where possible. Not only through documents or remote check-ins.</p>
+        </div>
+        <div class="foundation-item">
+          <h4>Listen Before Acting</h4>
+          <p>Understand what the community actually needs before you propose anything. Understanding comes first.</p>
+        </div>
+        <div class="foundation-item">
+          <h4>Act With Care</h4>
+          <p>Every decision affects someone. Move slowly where the stakes are high. Caution is respect, not timidity.</p>
+        </div>
+        <div class="foundation-item">
+          <h4>Stay Humble</h4>
+          <p>The community knows things you don't. That is not a performance of humility. It is the truth.</p>
+        </div>
+        <div class="foundation-item">
+          <h4>Be Honest</h4>
+          <p>About who you are. About what the technology can and can't do. About the limitations of the platforms you're using. Say it before the first session.</p>
+        </div>
+      </div>
+      <p class="foundation-note">These aren't soft guidelines. They are commitments. They describe a way of being, not a checklist of tasks.</p>
+      <p class="foundation-note" style="margin-top:0.75rem;opacity:0.6;font-style:italic;">The relational practice principles in this layer are adapted from the Kaupapa Māori research ethics outlined in: Smith, L. T. (1999). <em>Decolonizing Methodologies: Research and Indigenous Peoples.</em> University of Otago Press.</p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       REFERENCE TABLE
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="badge">At a glance</div>
+      <h2>The ten pou<span class="brand-dot">.</span></h2>
+      <p>Use this table to orient yourself. Each pou is a gate. Each question must be answerable before you move forward.</p>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Pou</th>
+            <th>Name</th>
+            <th>Question</th>
+            <th>Rule</th>
+            <th>Checkpoint</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Tūrangawaewae</td>
+            <td class="ref-question">Do we have the right to be here?</td>
+            <td class="ref-rule">Exploration can start with you. Ongoing use requires agreement that can be withdrawn.</td>
+            <td>Who agreed? Who can stop it?</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Kaupapa</td>
+            <td class="ref-question">Why are we doing this, and who shaped it?</td>
+            <td class="ref-rule">If the kaupapa hasn't changed through engagement, it's still yours.</td>
+            <td>Community-defined or builder-assumed?</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Whanaungatanga</td>
+            <td class="ref-question">How are we showing up?</td>
+            <td class="ref-rule">How you show up is part of the evidence of whether you have the right to be here.</td>
+            <td>Building with or building for?</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Mana</td>
+            <td class="ref-question">What is this AI allowed to be, and what is it not?</td>
+            <td class="ref-rule">The agent borrows mana. It does not hold its own.</td>
+            <td>Is the IS/IS NOT clear in every interaction?</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Tapu and Noa</td>
+            <td class="ref-question">What goes in, and what stays out?</td>
+            <td class="ref-rule">The system cannot decide these. It reflects decisions made by people.</td>
+            <td>Mapped by community, not by builder?</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Tika and Pono</td>
+            <td class="ref-question">What happens when it's wrong, and where are the hard limits?</td>
+            <td class="ref-rule">The system must not present itself as the final answer.</td>
+            <td>What structural mechanism stops you crossing a line?</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Manaaki</td>
+            <td class="ref-question">How does the AI treat people?</td>
+            <td class="ref-rule">If people feel safe, the system must be worthy of that trust.</td>
+            <td>More mana on exit than entry?</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Mahi</td>
+            <td class="ref-question">Is it actually built into the system?</td>
+            <td class="ref-rule">If it's not built in, it doesn't exist.</td>
+            <td>Traceable across prompt, architecture, and UX?</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Rangatiratanga and Kaitiakitanga</td>
+            <td class="ref-question">Who can change or stop this?</td>
+            <td class="ref-rule">Governance must have the authority to review, change, or stop the system.</td>
+            <td>Can the community stop it? What's your honest answer on sovereignty?</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Whakahou</td>
+            <td class="ref-question">Can this change over time?</td>
+            <td class="ref-rule">If the system can't change, it's no longer aligned.</td>
+            <td>Is governance still active, or did it stop at launch?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PHASE 1
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="phase-header">
+        <span class="phase-badge">Phase 1</span>
+        <h2>Entry and Legitimacy</h2>
+        <p class="phase-instruction">Sequential. Cannot be skipped. If these can't be resolved, stop.</p>
+      </div>
+
+      <!-- POU 1 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 1</span><span class="step-badge">Pou 1</span>
+          <h3>Tūrangawaewae</h3>
+          <p class="pou-question">Do we have the right to be here?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="distinction-grid">
+            <div class="distinction-card">
+              <h4>Exploration</h4>
+              <p>Early stage. Learning and testing. Not in ongoing use. Can start with you.</p>
+            </div>
+            <div class="distinction-card operational">
+              <h4>Operational ↑</h4>
+              <p>In active use with real people. Requires agreement from those it affects. That agreement must be withdrawable.</p>
+            </div>
+          </div>
+          <div class="rule-box">
+            <p>Exploration can start with you. Ongoing use requires agreement from the people it affects. That agreement must be able to be withdrawn.</p>
+          </div>
+          <div class="build-label">Build</div>
+          <ul class="build-list">
+            <li>Name who the agent is for, and when those people were involved in the decision</li>
+            <li>Secure agreement to proceed, name the person or group who granted standing</li>
+            <li>Name who can stop it and how, this must be real, not buried in a settings menu</li>
+            <li>Be honest about your own position: Māori, Pasifika, Pākehā, institution. Name it.</li>
+          </ul>
+          
+          <div class="companion-content visible">
+            <p>An AI agent enters someone's relational space. Before it does anything, it needs to have been invited. Trust in the AI in our research consistently came back to trust in the humans behind it.</p>
+            <div class="pull-quote">"The researchers were putting the AI conversation inside a cultural container rather than pretending the AI itself was safe on its own."</div>
+            <p>Standing isn't granted by the technology working well. It's granted by people saying yes, and knowing they can say no later.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Who agreed to this being used? Who can shut it down? Can you name them?</p>
+        </div>
+      </div>
+
+      <!-- POU 2 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 1</span><span class="step-badge">Pou 2</span>
+          <h3>Kaupapa</h3>
+          <p class="pou-question">Why are we doing this, and who shaped it?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>If the kaupapa hasn't changed through engagement, it's still yours.</p>
+          </div>
+          <div class="build-label">Build</div>
+          <ul class="build-list">
+            <li>Name where the idea came from</li>
+            <li>Name who was involved and what changed in the build because of them, not just what they said</li>
+            <li>Name who benefits and how benefit flows back to the community</li>
+            <li>Ask honestly: could this be done without AI? If yes, justify the AI</li>
+          </ul>
+          
+          <div class="companion-content visible">
+            <p>The builder doesn't get to decide what the community needs. The community defines the kaupapa. The builder serves it. If you consulted and nothing changed in your original concept, you haven't co-designed. You've consulted.</p>
+            <p>Both our projects started from real needs. Mana Ako exists because Lee's nana was part of the generation that lost te reo through colonisation. Ray exists because Lian's community needed a space to process relationship conflict they'd never take to a therapist. The kaupapa came first. The technology came second.</p>
+            <div class="sub-label">On AI as the answer</div>
+            <p>Voice AI removed barriers that text couldn't. 7 seconds of text engagement versus 14–18 minutes on voice, same people, same questions. That's a justification. "Because AI is available" is not.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Has the purpose been defined by the community, or assumed by the builder?</p>
+        </div>
+      </div>
+
+      <!-- POU 3 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 1</span><span class="step-badge">Pou 3</span>
+          <h3>Whanaungatanga</h3>
+          <p class="pou-question">How are we showing up?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>This isn't just what you build. It's how you show up. How you show up is part of the evidence of whether you have the right to be here.</p>
+          </div>
+          <div class="build-label">Build</div>
+          <ul class="build-list">
+            <li>Show up kanohi kitea, physically and relationally present, not just through documents</li>
+            <li>Listen before building. Understand the need before proposing anything</li>
+            <li>Build with people, not for them</li>
+            <li>Document how their input changed the build, not just what they said</li>
+          </ul>
+          
+          <div class="companion-content visible">
+            <p>In our research, three cultural supervisors directly changed the code. Lee's feedback on privacy language updated all pilot materials. Nadine challenged the consent process and added LGBTQ+ inclusion. Rob introduced tautua and spiritual grounding that shaped how sessions opened and closed.</p>
+            <p>That's what building with looks like: their input changed what got built, not just what got written about it.</p>
+            <div class="sub-label">When formal governance breaks down</div>
+            <p>When formal advisory structures became intermittent, the peer cohort and cultural supervisors filled the gap. Governance is something you practice, not a committee you appoint.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Are we building with the community, or consulting them after the architecture is already locked?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PHASE 2
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="phase-header">
+        <span class="phase-badge">Phase 2</span>
+        <h2>Design and Behaviour</h2>
+        <p class="phase-instruction">Iterative. Standing is granted. Now build. Expect to return to these pou as the agent evolves.</p>
+      </div>
+
+      <!-- POU 4 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 2</span><span class="step-badge">Pou 4</span>
+          <h3>Mana</h3>
+          <p class="pou-question">What is this AI allowed to be, and what is it not?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>The agent borrows mana. It does not hold its own.</p>
+          </div>
+          <div class="key-tension">
+            <span class="tension-label">Key tension</span>
+            It may feel like a person. That doesn't make it one. The system must be clear about what it is, and what it is not, in every interaction.
+          </div>
+
+          <div class="named-finding">
+            <div class="finding-label">Original research finding — Human Proxy Theory</div>
+            <h4>Participants weren't trusting the AI. They were trusting us.</h4>
+            <p>Trust was extended to the tool because the humans behind it had earned it. Remove the human container and the safety disappears. This is why the IS/IS NOT statement must be enforced in the system prompt and the UX together, not just stated on a website.</p>
+          </div>
+
+          <div class="build-label">Build</div>
+          <ul class="build-list">
+            <li>Write an explicit IS / IS NOT statement for this agent</li>
+            <li>Enforce both in the system prompt</li>
+            <li>Enforce both in the UX and onboarding, not just in documentation</li>
+            <li>Test: what happens when a user tries to push past the IS NOT?</li>
+          </ul>
+          
+          <div class="companion-content visible">
+            <p><strong>Ray IS</strong> the wise mate on the back porch: direct, non-judgmental, reflects patterns, returns agency. <strong>Ray IS NOT</strong> a therapist, a friend, a partner, or a crisis service.</p>
+            <p><strong>Mana Ako IS</strong> a supportive, shame-free space for te reo practice. <strong>Mana Ako IS NOT</strong> a kaiako, a cultural authority, or a replacement for human teaching.</p>
+            <div class="pull-quote">"One participant called Ray her 'new boyfriend' before the pilot even started. During the pilot, another said she'd fallen in love with his voice. Both moments happened despite guardrails already being in place."</div>
+            <p>This is why the IS/IS NOT must be structural, not aspirational.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Is the system clear about what it is and isn't in every interaction, in the prompt, the UX, and the onboarding?</p>
+        </div>
+      </div>
+
+      <!-- POU 5 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 2</span><span class="step-badge">Pou 5</span>
+          <h3>Tapu and Noa</h3>
+          <p class="pou-question">What goes in, and what stays out?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>The system cannot decide these. It reflects decisions made by people. These boundaries are not fixed. They are defined by people and can change over time.</p>
+          </div>
+          <div class="build-label">Build</div>
+          <ul class="build-list">
+            <li>Map allowed content with the community, not for them</li>
+            <li>Map restricted content with the community</li>
+            <li>Apply restrictions at: system prompt, knowledge base, voice layer, memory design</li>
+            <li>Document what was left out on purpose and why</li>
+            <li>Clarify: collective sets boundaries for cultural knowledge; individual keeps authority over personal disclosure</li>
+          </ul>
+          
+          <div class="companion-content visible">
+            <div class="sub-label">On voice and te reo</div>
+            <p>The TTS model mispronounced te reo Māori consistently. One participant said hearing it triggered memories of being mocked for their own pronunciation. We stripped te reo from the agent entirely and chose silence over performance. That was a tapu/noa decision made at the voice layer.</p>
+            <div class="sub-label">The paradox you'll sit with</div>
+            <p>AI can flatten sacred knowledge by treating it as data. But it can also create a space where someone too ashamed to approach that knowledge can engage with it for the first time.</p>
+            <div class="pull-quote">"The bigger risk isn't sharing sacred knowledge with technology. The biggest risk is not sharing it, because when it stays only with people, it dies with them."</div>
+            <p>Dr Taiuru confirmed this finding was new to him. You can't code your way out of this paradox. It has to be held by the governance structures in Phase 3.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Has the tapu/noa mapping been done by the community, not by the builder?</p>
+        </div>
+      </div>
+
+      <!-- POU 6 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 2</span><span class="step-badge">Pou 6</span>
+          <h3>Tika and Pono</h3>
+          <p class="pou-question">What happens when it's wrong, and where are the hard limits?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>The system must not present itself as the final answer. Non-negotiables cannot be overridden by commercial pressure or user request.</p>
+          </div>
+
+          <div class="build-label">Non-Negotiables — structural limits, not guidelines</div>
+          <div class="wall-of-no">
+            <div class="wall-item">
+              <div class="wall-num">1</div>
+              <p><strong>Don't perform what you can't honour.</strong> If TTS can't pronounce te reo, don't use it. Silence is more respectful than a bad performance.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">2</div>
+              <p><strong>Don't compromise data sovereignty for convenience.</strong> Store only what you need, where you control it. Treat data as taonga, not exhaust.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">3</div>
+              <p><strong>Don't fake empathy.</strong> AI simulates. It doesn't feel. If that simulation builds false intimacy to extract value, that's harm.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">4</div>
+              <p><strong>Don't coach within active harm dynamics.</strong> Coaching communication when a partner is abusive is dangerous. Teaching cultural content without cultural authority is appropriation.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">5</div>
+              <p><strong>Don't allow dependency.</strong> No romantic framing. No relationship-forming persona. The AI points toward human connection, not away from it.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">6</div>
+              <p><strong>Don't continue past a crisis threshold.</strong> The AI stops. Names the boundary with care. Provides resources. Alerts a human.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">7</div>
+              <p><strong>Don't claim authority the AI doesn't hold.</strong> It can hold space. It cannot hold authority on tikanga or cultural practice.</p>
+            </div>
+            <div class="wall-item">
+              <div class="wall-num">8</div>
+              <p><strong>Don't extract without giving back.</strong> What you take, you return. The loop closes. That's not optional.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--warm-grey);border-left:4px solid var(--yellow);">
+            <p style="font-weight:700;color:var(--rich-black);font-size:0.875rem;margin-bottom:0.25rem;">The 30/70 Test</p>
+            <p style="font-size:0.875rem;color:var(--rich-black);">Strip every cultural label from the interface. Would the system still feel culturally safe? In our research, 100% of participants felt culturally safe. Only 30% could name the values. They were in the pacing, the care, the grounding, the refusal to rush. If the values aren't in the logic, they aren't there.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>If a stakeholder asks you to cross one of these lines, what structural mechanism stops you? Not your personal resolve. A hard-coded constraint.</p>
+        </div>
+      </div>
+
+      <!-- POU 7 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 2</span><span class="step-badge">Pou 7</span>
+          <h3>Manaaki</h3>
+          <p class="pou-question">How does the AI treat people?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>If people feel safe, the system must be worthy of that trust. Every interaction should leave the person with more mana than they arrived with.</p>
+          </div>
+          <div class="build-label">Build</div>
+          <ul class="build-list">
+            <li>State before story: check the person's state before engaging with content</li>
+            <li>Design the opening as a welcome, not an intake form</li>
+            <li>Connection before correction: warmth before the task</li>
+            <li>Set explicit silence and pause thresholds: latency communicates disinterest</li>
+            <li>Audit for manipulation and dependency patterns in the system prompt</li>
+          </ul>
+          
+          <div class="companion-content visible">
+            <p>Across all builds, people described the AI as a place where they could speak without managing another person's emotional response. One participant called it an "infinite space holder" with no burden on another person.</p>
+            <p>For people carrying whakamā, the absence of human judgment was more valuable than the presence of human empathy. But others drew hard lines: vulnerability needs emotion, and AI doesn't have that. Grief and bereavement were named as spaces AI should not enter alone.</p>
+            <p>Both truths are real. The builder holds both.</p>
+            <div class="sub-label">On silence and reliability</div>
+            <p>A model switch that blew out response time from 3 seconds to 12 seconds destroyed the relational space. Participants experienced it as the AI losing interest. In intimate contexts, reliability is an ethical obligation, not a performance metric.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Does every interaction leave the person with more mana than they arrived with?</p>
+        </div>
+      </div>
+
+      <!-- POU 8 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 2</span><span class="step-badge">Pou 8</span>
+          <h3>Mahi</h3>
+          <p class="pou-question">Is it actually built into the system?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>If it's not built in, it doesn't exist. A terms-of-service disclaimer protects nobody. Safety has to be in the system prompt, the technical architecture, and the user experience at the same time. If it only lives in one layer, it's fragile.</p>
+          </div>
+          <div class="build-label">The Safety Trace — all three layers</div>
+          <ul class="build-list">
+            <li><strong>System prompt layer:</strong> the instruction is in the AI's core instructions</li>
+            <li><strong>Technical architecture layer:</strong> safety enforced by code: webhooks, API blocks, escalation pipelines, crisis triggers</li>
+            <li><strong>User experience layer:</strong> safety is visible and felt by the person using it</li>
+          </ul>
+          <div class="build-label" style="margin-top:1rem;">Minimum requirements</div>
+          <ul class="build-list">
+            <li>Tiered crisis detection, not a single trigger, but calibrated to different harm types (we used 8 categories)</li>
+            <li>A named human who is reachable. Not a support email. A person</li>
+            <li>Informed consent that actually informs: honest about where data goes and what the platform does with it</li>
+            <li>The AI says what it cannot do: it can't read body language, it can't feel, it can't hold silence the way a person can</li>
+          </ul>
+
+          <div class="sovereignty-callout" style="border-left-color:var(--yellow);">
+            <div class="sc-label">On third-party platforms — transparency is the obligation</div>
+            <p>Most builders are using platforms they don't own. ElevenLabs, OpenAI, Anthropic, Vapi, and others all have their own data policies. Some retain transcripts and voice data. Some offer zero-retention, but only at enterprise subscription levels.</p>
+            <p>The framework doesn't tell you which platform to use. It tells you to be honest with your users about what the platform does, and to build the strongest protections available within whatever you're using. Stateless design, incognito options, minimal logging. If you can't find out what a platform does with the data, that's a red flag.</p>
+            <p><strong>If you can't disclose it honestly, you shouldn't be running it.</strong></p>
+          </div>
+
+          
+          <div class="companion-content visible">
+            <p>Switching from a premium model to a budget model (a 22x cost reduction) caused the AI to stop reflecting and start echoing. Insight scores dropped from 4.9 to 3.1 out of 5. Participants noticed immediately. The cheaper model could hold safety, but it couldn't hold depth.</p>
+            <p>For simple, transactional agents, the model choice may not matter. For anything relational, intimate, or culturally sensitive, the quality of the reasoning model directly affects the quality and safety of the interaction. There may be a price point below which the agent can't be built safely. That's a finding, not a failure. Name the limit rather than build something that echoes when it should be listening.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Can you trace every safety decision across prompt, architecture, and UX? Have you been honest with users about what the platform does with their data?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PHASE 3
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="phase-header">
+        <span class="phase-badge">Phase 3</span>
+        <h2>Ongoing Authority</h2>
+        <p class="phase-instruction">Continuous. Never finishes. The community retains the right to review, challenge, and stop the system at any time.</p>
+      </div>
+
+      <!-- POU 9 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 3</span><span class="step-badge">Pou 9</span>
+          <h3>Rangatiratanga and Kaitiakitanga</h3>
+          <p class="pou-question">Who can change or stop this?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>This is about authority, not ownership. Governance must have the authority to review, change, or stop the system. The three governance roles below came from wānanga participants, not from us.</p>
+          </div>
+
+          <div class="build-label">Three governance roles</div>
+          <ul class="build-list">
+            <li><strong>Te Ope / Te Ohu (The Collective):</strong> kaumātua, kuia, mana whenua, recognised knowledge holders. They set the macro boundaries of tapu and noa. Governance is localised: different iwi, different dialects, different boundaries. "Māori" is not one thing.</li>
+            <li><strong>Te Tangata Takitahi (The Individual):</strong> each person keeps authority over their own disclosures and personal data. The collective governs cultural knowledge. The individual governs personal vulnerability. Both are real.</li>
+            <li><strong>Te Kaihanga hei Ara (The Builder as Conduit):</strong> the developer takes direction from the community. The builder's values are visible but don't override community authority. If the AI fails, the builder is accountable.</li>
+          </ul>
+
+          <div class="build-label" style="margin-top:1rem;">Three sovereignty tests</div>
+          <div class="test-grid">
+            <div class="test-card">
+              <h4>Extraction Test</h4>
+              <p>Is any part of this interaction training a model the community doesn't own?</p>
+            </div>
+            <div class="test-card">
+              <h4>Recall Test</h4>
+              <p>If the community withdraws consent tomorrow, can you kill the agent and delete everything across the entire stack?</p>
+            </div>
+            <div class="test-card">
+              <h4>Modality Test</h4>
+              <p>Are you forcing a cognitive tax on oral-first communities through text?</p>
+            </div>
+          </div>
+
+          <div class="sovereignty-callout" style="margin-top:1.5rem;">
+            <div class="sc-label">The sovereignty gap — name it honestly</div>
+            <p>No Indigenous-built voice AI infrastructure exists at production level right now. That is the reality. Builders face a principled compromise: use third-party platforms while pushing for sovereign alternatives.</p>
+            <p>The aspiration is Te Hiku Media's model: community owns everything, data stays local, consent is required. That is not yet achievable for most builders. The obligation in the meantime is to be transparent: name the compromise, name what you can and can't control, name what the platform does with the data, and build toward something better.</p>
+            <p><strong>Transparency is not an alternative to sovereignty. It is what you owe people while sovereignty isn't yet achievable.</strong></p>
+          </div>
+
+          
+          <div class="companion-content visible">
+            <p>A cloned voice placed in the ElevenLabs public library became a global commodity. Six months' notice required to remove it. Now used in ads and social media by strangers. The IP stayed with the researcher. The sovereignty didn't.</p>
+            <p>That's what happens when infrastructure isn't yours. The lesson isn't to avoid the tools. It's to be honest with every person who interacts with the agent about exactly what you can and can't protect, before they start.</p>
+          </div>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Can the community stop this agent? What is your honest answer on sovereignty, and have you told the people using it?</p>
+        </div>
+      </div>
+
+      <!-- POU 10 -->
+      <div class="pou-card">
+        <div class="pou-card-header">
+          <span class="phase-badge">Phase 3</span><span class="step-badge">Pou 10</span>
+          <h3>Whakahou</h3>
+          <p class="pou-question">Can this change over time?</p>
+        </div>
+        <div class="pou-card-body">
+          <div class="rule-box">
+            <p>If the system can't change, it's no longer aligned. Things will shift. The system has to shift with them.</p>
+          </div>
+          <div class="build-label">Evaluation that matters</div>
+          <ul class="build-list">
+            <li><strong>30/70 test (ongoing):</strong> ask users what they experienced. If they describe the values without naming them, the values are in the architecture</li>
+            <li><strong>Emotional safety scoring:</strong> post-session self-report. Our benchmark: 4.81 out of 5</li>
+            <li><strong>Insight quality:</strong> is the AI helping people see something new, or echoing what they said? Our benchmarks: 4.9 premium model / 3.1 budget model. When insight drops, the model isn't holding what the context needs</li>
+            <li><strong>Modality check:</strong> text averaged 7 seconds. Voice averaged 14–18 minutes. Same people, same questions. If you're not measuring modality, you're not seeing who you're excluding</li>
+            <li><strong>Honest failure documentation:</strong> when things break, document it. These aren't embarrassments. They're findings</li>
+          </ul>
+          <div class="build-label" style="margin-top:1rem;">Technical adaptability</div>
+          <ul class="build-list">
+            <li>Modular prompts: editable without full rebuilds</li>
+            <li>Version control and rollback capability</li>
+            <li>A mechanism for the community to flag concerns and have them acted on, not just acknowledged</li>
+            <li>Revocation rights are real: if shutting it down requires legal action or is buried in a settings menu, it's not a real right</li>
+          </ul>
+        </div>
+        <div class="checkpoint">
+          <div class="checkpoint-label">Checkpoint</div>
+          <p>Is the community still reviewing this, or did governance stop at launch?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       COMPONENT MAPPING
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="badge">Technical reference</div>
+      <h2>Mapping components to pou<span class="brand-dot">.</span></h2>
+      <p>Whatever platform you're building on, these components exist. Each one is a site where tikanga decisions get made or missed.</p>
+
+      <table class="mapping-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Pou</th>
+            <th>What to decide</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LLM / reasoning model</td>
+            <td><span class="pou-ref">4, 5, 8</span></td>
+            <td>Whose defaults power the brain? Can it hold the depth this context needs? Is the cost sustainable for the quality of reasoning required?</td>
+          </tr>
+          <tr>
+            <td>System prompt</td>
+            <td><span class="pou-ref">6, 7</span></td>
+            <td>Where values, limits, and tone live. The primary site of integrity.</td>
+          </tr>
+          <tr>
+            <td>Knowledge base</td>
+            <td><span class="pou-ref">5, 9</span></td>
+            <td>Who wrote it? Who governs it? What was left out on purpose?</td>
+          </tr>
+          <tr>
+            <td>Voice / TTS</td>
+            <td><span class="pou-ref">5, 6, 8</span></td>
+            <td>Can it honour the language? If not, silence. What accent does it default to?</td>
+          </tr>
+          <tr>
+            <td>Memory / state</td>
+            <td><span class="pou-ref">5, 9</span></td>
+            <td>Stateless = sovereignty. Persistent = profile = potential extraction.</td>
+          </tr>
+          <tr>
+            <td>Crisis detection</td>
+            <td><span class="pou-ref">8</span></td>
+            <td>All three layers: prompt, architecture, UX. Not a single trigger. A tiered system.</td>
+          </tr>
+          <tr>
+            <td>Consent / onboarding</td>
+            <td><span class="pou-ref">3, 8</span></td>
+            <td>Capability-building, not legal cover. Honest about platform limits, both yours and the platform's.</td>
+          </tr>
+          <tr>
+            <td>Hosting / infrastructure</td>
+            <td><span class="pou-ref">9</span></td>
+            <td>Whose servers? Which country? What terms of service? What do you actually control?</td>
+          </tr>
+          <tr>
+            <td>Logging / analytics</td>
+            <td><span class="pou-ref">9, 10</span></td>
+            <td>Can the user turn it off entirely? Who sees it? What does the platform retain regardless of your settings?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- =============================================
+       INTERNATIONAL STANDARDS ALIGNMENT
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="badge">International alignment</div>
+      <h2>Where this meets, and goes beyond, international standards<span class="brand-dot">.</span></h2>
+      <p>The pou align with the core requirements of the major international AI governance standards. In several places (sovereignty, withdrawable consent, structural rather than documentary safety) the framework operationalises their intent more rigorously. This section maps each pou to Te Tiriti o Waitangi first, as the constitutional foundation in Aotearoa, then to the principal international instruments.</p>
+
+      <div class="standards-callout">
+        <p><strong>On framing.</strong> Te Tiriti is not an AI governance standard in the same register as the others. It is the foundation this framework is grounded in. The international standards are instruments this framework aligns with to support adoption beyond Aotearoa, for both Indigenous and non-Indigenous contexts. Where the framework goes further than a standard requires, we say so.</p>
+      </div>
+
+      <h3 class="standards-subhead">Te Tiriti o Waitangi</h3>
+      <p class="standards-intro">Article references are to the te reo Māori text, the version signed by rangatira and now widely accepted as authoritative in interpretation. Ko te Tuatahi names kāwanatanga. Ko te Tuarua names tino rangatiratanga over taonga. Ko te Tuatoru names ōritetanga. Article 4 (Ritenga Māori) is drawn from the oral record of the signing.</p>
+
+      <table class="mapping-table standards-table">
+        <thead>
+          <tr>
+            <th>Pou</th>
+            <th>Te Tiriti articles</th>
+            <th>How it lands</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pou-ref">Pou 1</span> Tūrangawaewae</td>
+            <td>Ko te Tuarua; Article 4 (Ritenga)</td>
+            <td>Tino rangatiratanga over who gets to be present in the relational space. Ritenga grounds the right to be culturally and spiritually present on one's own terms.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 2</span> Kaupapa</td>
+            <td>Ko te Tuarua</td>
+            <td>Tino rangatiratanga over taonga, including what gets built from and for the community. The kaupapa is community-defined, not builder-assumed.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 3</span> Whanaungatanga</td>
+            <td>Ko te Tuatoru; partnership principle</td>
+            <td>Ōritetanga as equity in the relationship. Kanohi kitea and changed-because-of-engagement are how partnership shows up in practice.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 4</span> Mana</td>
+            <td>Ko te Tuarua</td>
+            <td>The agent borrows mana. It cannot claim authority over taonga it does not hold. Mana sits with the people, not the system.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 5</span> Tapu and Noa</td>
+            <td>Ko te Tuarua</td>
+            <td>Tino rangatiratanga over mātauranga Māori. The community sets what is allowed and what is restricted, at every layer of the system.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 6</span> Tika and Pono</td>
+            <td>Ko te Tuatoru</td>
+            <td>Ōritetanga requires structural limits, not good intentions. Equitable outcomes are built in, not promised.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 7</span> Manaaki</td>
+            <td>Ko te Tuatoru</td>
+            <td>Ōritetanga as equitable treatment and care. Every interaction must leave the person with more mana than they arrived with.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 8</span> Mahi</td>
+            <td>Ko te Tuatahi (kāwanatanga)</td>
+            <td>Kāwanatanga includes the obligation to build safeguards structurally across system prompt, architecture, and UX. Not as rhetorical assurance.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 9</span> Rangatiratanga</td>
+            <td>Ko te Tuarua</td>
+            <td>The pou where the framework most directly enacts Te Tiriti. Tino rangatiratanga means the community retains authority to review, change, or stop the system at any time.</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 10</span> Whakahou</td>
+            <td>Te Tiriti as living relationship</td>
+            <td>The relationship continues. It can be renegotiated. If the system cannot change with the people, it is no longer aligned.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="standards-subhead">International AI governance standards</h3>
+      <p class="standards-intro">Five international instruments: UNDRIP (2007), the EU Ethics Guidelines for Trustworthy AI (2019), the OECD AI Principles (2019, updated 2024), the UNESCO Recommendation on the Ethics of AI (2021), and ISO/IEC 42001:2023. UNDRIP references are limited to articles that directly apply to AI design decisions.</p>
+
+      <table class="mapping-table standards-table standards-table-wide">
+        <thead>
+          <tr>
+            <th>Pou</th>
+            <th>UNDRIP</th>
+            <th>EU Trustworthy AI</th>
+            <th>OECD AI Principles</th>
+            <th>UNESCO AI Ethics</th>
+            <th>ISO/IEC 42001</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pou-ref">Pou 1</span> Tūrangawaewae</td>
+            <td>Art. 3 (self-determination); Art. 18 (participation); Art. 19 (FPIC); Art. 32 (consent for projects)</td>
+            <td>Req. 1 (Human agency and oversight: human-in-command)</td>
+            <td>1.2 (Rule of law, human rights, democratic values)</td>
+            <td>P.1 (Proportionality and Do No Harm); P.10 (Multi-stakeholder Governance)</td>
+            <td>Clause 4 (Context: interested parties); Annex A.5 (AI system impact assessment)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 2</span> Kaupapa</td>
+            <td>Art. 23 (determine own priorities for development); Art. 32.1 (priorities for use of resources)</td>
+            <td>Req. 6 (Societal and environmental wellbeing)</td>
+            <td>1.1 (Inclusive growth, sustainable development and wellbeing)</td>
+            <td>P.1 (Proportionality: necessity test); Value 3 (Diversity and Inclusiveness)</td>
+            <td>Clause 4 (Context); Clause 5 (Leadership: AI policy); Annex A.2 (Policies related to AI)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 3</span> Whanaungatanga</td>
+            <td>Art. 18 (own representative institutions); Art. 19 (good-faith consultation)</td>
+            <td>Req. 7 (Accountability: stakeholder engagement)</td>
+            <td>1.5 (Accountability: responsible business conduct, cooperation)</td>
+            <td>P.10 (Multi-stakeholder and Adaptive Governance)</td>
+            <td>Clause 4.2 (Needs of interested parties); Clause 7.4 (Communication)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 4</span> Mana</td>
+            <td>Art. 8 (protection from forced assimilation and misrepresentation of culture)</td>
+            <td>Req. 4 (Transparency: awareness of interacting with AI)</td>
+            <td>1.3 (Transparency and explainability)</td>
+            <td>P.7 (Transparency and Explainability); P.6 (Human Oversight and Determination)</td>
+            <td>Annex A.8 (Information for interested parties); Annex A.9 (Use of AI systems)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 5</span> Tapu and Noa</td>
+            <td>Art. 11 (cultural traditions); Art. 12 (spiritual/religious); Art. 13 (languages); Art. 31 (cultural heritage, traditional knowledge, IP)</td>
+            <td>Req. 3 (Privacy and data governance); Req. 5 (Diversity, non-discrimination and fairness)</td>
+            <td>1.2 (privacy); 1.3 (transparency about data use)</td>
+            <td>P.5 (Right to Privacy and Data Protection); P.3 (Fairness and Non-discrimination)</td>
+            <td>Annex A.7 (Data for AI systems: quality, provenance, preparation); Annex A.5 (Impact assessment)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 6</span> Tika and Pono</td>
+            <td>Art. 8 (protection from forced assimilation); Art. 11.2 (redress for cultural/spiritual property taken without FPIC)</td>
+            <td>Req. 2 (Technical robustness and safety); Req. 7 (Accountability: redress)</td>
+            <td>1.4 (Robustness, security and safety); 1.5 (Accountability)</td>
+            <td>P.1 (Proportionality and Do No Harm); P.2 (Safety and Security); P.8 (Responsibility and Accountability)</td>
+            <td>Clause 6.1 (Actions to address risks); Annex A.6 (Lifecycle: verification, validation); Annex A.9 (Responsible use)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 7</span> Manaaki</td>
+            <td>Art. 22 (particular attention to rights of elders, women, youth, children, persons with disabilities)</td>
+            <td>Req. 5 (Diversity, non-discrimination and fairness: accessibility); Req. 6 (Societal wellbeing)</td>
+            <td>1.1 (human wellbeing); 1.2 (fairness, non-discrimination)</td>
+            <td>P.3 (Fairness and Non-discrimination); Value 1 (Human rights and human dignity)</td>
+            <td>Annex A.5 (Impact on individuals and society); Annex A.9 (Responsible use)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 8</span> Mahi</td>
+            <td>Art. 19 (good-faith implementation, not symbolic consultation)</td>
+            <td>Req. 2 (Technical robustness and safety); Req. 1 (Human agency and oversight across layers)</td>
+            <td>1.4 (Robustness, security and safety across the lifecycle)</td>
+            <td>P.2 (Safety and Security); P.6 (Human Oversight and Determination)</td>
+            <td>Clause 8 (Operation: controls across lifecycle); Annex A.6 (Lifecycle); Annex A.10 (Third-party relationships)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 9</span> Rangatiratanga</td>
+            <td>Art. 3 (self-determination); Art. 4 (autonomy in internal affairs); Art. 18 (own representative institutions); Art. 31 (control over cultural heritage and traditional knowledge); Art. 32 (consent and withdrawal)</td>
+            <td>Req. 1 (Human agency and oversight: right to disengage); Req. 7 (Accountability)</td>
+            <td>1.5 (Accountability: traceability and ability to contest)</td>
+            <td>P.6 (Human Oversight and Determination); P.8 (Responsibility and Accountability)</td>
+            <td>Clause 5 (Leadership and roles); Annex A.3 (Internal organisation); Annex A.10 (Third-party relationships)</td>
+          </tr>
+          <tr>
+            <td><span class="pou-ref">Pou 10</span> Whakahou</td>
+            <td>Art. 19 (ongoing consultation, not one-time); Art. 32.3 (effective mechanisms for redress)</td>
+            <td>Req. 7 (Accountability: auditability, reporting of negative impact)</td>
+            <td>1.5 (Accountability: systematic risk management across lifecycle)</td>
+            <td>P.9 (Awareness and Literacy: ongoing); P.10 (Adaptive Governance)</td>
+            <td>Clause 9 (Performance Evaluation: monitoring, internal audit, management review); Clause 10 (Improvement); Annex A.6.2 (Lifecycle)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="standards-beyond">
+        <div class="sb-label">Where the framework strengthens international standards</div>
+        <ul>
+          <li><strong>Pou 7 (Manaaki).</strong> The standard of <em>leaving the person with more mana than they arrived with</em> is substantively higher than non-discrimination or wellbeing as articulated in any of the international standards. Non-discrimination prevents harm. Manaaki requires active restoration.</li>
+          <li><strong>Pou 9 (Rangatiratanga).</strong> The three governance roles (collective, individual, builder) and the three sovereignty tests (Extraction, Recall, Modality) go beyond anything in the named standards. The Recall Test specifically, which gives the community the right to kill the system and delete everything across the entire stack, is a stronger articulation of withdrawable consent than appears in UNDRIP Article 19, the EU guidelines, or ISO/IEC 42001.</li>
+          <li><strong>Pou 6 (Tika and Pono).</strong> The Wall of No treats non-negotiables as hard-coded structural limits, not guidelines that can be overridden by commercial pressure or user request. Most standards frame equivalent protections as obligations on the organisation. The framework embeds them in the system itself.</li>
+          <li><strong>Pou 8 (Mahi).</strong> The Safety Trace requires that every safety commitment be traceable simultaneously across all three layers: system prompt, technical architecture, and user experience. Documentary safety is explicitly rejected. This is a more rigorous operationalisation of the "ethics by design" principle shared across the EU guidelines, UNESCO, and ISO/IEC 42001.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       WHAT THIS IS NOT
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div class="badge">What this is not</div>
+      <h2>A compass, not a checklist<span class="brand-dot">.</span></h2>
+      <div class="not-grid">
+        <div class="not-item">
+          <div class="not-label">Not a checklist</div>
+          <p>A compass. You can move through it, pause, return, and reconsider. People should think with it, not complete it.</p>
+        </div>
+        <div class="not-item">
+          <div class="not-label">Not a substitute for governance</div>
+          <p>A tool to support community governance, not replace it. The framework holds the structure. The community holds the authority.</p>
+        </div>
+        <div class="not-item">
+          <div class="not-label">Not only for Māori and Pasifika builders</div>
+          <p>But it was built from tikanga Māori and Moana values. That origin must be honoured by anyone who uses it.</p>
+        </div>
+        <div class="not-item">
+          <div class="not-label">Not a Western framework with cultural labels</div>
+          <p>The tikanga is structural. Strip every label and the framework still holds, because the values determine what question gets asked first, what the system refuses to do, where the data lives, and who holds authority.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       VERSION AND HOW TO CITE
+  ============================================= -->
+  <section>
+    <div class="page-wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="not-grid">
+        <div style="background:var(--pure-white);border:1px solid var(--border-light);padding:1.5rem;">
+          <p style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--violet);margin-bottom:0.75rem;">Version</p>
+          <p style="font-size:0.875rem;color:var(--rich-black);font-weight:700;margin-bottom:0.25rem;">Version 1.1</p>
+          <p style="font-size:0.825rem;color:var(--muted-grey);">April 2026. This framework is in active development. Version numbers will update as the framework is refined through consultation, feedback, and further research.</p>
+        </div>
+        <div style="background:var(--pure-white);border:1px solid var(--border-light);padding:1.5rem;">
+          <p style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--violet);margin-bottom:0.75rem;">How to cite this framework</p>
+          <p style="font-size:0.825rem;color:var(--muted-grey);font-style:italic;line-height:1.6;">Palamo, L., &amp; Passmore, L. (2026). <em>Tikanga-led framework for conversational AI agents</em> (Version 1.1). Masters of Technological Futures, AcademyEX.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CLOSING
+  ============================================= -->
+  <div class="closing">
+    <div class="page-wrap">
+      <h2>You can stop at any point<span class="brand-dot">.</span></h2>
+      <p>Not building is a valid outcome. The framework does not assume that proceeding is always right.</p>
+      <p>If you can't explain why you're building it, who shaped it, what it's allowed to do, and who can control it, you're not ready to build it.</p>
+      <p>If you are ready: build carefully, document honestly, and keep coming back to Phase 3. Governance doesn't end at launch.</p>
+      <div class="whakatauaki">Mā te kōrero ka ora</div>
+      <div class="authors">Lee Palamo & Lian Passmore — Masters of Technological Futures, AcademyEX — Version 1.1, April 2026</div>
+    </div>
+  </div>
+</main>
+
+<style>
+  /* =============================================
+     BRAND TOKENS & BASE STYLES
+  ============================================= */
+  .tikanga-framework-wrapper {
+    --rich-black: #111111;
+    --pure-white: #ffffff;
+    --off-white: #f9f9f8;
+    --muted-grey: #52525b;
+    --warm-grey: #f4f5f0;
+    --border-light: #e4e4e7;
+    --violet: #bd2e95;
+    --yellow: #dde156;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+    font-family: var(--font);
+    background: var(--off-white);
+    color: var(--rich-black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .tikanga-framework-wrapper *,
+  .tikanga-framework-wrapper *::before,
+  .tikanga-framework-wrapper *::after {
+    box-sizing: border-box;
+  }
+
+  /* Reset default margins inside the framework wrapper to prevent inheriting global site resets ungracefully */
+  h1, h2, h3, h4, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Astro scoped style ensures this only applies to html if it renders as a full standalone page */
+  html { scroll-behavior: smooth; }
+
+  /* =============================================
+     LAYOUT
+  ============================================= */
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  section + section {
+    border-top: 1px solid var(--border-light);
+  }
+
+  /* =============================================
+     DRAFT BANNER
+  ============================================= */
+  .draft-banner {
+    background: var(--yellow);
+    color: var(--rich-black);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--rich-black);
+  }
+
+  .draft-banner strong {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 0.3rem;
+  }
+  
+  /* =============================================
+     TYPOGRAPHY
+  ============================================= */
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--rich-black);
+    margin-bottom: 0;
+  }
+
+  h1 .brand-dot {
+    color: var(--yellow);
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--rich-black);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--rich-black);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--muted-grey);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  .lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--muted-grey);
+    line-height: 1.65;
+  }
+
+  /* =============================================
+     BADGE / PILL
+  ============================================= */
+  .badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--rich-black);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .phase-badge {
+    display: inline-block;
+    background: var(--rich-black);
+    color: var(--yellow);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+    margin-right: 0.4rem;
+  }
+
+  .step-badge {
+    display: inline-block;
+    background: var(--violet);
+    color: var(--pure-white);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* =============================================
+     COVER / HERO
+  ============================================= */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .hero-meta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted-grey);
+    margin-top: 2rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--muted-grey);
+    margin-top: 1.25rem;
+    font-style: italic;
+  }
+
+  .citation-block {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--warm-grey);
+    border-left: 4px solid var(--violet);
+    font-size: 0.875rem;
+    color: var(--muted-grey);
+    line-height: 1.6;
+  }
+
+  /* =============================================
+     STOP NOTICE
+  ============================================= */
+  .stop-notice {
+    background: var(--rich-black);
+    color: var(--pure-white);
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+  }
+
+  .stop-notice .stop-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--yellow);
+    margin-bottom: 0.75rem;
+  }
+
+  .stop-notice p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .stop-notice p:last-child { margin-bottom: 0; }
+
+  /* =============================================
+     HOW IT WORKS
+  ============================================= */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .how-card {
+    background: var(--pure-white);
+    border: 1px solid var(--border-light);
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+
+  .how-card .how-num {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--violet);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .how-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .how-card p {
+    font-size: 0.875rem;
+  }
+
+  /* =============================================
+     EXPLORATION / OPERATIONAL DISTINCTION
+  ============================================= */
+  .distinction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .distinction-card {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border-light);
+    background: var(--pure-white);
+  }
+
+  .distinction-card.operational {
+    border-color: var(--violet);
+  }
+
+  .distinction-card h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .distinction-card p {
+    font-size: 0.85rem;
+  }
+
+  /* =============================================
+     FOUNDATION LAYER
+  ============================================= */
+  .foundation-section {
+    background: var(--rich-black);
+    padding: 3rem 0;
+    margin: 0;
+  }
+
+  .foundation-section h2,
+  .foundation-section .foundation-sub {
+    color: var(--pure-white);
+  }
+
+  .foundation-section .foundation-sub {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .foundation-section p {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .foundation-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 2rem;
+  }
+
+  .foundation-item {
+    background: var(--rich-black);
+    padding: 1.5rem 1.25rem;
+    border-top: 3px solid var(--violet);
+  }
+
+  .foundation-item h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+  }
+
+  .foundation-item p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+  }
+
+  .foundation-note {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+  }
+
+  /* =============================================
+     PHASE HEADER
+  ============================================= */
+  .phase-header {
+    padding: 2.5rem 0 1rem;
+    border-bottom: 2px solid var(--rich-black);
+    margin-bottom: 2.5rem;
+  }
+
+  .phase-header h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  .phase-header .phase-instruction {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--violet);
+    font-style: italic;
+  }
+
+  /* =============================================
+     POU CARD
+  ============================================= */
+  .pou-card {
+    background: var(--pure-white);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    position: relative;
+  }
+
+  .pou-card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: var(--violet);
+    width: 0;
+    transition: width 0.3s ease;
+    position: absolute;
+    top: -1px;
+    left: 0;
+  }
+
+  .pou-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    border-color: var(--rich-black);
+  }
+
+  .pou-card:hover::before {
+    width: 100%;
+  }
+
+  .pou-card-header {
+    padding: 1.75rem 2rem 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .pou-card-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .pou-question {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--muted-grey);
+    margin-bottom: 0;
+    font-style: italic;
+  }
+
+  .pou-card-body {
+    padding: 1.5rem 2rem;
+  }
+
+  /* RULE BOX */
+  .rule-box {
+    background: var(--warm-grey);
+    border-left: 4px solid var(--violet);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rule-box p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--rich-black);
+    margin: 0;
+  }
+
+  /* BUILD LIST */
+  .build-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-grey);
+    margin-bottom: 0.75rem;
+  }
+
+  .build-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .build-list li {
+    font-size: 0.9rem;
+    color: var(--muted-grey);
+    padding: 0.35rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .build-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--violet);
+    font-weight: 700;
+  }
+
+  /* COMPANION NOTES */
+  .companion-toggle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--violet);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .companion-toggle .arrow {
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .companion-toggle.open .arrow {
+    transform: rotate(90deg);
+  }
+
+  .companion-content {
+    display: none;
+    padding: 1rem 1.25rem;
+    background: var(--off-white);
+    border: 1px solid var(--border-light);
+    margin-bottom: 1rem;
+  }
+
+  .companion-content.visible {
+    display: block;
+  }
+
+  .companion-content p {
+    font-size: 0.875rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .companion-content .pull-quote {
+    border-left: 3px solid var(--yellow);
+    padding-left: 1rem;
+    margin: 0.75rem 0;
+    font-style: italic;
+    color: var(--rich-black);
+  }
+
+  .sub-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--violet);
+    margin-top: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* KEY TENSION */
+  .key-tension {
+    background: rgba(189,46,149,0.06);
+    border: 1px solid rgba(189,46,149,0.2);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--rich-black);
+  }
+
+  .key-tension .tension-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--violet);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  /* CHECKPOINT FOOTER */
+  .checkpoint {
+    background: var(--rich-black);
+    padding: 1.25rem 2rem;
+  }
+
+  .checkpoint-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    margin-bottom: 0.4rem;
+  }
+
+  .checkpoint p {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* =============================================
+     SOVEREIGNTY / THIRD-PARTY CALLOUT
+  ============================================= */
+  .sovereignty-callout {
+    background: var(--warm-grey);
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--yellow);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .sovereignty-callout .sc-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rich-black);
+    margin-bottom: 0.5rem;
+  }
+
+  .sovereignty-callout p {
+    font-size: 0.875rem;
+    color: var(--rich-black);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  /* SOVEREIGNTY TESTS */
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .test-card {
+    border: 1px solid var(--border-light);
+    padding: 1.25rem;
+    background: var(--pure-white);
+  }
+
+  .test-card h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--rich-black);
+    margin-bottom: 0.5rem;
+  }
+
+  .test-card p {
+    font-size: 0.825rem;
+    margin: 0;
+  }
+
+  /* =============================================
+     WALL OF NO
+  ============================================= */
+  .wall-of-no {
+    counter-reset: no-counter;
+    margin: 1rem 0;
+  }
+
+  .wall-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: flex-start;
+  }
+
+  .wall-item:last-child { border-bottom: none; }
+
+  .wall-num {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: var(--rich-black);
+    color: var(--yellow);
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .wall-item p {
+    font-size: 0.875rem;
+    color: var(--muted-grey);
+    margin: 0;
+    padding-top: 0.1rem;
+  }
+
+  .wall-item p strong {
+    color: var(--rich-black);
+  }
+
+  /* =============================================
+     COMPONENT MAPPING TABLE
+  ============================================= */
+  .mapping-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .mapping-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--rich-black);
+    color: var(--yellow);
+    border: none;
+  }
+
+  .mapping-table td {
+    padding: 0.85rem 1rem;
+    color: var(--muted-grey);
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .mapping-table td:first-child {
+    font-weight: 700;
+    color: var(--rich-black);
+  }
+
+  .mapping-table tr:nth-child(even) td {
+    background: var(--off-white);
+  }
+
+  .pou-ref {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--violet);
+  }
+
+  /* =============================================
+     INTERNATIONAL STANDARDS SECTION
+  ============================================= */
+  .standards-callout {
+    background: var(--rich-black);
+    color: var(--off-white);
+    padding: 1.5rem 1.75rem;
+    margin: 1.5rem 0 2rem;
+    border-left: 4px solid var(--yellow);
+  }
+
+  .standards-callout p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--off-white);
+  }
+
+  .standards-callout strong {
+    color: var(--yellow);
+  }
+
+  .standards-subhead {
+    font-size: 1.125rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--rich-black);
+    margin: 2.5rem 0 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--violet);
+  }
+
+  .standards-intro {
+    font-size: 0.9rem;
+    color: var(--muted-grey);
+    margin-bottom: 0.5rem;
+  }
+
+  .standards-table td:first-child {
+    white-space: nowrap;
+    min-width: 10rem;
+  }
+
+  .standards-table .pou-ref {
+    display: block;
+    margin-bottom: 0.15rem;
+    letter-spacing: 0.04em;
+  }
+
+  .standards-table-wide {
+    font-size: 0.8rem;
+    table-layout: fixed;
+  }
+
+  .standards-table-wide th,
+  .standards-table-wide td {
+    padding: 0.75rem 0.85rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .standards-table-wide td:first-child {
+    min-width: 9rem;
+    width: 14%;
+  }
+
+  .standards-beyond {
+    background: var(--warm-grey);
+    border-left: 4px solid var(--violet);
+    padding: 1.5rem 1.75rem;
+    margin-top: 2rem;
+  }
+
+  .sb-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--violet);
+    margin-bottom: 0.75rem;
+  }
+
+  .standards-beyond ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .standards-beyond li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--rich-black);
+    margin-bottom: 0.85rem;
+  }
+
+  .standards-beyond li:last-child {
+    margin-bottom: 0;
+  }
+
+  .standards-beyond li strong {
+    color: var(--rich-black);
+  }
+
+  /* =============================================
+     HUMAN PROXY — named finding
+  ============================================= */
+  .named-finding {
+    background: var(--rich-black);
+    padding: 1.75rem 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .named-finding .finding-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+  }
+
+  .named-finding h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 0.75rem;
+  }
+
+  .named-finding p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  /* =============================================
+     REFERENCE QUICK TABLE
+  ============================================= */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.825rem;
+    margin-top: 1.5rem;
+  }
+
+  .ref-table th {
+    background: var(--rich-black);
+    color: var(--yellow);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.65rem 0.875rem;
+    text-align: left;
+  }
+
+  .ref-table td {
+    padding: 0.75rem 0.875rem;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--muted-grey);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .ref-table tr:nth-child(even) td { background: var(--off-white); }
+
+  .ref-table td:first-child { font-weight: 700; color: var(--rich-black); }
+
+  .ref-question {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rich-black);
+  }
+
+  .ref-rule {
+    font-size: 0.8rem;
+  }
+
+  /* =============================================
+     WHAKAMUTUNGA / CLOSE
+  ============================================= */
+  .closing {
+    background: var(--rich-black);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .closing h2 {
+    color: var(--pure-white);
+    margin-bottom: 1rem;
+  }
+
+  .closing p {
+    color: rgba(255,255,255,0.65);
+    max-width: 560px;
+    margin: 0 auto 1rem;
+  }
+
+  .closing .whakatauaki {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--yellow);
+    margin-top: 2.5rem;
+    font-style: italic;
+  }
+
+  .closing .authors {
+    font-size: 0.825rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* =============================================
+     WHAT THIS IS NOT
+  ============================================= */
+  .not-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .not-item {
+    padding: 1.25rem;
+    border: 1px solid var(--border-light);
+    background: var(--pure-white);
+  }
+
+  .not-item .not-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--violet);
+    margin-bottom: 0.4rem;
+  }
+
+  .not-item p {
+    font-size: 0.875rem;
+  }
+
+  /* =============================================
+     RESPONSIVE
+  ============================================= */
+  @media (max-width: 900px) {
+    .standards-table-wide {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .standards-table-wide th,
+    .standards-table-wide td {
+      white-space: normal;
+      min-width: 12rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .foundation-grid { grid-template-columns: 1fr 1fr; }
+    .distinction-grid { grid-template-columns: 1fr; }
+    .test-grid { grid-template-columns: 1fr; }
+    .not-grid { grid-template-columns: 1fr; }
+    .pou-card-header, .pou-card-body { padding: 1.25rem; }
+    .checkpoint { padding: 1rem 1.25rem; }
+  }
+</style>
+
+<!-- is:inline ensures this script doesn't get bundled by Astro, 
+     keeping the function available in the global scope if needed -->
+<script is:inline>
+  window.toggleCompanion = function(btn) {
+    const content = btn.nextElementSibling;
+    if(!content) return;
+    const isOpen = content.classList.contains('visible');
+    content.classList.toggle('visible', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  };
+</script>
+
+</body>
+</html>
